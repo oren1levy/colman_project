@@ -1,0 +1,108 @@
+body{
+     background-image: url("imges/background1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+}
+
+.wrapper {
+    background-color: none;
+    display: flex;
+    align-items: stretch;
+    border-radius: 30px;
+    overflow: hidden;
+    max-width: 1000px;
+    height: 650px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.left_card_pic,
+.right_card_form {
+    flex: 1;
+}
+
+.left_card_pic {
+    background-color: rgb(253, 235, 216); 
+}
+
+.right_card_form {
+    background-color: white;
+}
+
+#logo{
+    margin-top: 150px;
+    width: 500px;
+}
+
+/*--------------------Form-------------------------------*/
+
+form{
+    width: 250px;
+}
+
+.register_body{
+    padding: 25px 100px;
+    padding-bottom: 80px;
+    display: table-cell;
+}
+
+#register_title{
+    font-size: 28px;
+    color: black;
+    margin-top: 25px;
+    font-weight: 400;
+    margin-bottom: 36px;
+    font-weight: bold;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 33px;
+    border-bottom: 1px solid black;
+  }
+
+  #input_firstName,#input_lastName,#datepicker,#input_email,#input_phone,#input_password,#input_Cun_password{
+    padding: 5px 0;
+    font-size: 16px;
+    color: black;
+    background: transparent;
+    position: relative;
+  }
+  input{
+    outline: none;
+    border: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+  }
+  
+  button {
+    outline: none;
+    background: none;
+    border: none;
+  }
+  #btn_submit{
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background: lightgray;
+  }
+
+
+
+  /*-----------------icons-----------------*/
+
+  .bi-calendar,.bi-eye,.bi-eye2,.bi-phone,.bi-envelope{
+    margin-left: -19px;
+    position: absolute;
+    margin-top: 10px;
+  }
+  .bi-check-circle{
+    margin-left: 260px;
+    position: absolute;
+    margin-top: -25px;
+    display: none;
+  }
+

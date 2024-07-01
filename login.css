@@ -1,0 +1,121 @@
+body{
+    background-image: url("imges/background1.jpg");
+   background-size: cover;
+   background-position: center;
+   height: 100vh; 
+}
+
+.wrapperL {
+   background-color: none;
+   display: flex;
+   align-items: stretch;
+   border-radius: 30px;
+   overflow: hidden;
+   max-width: 1000px;
+   height: 650px;
+   margin: 0 auto;
+   margin-top: 50px;
+}
+
+.left_card_picL,
+.right_card_login {
+   flex: 1;
+}
+
+.left_card_picL {
+   background-color: rgb(253, 235, 216); 
+}
+
+.right_card_login {
+   background-color: white;
+}
+
+#logo{
+   margin-top: 150px;
+   width: 500px;
+}
+
+/*--------------------Form-------------------------------*/
+
+form{
+    width: 250px;
+}
+
+.login_body{
+    padding: 25px 100px;
+    padding-bottom: 80px;
+    display: table-cell;
+}
+
+#login_title{
+    font-size: 28px;
+    color: black;
+    margin-top: 25px;
+    font-weight: 400;
+    margin-bottom: 36px;
+    font-weight: bold;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 33px;
+    border-bottom: 1px solid black;
+  }
+
+  #input_email,#input_password{
+    padding: 5px 0;
+    font-size: 16px;
+    color: black;
+    background: transparent;
+    position: relative;
+  }
+  input{
+    outline: none;
+    border: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  strong{
+    color: gray;
+  }
+
+  .forgot{
+    color: green;
+    margin-left: 135px;
+  }
+
+  button {
+    outline: none;
+    background: none;
+    border: none;
+  }
+  #btn_submit{
+    font-weight: bold;
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    background: lightgray;
+  }
+  .p-t-10{
+    padding-top: 20px;
+  }
+
+  hr{
+    margin-top: 20px;
+  }
+
+  a{
+    color: green;
+  }
+
+
+
+  /*-----------------icons-----------------*/
+
+  .bi-envelope,.bi-eye{
+    margin-left: -19px;
+    position: absolute;
+    margin-top: 10px;
+  }
