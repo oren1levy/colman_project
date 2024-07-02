@@ -1,0 +1,156 @@
+body {
+    background-image: url('background2.jpg');
+    background-size: 100%;
+    margin: 0;
+    transition: margin-left 0.3s ease; 
+}
+.top {
+    position: sticky;
+    top: 0;
+    background-color: white; 
+    z-index: 1000; 
+    width: 100%; 
+}
+#logo {
+    margin-top: 1%;
+    width: 12%; 
+    height: auto;
+    margin-left: 45%;
+    background: none;
+}
+.right-icons {
+    position: fixed;
+    top: 5%; 
+    left: 2%; 
+    
+}
+.social-icons {
+    position: fixed;
+    top: 5%;
+    right: 2%; 
+}
+.right-icons button, .social-icons button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    margin-right: 10px;
+}
+.side-menu {
+    height: 50%;
+    width: 0;
+    position: fixed;
+    top: 15;
+    right: 0;
+    background-color: #f2f1f1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+.close-menu {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.close-menu:hover {
+    color: #f1f1f1;
+}
+/*/////////////////////////////////////////////////*/
+#cart {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.3s;
+    z-index: 1000;   
+}
+
+.close-cart {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#cart-head {
+    font-size:smaller;
+    font-family: sans-serif;
+    letter-spacing:1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+#cart-head-text {
+    right:0;
+    font-size: large;
+}
+#reviews {
+    display: flex;
+    justify-content:right;
+    align-items: center;
+    margin-right: 7px;
+}
+#emptyCart{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: grey;
+    margin-top: 200px;
+}
+#footerCart {
+    padding-right: 20px;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+}
+#paymentbtn {
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 55px;
+    border-radius: 30px;
+    border-width: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 50px;
+    display: none;
+}
+#saah {
+    width: 110%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    display: none;
+    margin-left: 10px;
+}
+#price {
+    font-size: x-large;
+}
+#sah-hakol {
+    font-size: large;
+    font-family: sans-serif;
+    letter-spacing:1px;
+}
