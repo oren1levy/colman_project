@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+}
+.top {
+    position: fixed;
+    top: 0;
+    background-color: white; 
+    z-index: 1000; 
+    width: 100%; 
+}
+#logo {
+    margin-top: 1%;
+    width: 12%; 
+    height: auto;
+    margin-left: 45%;
+    background: none;
+}
+.right-icons {
+    position: fixed;
+    top: 5%; 
+    left: 2%; 
+    
+}
+.social-icons {
+    position: fixed;
+    top: 5%;
+    right: 2%; 
+}
+.right-icons button, .social-icons button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    margin-right: 10px;
+}
+.side-menu {
+    height: 50%;
+    width: 0;
+    position: fixed;
+    top: 15;
+    right: 0;
+    background-color: #f2f1f1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+.close-menu {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.close-menu:hover {
+    color: #f1f1f1;
+}
+/*///////////////////////////////////////////*/
+.page {
+    margin-top: 90px;
+}
+.top-page {
+    background: rgb(253, 235, 216);    ;
+    color: black;
+    padding: 1em;
+    text-align: center;
+    font-family: sans-serif;
+}
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+section {
+    display: none;
+}
+section.active {
+    display: block;
+}
+.main-manager-page {
+    margin-left: 40px;
+    margin-right: 40px;
+}

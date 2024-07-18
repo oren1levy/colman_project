@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+}
+.top {
+    position: fixed;
+    top: 0;
+    background-color: white; 
+    z-index: 1000; 
+    width: 100%; 
+}
+#logo {
+    margin-top: 1%;
+    width: 12%; 
+    height: auto;
+    margin-left: 45%;
+    background: none;
+}
+.right-icons {
+    position: fixed;
+    top: 5%; 
+    left: 2%; 
+    
+}
+.social-icons {
+    position: fixed;
+    top: 5%;
+    right: 2%; 
+}
+.right-icons button, .social-icons button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    margin-right: 10px;
+}
+.side-menu {
+    height: 50%;
+    width: 0;
+    position: fixed;
+    top: 15;
+    right: 0;
+    background-color: #f2f1f1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+.close-menu {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.close-menu:hover {
+    color: #f1f1f1;
+}
+/*//////////////////////////////////////////*/
+.page {
+    display: flex;
+    margin-top: 90px;
+}
+.payment-right-section {
+    background-color: rgb(231,233,238);
+    border: 1px solid black;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: relative;
+}
+.inner-payment-right-section {
+    margin-right: 40px;
+    width: 95%;
+    position: relative;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    width: 100%;
+
+}
+#contactEmail {
+    width: 83%;
+    height: 30px;
+    padding: 10px;
+}
+.delivery {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+.deliveryOption {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 86%;
+    height: 50px;
+    border: 1px solid black;
+    margin-top: 6px;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.selected {
+    border-color: #ff0048;
+    background-color: #ff0048;
+    color: #fff;
+}
+.safePayment {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    /* display: none; */
+    position: relative;
+}
+.payment-Name {
+    display: flex;
+    justify-content:flex-end;
+    width: 100%;
+}
+.payment-Street-name ,.payment-PhoneNumber, .payment-Street-number, .payment-Mikud-City {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 6px;
+}
+
+#last-name ,#mikud {
+    padding: 10px;
+    width: 40%;
+    direction: rtl;
+}
+#first-name , #city{
+    padding: 10px;
+    width: 39%;
+    margin-left: 6px;
+    direction: rtl;
+}
+.ui-autocomplete {
+    background-color: white;
+    width: 100px;
+    cursor: pointer;
+    direction: rtl;
+   
+}
+
+#address {
+    padding: 10px;
+    width: 82.5%;
+    direction: rtl;
+}
+#apartment {
+    padding: 10px;
+    width: 82.5%;
+    direction: rtl;
+}
+
+#Phonenumber {
+    padding: 10px;
+    width: 82.5%;
+}
+
+.self-collecting {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    width: 83%;
+    height: 20px;
+    padding: 10px;
+    display: flex;
+    margin-left: 14%;
+    align-items: center;
+    justify-content:space-between;
+    margin-top:50px;
+    /* display: none; */
+}
+.credit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.Credit-Card-Number {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 6px;
+}
+.Credit-Card-date-cvv {
+    display: flex;
+    justify-content:flex-end;
+    width: 100%;
+    margin-top: 6px;
+}
+.Credit-Card-Id {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 6px;
+}
+#CCnumber {
+    padding: 10px;
+    width: 82.5%;
+}
+#CCdate {
+    padding: 10px;
+    width: 40%;
+}
+#CCcvv {
+    padding: 10px;
+    width: 39%;
+    margin-left: 6px;
+}
+#CCid {
+    padding: 10px;
+    width: 82.5%;
+}
+
+.payment-right-section input {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgb(231,233,238);
+}
+.finishPay {
+    margin-left: 15%;
+    height: 60px;
+    width: 600px;
+    padding: 10px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: larger;
+}
+input {
+    outline: none;
+}
+/*/////////////////////////////////////////////*/
+.payment-left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    border: 1px solid black;
+    background-color: rgb(222, 223, 223);
+    width: 40%;
+}
+#internal-leftsection {
+    margin-right: 50px;
+}
+
+#kupon {
+    direction: rtl;
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 3px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+#kupon-btn {
+    padding: 17px;
+    border-radius: 3px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    border: 1px solid black;
+    color: #818181;
+    cursor: pointer;
+}
+.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: baseline;
+}

@@ -4,7 +4,7 @@ document.getElementById('openMenu').addEventListener('click', function() {
 document.getElementById('closeMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '0';
 });
-////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 document.getElementById('openCart').addEventListener('click', function() {
     document.getElementById('cart').style.width = '380px';
     document.getElementById('cart').style.opacity = '100%';
@@ -165,3 +165,24 @@ function updateTotalPrice() {
     const totalPriceElement = document.getElementById('cart-total');
     totalPriceElement.textContent = `Total: ₪${totalPrice.toFixed(2)}`;
 }
+//////////////////////////////////////////////////////////////////////////
+/////cart to payment/////
+
+function getCartProducts() {
+    return JSON.parse(localStorage.getItem('cartProducts')) || [];
+}
+
+// Function to save cart products to local storage
+function saveCartProducts(cartProducts) {
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+}
+
+document.querySelector('.payment-btn').addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5501/html.page/payment.html';
+});
+
+
+
+
+
+

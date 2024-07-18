@@ -1,34 +1,32 @@
-.top{
-    background-color: blue;
-        position: sticky;
-        top: 0;
-        background-color: white; /* צבע רקע להבהרת הדוגמה */
-        z-index: 1000; /* אינדקס Z כדי להבטיח שהוא יהיה מעל כל האלמנטים האחרים */
-        width: 100%; /* הגדרת רוחב מלא לאינליין בלוק */
+body {
+    margin: 0;
 }
-
+.top {
+    position: fixed;
+    top: 0;
+    background-color: white; 
+    z-index: 1000; 
+    width: 100%; 
+}
 #logo {
     margin-top: 1%;
-    width: 12%; /* שימוש באחוזים כדי להשיג רספונסיביות */
+    width: 12%; 
     height: auto;
     margin-left: 45%;
     background: none;
 }
-
 .right-icons {
     position: fixed;
-    top: 5%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-    left: 2%; /* שימוש באחוזים כדי להשיג רספונסיביות */
+    top: 5%; 
+    left: 2%; 
     
 }
-
 .social-icons {
     position: fixed;
-    top: 5%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-    right: 2%; /* שימוש באחוזים כדי להשיג רספונסיביות */
+    top: 5%;
+    right: 2%; 
 }
-
-.right-icons button, .social-icons button {
+.social-icons-btn {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -36,57 +34,6 @@
     outline: none;
     margin-right: 10px;
 }
-
-.social-icons svg, .right-icons svg {
-    margin-right: 10%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-}
-
-.image-icon {
-    position: fixed;
-    top: 2%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-    right: 2%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-    width: 6%; /* שימוש באחוזים כדי להשיג רספונסיביות */
-    height: auto;
-}
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 עמודות בגודל שווה */
-    grid-auto-rows: minmax(100px, auto); /* גובה אוטומטי */
-    gap: 10px; /* מרווח בין התמונות */
-
-}
-
-.gallery img {
-    width: 100%; /* תמונות ברוחב המסך */
-    height: 100%; /* גובה באופן שווה לרוחב */
-    max-height: 400px; /* קביעת גובה מרבי */
-    object-fit: cover; /* סדר תמונה למלא את התיבה */
-}
-.top-image {
-    grid-column: 1 / span 3; /* קביעת מיקום התמונה לגריד */
-}
-
-.top-image img {
-    width: 100%;
-    height: auto;
-    max-height: 400px; /* קביעת גובה מרבי */
-}
-.video-container {
-    position: relative;
-    width: 100%; /* רוחב כמו התמונות */
-    height: 100%; /* גובה כמו התמונות */
-    overflow: hidden;
-}
-
-.video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* סדר סרטון למלא את התיבה */
-}
-
 .side-menu {
     height: 50%;
     width: 0;
@@ -99,7 +46,6 @@
     padding-top: 60px;
     z-index: 1000;
 }
-
 .side-menu a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -108,11 +54,9 @@
     display: block;
     transition: 0.3s;
 }
-
 .side-menu a:hover {
     color: #f1f1f1;
 }
-
 .close-menu {
     position: absolute;
     top: 0;
@@ -121,7 +65,114 @@
     margin-left: 50px;
     cursor: pointer;
 }
-
 .close-menu:hover {
     color: #f1f1f1;
 }
+
+.page {
+    margin-top: 110px;
+    margin-left: 8px;
+    margin-right: 8px;
+    position: relative;
+}
+/*//////////////////////////////////////////////////////////////*/
+
+.gallery {
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr); /* 3 עמודות בגודל שווה */
+    grid-auto-rows: minmax(100px, auto); /* גובה אוטומטי */
+    gap: 10px; /* מרווח בין התמונות */
+
+}
+.gallery img {
+    width: 100%; /* תמונות ברוחב המסך */
+    height: 100%; /* גובה באופן שווה לרוחב */
+    max-height: 400px; /* קביעת גובה מרבי */
+    object-fit: cover; /* סדר תמונה למלא את התיבה */
+}
+.top-image {
+    grid-column: 1 / span 3; /* קביעת מיקום התמונה לגריד */
+}
+
+.firstlineImg {
+    display: flex;
+    align-items: center;
+}
+.firstlineImg Img {
+    margin: 2px;
+}
+.Imgnav {
+    display: flex;
+    margin-top: 4px;
+    justify-content: flex-start;
+
+}
+.secondlineImg {
+    display: flex;
+    justify-content: space-between;
+}
+.thirdlineImg {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+
+}
+.thirdlineImg Img {
+    height: 285px;
+}
+.boxfourImgs {
+    position: absolute;
+    right: 0;
+    left: 480px;
+}
+.boxfourImgs Img {
+    margin-left: 3px;
+}
+
+/*//////////////////////////////////////////*/
+
+/* .image-icon {
+    position: fixed;
+    top: 2%; 
+    right: 2%; 
+    width: 6%; 
+    height: auto;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: minmax(100px, auto); 
+    gap: 10px; 
+
+}
+
+.gallery img {
+    width: 100%; 
+    height: 100%; 
+    max-height: 400px; 
+    object-fit: cover;
+}
+.top-image {
+    grid-column: 1 / span 3;
+}
+
+.top-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; 
+}
+.video-container {
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+} */

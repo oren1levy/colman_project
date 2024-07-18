@@ -73,7 +73,112 @@ body {
 .close-menu:hover {
     color: #f1f1f1;
 }
-/*/////////////////////////////////////////////////*/
+/*////////////////////////////////////////*/
+
+.page {
+    margin-top: 90px;
+}
+#productName {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 20px;
+}
+.prod-and-filter {
+    display: flex;
+}
+.Products {
+    width: 80%;
+    border: 1px solid black;
+}
+.products-filter {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: end;
+    padding-right: 20px;
+    border: 1px solid black;
+}
+#filterhead {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-image: url(../imges/background1.jpg);
+}
+.product{
+    display: flex;
+    flex-direction: column;
+}
+.product img{
+    width: 100%;
+    border-radius: 10px;
+}
+figure {
+    margin: 20px;
+}
+figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+.productprice {
+    color: red;
+}
+#deletedprice {
+    color: black;
+}
+.productColor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#colorspanG {
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid white;
+    background-color: #b8a11e;
+}
+#colorspanS {
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid white;
+    background-color: #C0C0C0;
+}
+#colorspanRG {
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid white;
+    background-color: #B76E79;
+}
+.addtocart-btn {
+    border: none;
+    color: black;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+.addtocart-btn:hover {
+    text-decoration: underline;
+}
+/*////////////////////////////////////////////*/
 #cart {
     position: fixed;
     height: 100%;
@@ -224,6 +329,5 @@ textarea {
     color: grey;
     margin-top: 200px;
 }
-
-
-
+  
+ 

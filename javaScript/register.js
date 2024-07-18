@@ -47,9 +47,11 @@ $(function() {
     });
 })
 
+
 function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    const emailRegex1 = /^[^\s@]+@gmail\.com$/;
+    const emailRegex2 = /^[^\s@]+@yahoo\.com$/;
+    if (!emailRegex1.test(email) && !emailRegex2.test(email)) {
         return false; 
     }
     return true; 
@@ -96,7 +98,7 @@ const passwordInput = document.getElementById("input_password");
 passwordInput.addEventListener("input",function(event){
     const password = passwordInput.value;
     const box = document.getElementsByClassName('box')[5];
-    if(password.length > 8 && password.length < 16 && onlyBigLetters.test(password)){
+    if(password.length > 8 && password.length < 16){
         box.style.borderBottom = '1px solid green'; 
         document.getElementsByClassName('bi-check-circle')[5].style.display = 'block';
     }
