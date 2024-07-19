@@ -154,21 +154,55 @@ passwordCInput.addEventListener("input",function(event){
 
 const btn_submit = document.getElementById('btn_submit');
 
-btn_submit.addEventListener("click",function(event){
+        btn_submit.addEventListener("click", function(event) {
+            event.preventDefault();
 
-    const boxes = document.getElementsByClassName('box');
-    let hasEmptyField = false;
-    for (const box of boxes) {
-        if (box.style.borderBottom === '1px solid green') {
-            hasEmptyField = true;
-        }
-        else{
-            hasEmptyField = false;
-        }
-    }
-    if (hasEmptyField == false) {
-        alert('You did not fill in all the fields');
-    } else {
-        alert('Success');
-    }
-})
+            const boxes = document.getElementsByClassName('box');
+            let allFieldsValid = true;
+            for (const box of boxes) {
+                if (box.style.borderBottom !== '1px solid green') {
+                    allFieldsValid = false;
+                    break;
+                }
+            }
+
+            if (!allFieldsValid) {
+                alert('You did not fill in all the fields correctly');
+            } else {
+                const firstNameValue = firstName.value;
+                const lastNameValue = lastName.value;
+                const birthDateValue = $("#datepicker").val();
+                const emailValue = email.value;
+                const phoneValue = phoneNumber.value;
+                const passwordValue = passwordInput.value;
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "firstName": firstNameValue,
+                    "lastName": lastNameValue,
+                    "birthday": birthDateValue,
+                    "email": emailValue,
+                    "phone": phoneValue,
+                    "password": passwordValue
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch("http://localhost:3000/api/users/register", requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => {
+                        console.log(result)
+                        window.location.href = "login.html";
+                    })
+                    .catch((error) => console.error(error));
+
+                alert('Success');
+            }
+        });
