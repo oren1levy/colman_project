@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Necklesses</title>
     <link rel="stylesheet" type="text/css" href="../css/Necklesses.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+
 
 </head>
 <body>
     <header>
         <div class="top">  
             <div class="right-icons"> 
-                 <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                 <div class="cart-icon">
+                  <span class="cart-count" id="cartCount">0</span>
+                  <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                           <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
                           </svg>
-                 </button> 
+                  </button> 
+                 </div>
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                           </svg> 
@@ -174,6 +179,45 @@
                 <h3 id="filterhead">מסנן מוצרים</h3>
             </div>
         </div>
+
+
+
+
+
+
+
+
+        <div class="Footer">
+            <footer class="pageFooter">
+              <p id="copyrights">&copy; 2024 YOLO</p>
+              <div id="col1">
+                <h2>My YOLO</h2> 
+                <a class="collink">About Us</a>
+              </div>
+              <div id="col2">
+                <h2>מידע</h2>
+                <a class="collink">מדיניות החלפות</a>
+                <a class="collink">הצהרת פרטיות</a>
+                <a class="collink">הצהרת נגישות</a>
+                <a class="collink">צור קשר</a>
+                <a class="collink">תקנון</a>
+              </div>
+              <div id="col3">
+                <h2>עזרה</h2>
+                <a class="collink">אחריות</a>
+                <a class="collink">על התכשיטים</a>
+                <a class="collink">ביטול עסקה</a>
+              </div>
+              <div id="col4">
+                <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
+                <p>הצטרפו לניוזלטר שלנו וקבלו עדכונים על מבצעים והטבות</p>
+                <input type="text" id="col4-name" placeholder="שם מלא"> 
+                <input type="text" id="col4-Email" placeholder="אימייל">
+                <p id="col4-p">הצטרפותך נרשמה במערכת</p>
+                <button id="col4-btn">!ברוכים הבאים</button>
+              </div>
+            </footer>
+             </div>
     </div>
 
     <script src="../javaScript/Necklesses.js"></script>

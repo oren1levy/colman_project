@@ -1,5 +1,4 @@
 body {
-    background-image: url('background2.jpg');
     background-size: 100%;
     margin: 0;
     transition: margin-left 0.3s ease; 
@@ -21,10 +20,25 @@ body {
     background: none;
 }
 .right-icons {
+    display: flex;
     position: fixed;
     top: 5%; 
     left: 2%; 
     
+}
+.cart-icon {
+    position: relative;
+}
+.cart-count {
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
 }
 .social-icons {
     position: fixed;

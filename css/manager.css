@@ -71,6 +71,7 @@ body {
 /*///////////////////////////////////////////*/
 .page {
     margin-top: 90px;
+    position: relative;
 }
 .top-page {
     background: rgb(253, 235, 216);    ;
@@ -93,10 +94,16 @@ nav ul li a:hover {
 section {
     display: none;
 }
+section h2 {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
 section.active {
     display: block;
 }
 .main-manager-page {
     margin-left: 40px;
     margin-right: 40px;
+    display: flex;
+    justify-content: end;
 }

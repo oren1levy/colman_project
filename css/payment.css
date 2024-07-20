@@ -127,14 +127,15 @@ body {
     background-color: #ff0048;
     color: #fff;
 }
+
 .safePayment {
     padding-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: end;
-    /* display: none; */
     position: relative;
+    display: none;
 }
 .payment-Name {
     display: flex;
@@ -190,12 +191,11 @@ body {
     width: 83%;
     height: 20px;
     padding: 10px;
-    display: flex;
     margin-left: 14%;
     align-items: center;
     justify-content:space-between;
     margin-top:50px;
-    /* display: none; */
+    display: none;
 }
 .credit-card {
     display: flex;

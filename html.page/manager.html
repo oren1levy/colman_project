@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Page</title>
     <link rel="stylesheet" type="text/css" href="../css/manager.css">
+    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+
+
 </head>
 <body>
     <header>
@@ -45,6 +48,39 @@
                         <a href="#">Earring </a>
                         <span class="close-menu" id="closeMenu">&times;</span>
               </div>
+              <div class="Cart" id="cart">
+                <div class="cart-header">
+                  <span class="close-cart" id="closeCart">&times;</span>
+                  <h3 id="cart-head-text">עגלת קניות</h3> 
+                </div>
+                <hr>
+                <div class="cart-items"></div>
+                <p id="emptyCart-text"></p>
+                <hr>
+                <div class="review-section">
+                  <span id="reviews-section-header">
+                    <h3>הערות &nbsp;</h3>
+                    <span class="toggle-button">+</span>
+                  </span>
+                  <div class="hidden-content">
+                      <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
+                      <button id="hidden-content-btn">שמור</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="cart-footer">
+                  <span class="cart-footer-saah">
+                    <span id="cart-total">0.00₪</span>
+                    <span id="sah-hakol">:סך הכל</span>
+                  </span>
+                  <button class="payment-btn">לתשלום
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                      </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="overlay" id="overlay"></div>
             </div>
         </div>
     </header>
@@ -54,25 +90,53 @@
             <h1>Manager Dashboard</h1>
             <nav>
                 <ul>
-                    <li><a href="#dashboard">בקרה</a></li>
-                    <li><a href="#products">מוצרים</a></li>
-                    <li><a href="#orders">הזמנות</a></li>
-                    <li><a href="#customers">לקוחות</a></li>
-                    <li><a href="#suppliers">ספקים</a></li>
-                    <li><a href="#sales">מכירות</a></li>
-                    <li><a href="#storage">מחסן</a></li>
+                    <li><a href=".dashboard">בקרה</a></li>
+                    <li><a href=".products">מוצרים</a></li>
+                    <li><a href=".orders">הזמנות</a></li>
+                    <li><a href=".customers">לקוחות</a></li>
+                    <li><a href=".suppliers">ספקים</a></li>
+                    <li><a href=".sales">מכירות</a></li>
+                    <li><a href=".storage">מחסן</a></li>
+                    <li><a href=".media">מדיה</a></li>
                 </ul>
             </nav>
         </div>
         <hr>
         <div class="main-manager-page">
-            <section id="dashboard" class="active">
-                <h2>Dashboard</h2>
-                <p>Welcome to the manager dashboard!</p>
+            <section  class="active">
+                <h2>בקרה</h2>
             </section>
+            <section class="products">
+                <h2>ניהול מוצרים</h2>
+            </section>
+            <section class="orders">
+                <h2>ניהול הזמנות</h2>
+            </section>
+            <section class="customers">
+                <h2>ניהול לקוחות</h2>
+            </section>
+            <section class="suppliers">
+                <h2>ניהול ספקים</h2>
+            </section>
+            <section class="sales">
+                <h2>פרטי מכירות</h2>
+            </section>
+            <section class="storage">
+                <h2>ניהול אחסון</h2>
+            </section>
+            <section class="media">
+                <h2>ניהול מדיה</h2>
+            </section>
+        </div>
+        <div class="body-main-manager-page">
+            <hr>
         </div>
     </div>
     
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
     <script src="../javaScript/manager.js"></script>
+    <script src="../javaScript/basket.js"></script>
+
 </body>
 </html>
