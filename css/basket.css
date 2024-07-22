@@ -224,12 +224,23 @@ textarea {
     font-family: sans-serif;
     letter-spacing:1px;
 }
+#cart-item-Img {
+    border: 1px solid rgb(125, 123, 123);
+}
 #cart-item-quantity-text {
     display: flex;
     align-items: center;
     font-size: large;
     font-family: sans-serif;
     letter-spacing:1px;
+}
+.delete-cart-product {
+    width: 80px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
 }
 #emptyCart-text{
     display: flex;
@@ -238,6 +249,5 @@ textarea {
     color: grey;
     margin-top: 200px;
 }
-
 
 

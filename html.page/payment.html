@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <link rel="stylesheet" type="text/css" href="../css/payment.css">
+    <link rel="stylesheet" type="text/css" href="../css/basket.css">
 </head>
 <body>
     <header>
         <div class="top">  
             <div class="right-icons"> 
-                 <button id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-                          </svg>
-                 </button> 
+                 <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                      </svg>
+                 </button>
                  <button> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                           </svg> 
@@ -50,21 +52,34 @@
     </header>
     <div class="page">
         <section class="payment-left-section">
-            <span id="internal-leftsection">
+            <div class="cart-to-payment-items"></div>
+            <hr>
+            <div class="payment-reviews">
+                <h3>הערות:</h3>
+                <span id="payment-reviews-text"></span>
+            </div>
+            <hr>
+            <span id="lower-leftsection">
                 <span class="giftCard">
                     <button id="kupon-btn">החל</button>
                     <input type="text" id="kupon" placeholder="Gift Card או קוד קופון">
                 </span>
                 <div class="summary">
-                    <span id="summary-sikum">
-                        <p>:לסיכום</p>
-                        <p></p>
+                    <span id="summary-total-cart">
+                        <p id="summary-total-cart-value"></p>
+                        <p>:לפני מע"מ</p>
                     </span>
                     <span id="summary-delivery">
+                        <p id="summary-delivery-value"></p>
                         <p>:משלוח</p>
                     </span>
-                    <span id="summary-saah">
-                        <h2>:סה"כ</h2>
+                    <span id="summary-sikum">
+                        <p id="summary-sikum-value"></p>
+                        <p>:לסיכום</p>
+                    </span>
+                    <span id="summary-total">
+                        <p id="summary-total-num"></p>
+                        <h2>:סה"כ אחרי מע"מ</h2>
                     </span>
                 </div>
             </span>
@@ -137,5 +152,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="../javaScript/payment.js"></script>
+    <script src="../javaScript/Necklesses.js"></script>
+
 </body>
 </html>

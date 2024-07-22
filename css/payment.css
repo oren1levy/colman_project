@@ -72,6 +72,7 @@ body {
 .page {
     display: flex;
     margin-top: 90px;
+    position: relative;
 }
 .payment-right-section {
     background-color: rgb(231,233,238);
@@ -263,18 +264,45 @@ input {
 }
 /*/////////////////////////////////////////////*/
 .payment-left-section {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: end;
     border: 1px solid black;
     background-color: rgb(222, 223, 223);
     width: 40%;
 }
-#internal-leftsection {
-    margin-right: 50px;
+.cart-to-payment-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
 }
-
+.payment-reviews {
+    width: 100%;
+}
+#cart-item-Img {
+    border: 1px solid black;
+}
+.payment-reviews {
+    margin: 20px;
+    width: 92%;
+    direction: rtl;
+}
+h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+#payment-reviews-text {
+    font-family: sans-serif;
+}
+#lower-leftsection {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
 #kupon {
     direction: rtl;
     width: 300px;
@@ -283,6 +311,7 @@ input {
     border-radius: 3px;
     font-family: sans-serif;
     letter-spacing: 1px;
+    margin-top: 40px;
 }
 #kupon-btn {
     padding: 17px;
@@ -298,4 +327,15 @@ input {
     flex-direction: column;
     align-items: end;
     justify-content: baseline;
+    width: 80%;
+    margin-top: 20px;
+}
+#summary-delivery,#summary-sikum,#summary-total-cart,#summary-total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+hr {
+    width: 100%;
 }
