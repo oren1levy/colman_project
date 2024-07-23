@@ -59,6 +59,18 @@ document.querySelector('#hidden-content-btn').addEventListener('click', () => {
     textarea.parentNode.replaceChild(displayText, textarea);
 })
 ///////////////////////////////////////////////////////////////////////////////
+function updateCartItemCount() {
+    const cartItemCountElement = document.getElementById('cart-item-count');
+    const cartItems = document.querySelectorAll('.cart-item');
+    let itemCount = 0;
+
+    cartItems.forEach(cartItem => {
+        const quantityElement = cartItem.querySelector('#cart-item-Quantity');
+        itemCount += parseInt(quantityElement.textContent);
+    });
+
+    cartItemCountElement.textContent = itemCount;
+}
 
 
 function addToCart(productName, productPrice, productId, productImg) {
@@ -97,6 +109,8 @@ function addToCart(productName, productPrice, productId, productImg) {
         cartItemsContainer.appendChild(cartItem);
 
     }
+
+    updateCartItemCount();
 }
 
 // function removeProduct(productId) {
@@ -134,6 +148,69 @@ function addToCart(productName, productPrice, productId, productImg) {
 //         });
 //     });
 // });
+
+///////////// filterProducts ////////
+document.addEventListener('DOMContentLoaded', () => {
+    const filterOptions = document.querySelectorAll('.filter-option input');
+    const products = document.querySelectorAll('.product');
+
+    filterOptions.forEach(option => {
+        option.addEventListener('change', () => {
+            filterProducts();
+        });
+    });
+
+    function filterProducts() {
+        const selectedFilters = Array.from(filterOptions)
+            .filter(option => option.checked)
+            .map(option => option.value);
+
+        products.forEach(product => {
+            const category = product.getAttribute('data-category');
+            if (selectedFilters.length === 0 || selectedFilters.includes(category)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+    const filterContainer = document.getElementById('filterContainer');
+    const filterOptions = document.querySelectorAll('.filter-option input');
+    const products = document.querySelectorAll('.product');
+
+    filterToggleBtn.addEventListener('click', () => {
+        if (filterContainer.style.display === 'none' || filterContainer.style.display === '') {
+            filterContainer.style.display = 'block';
+        } else {
+            filterContainer.style.display = 'none';
+        }
+    });
+
+    filterOptions.forEach(option => {
+        option.addEventListener('change', () => {
+            filterProducts();
+        });
+    });
+
+    function filterProducts() {
+        const selectedFilters = Array.from(filterOptions)
+            .filter(option => option.checked)
+            .map(option => option.value);
+
+        products.forEach(product => {
+            const category = product.getAttribute('data-category');
+            if (selectedFilters.length === 0 || selectedFilters.includes(category)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+});
 
 document.querySelectorAll('.addtocart-btn').forEach(button => {
     button.addEventListener('click', function() {
