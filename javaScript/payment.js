@@ -12,13 +12,18 @@ option1.addEventListener('click', () => {
     selectOption(option1);
     document.querySelector('.safePayment').style.display = 'flex';
     document.querySelector('.self-collecting').style.display = 'none';
-
+    document.getElementById('summary-delivery-value').textContent = '₪20'
+    document.getElementById('summary-sikum-value').textContent = totalPriceDelivery();
+    document.getElementById('summary-total-num').textContent = totalPriceToPay();
 });
 
 option2.addEventListener('click', () => {
     selectOption(option2);
     document.querySelector('.safePayment').style.display = 'none';
     document.querySelector('.self-collecting').style.display = 'flex';
+    document.getElementById('summary-delivery-value').textContent = '₪0'
+    document.getElementById('summary-sikum-value').textContent = totalPriceDelivery();
+    document.getElementById('summary-total-num').textContent = totalPriceToPay();
 });
 
 
@@ -27,6 +32,7 @@ function selectOption(selectedOption) {
     option2.classList.remove('selected');
     selectedOption.classList.add('selected');
 }
+
 //////////////////////////////////////////////////////////////////////
 const phoneNumber = document.getElementById('Phonenumber');
 
@@ -283,9 +289,78 @@ function validCreditCarddate(datePlate) {
     }
     return false;
 }
+
+
+
 /////////////////////////////////////////////////////////////
 ///cart to payment///
 
+function loadpayment() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItemsContainer = document.querySelector('.cart-to-payment-items');
+    cartItemsContainer.innerHTML = ''; 
+
+    cartItems.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <img id="cart-item-Img" src="${item.productImg}" alt="${item.productName}">
+            <span class="cart-item-Details">
+                <span id="cart-item-Name">${item.productName}</span>
+                <span id="cart-item-quantity-text"><span id="cart-item-Quantity">${item.quantity}</span><span>:כמות</span></span>
+                <span id="cart-item-Price">₪${(item.productPrice).toFixed(2)}</span>
+                <span id="cart-item-Id">${item.productId}</span>
+            </span>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+}
+
+function loadSavedReview() {
+    const savedReview = sessionStorage.getItem('review');
+    if (savedReview) {
+        const hiddenContent = document.querySelector('.hidden-content');
+        const textarea = document.getElementById("reviewInput");
+        document.getElementById('payment-reviews-text').textContent = savedReview;
+
+        hiddenContent.insertBefore(displayText, textarea);
+        textarea.style.display = 'none'; 
+    }
+}
+
+function clearReviewOnPayment() {
+    sessionStorage.removeItem('review');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadSavedReview();
+});
+
+function loadCartTotal() {
+    const cartTotal = sessionStorage.getItem('cartTotal');
+    if (cartTotal) {
+        document.getElementById('summary-total-cart-value').textContent =cartTotal ;
+    }
+     
+}
+    
+ 
+function totalPriceDelivery() {
+    const cartTotal = parseFloat(document.getElementById('summary-total-cart-value').textContent.replace('₪', '')) || 0;
+    const deliveryCost = parseFloat(document.getElementById('summary-delivery-value').textContent.replace('₪', '')) || 0;
+    const total = cartTotal + deliveryCost;
+    return total.toFixed(2) + '₪';
+}
+
+function totalPriceToPay(){
+    const total = parseFloat(totalPriceDelivery()) * 1.18;
+    return total.toFixed(2) + '₪';
+}
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartTotal();
+});
   
+
+loadpayment();

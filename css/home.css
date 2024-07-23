@@ -128,6 +128,38 @@ body {
 .boxfourImgs Img {
     margin-left: 3px;
 }
+.home-aboutUs {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(207, 202, 202, 0.8);
+    color: #5a5a59;
+    border: 1px solid #5a5a59;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    width: 92%;
+    height: 200px;
+    z-index: 1000;
+    font-family: cursive;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-aboutUs h1 {
+    font-size: 40px;
+}
+.home-aboutUs p {
+    font-size: medium;
+    color: rgb(119, 116, 116);
+}
+.home-aboutUs.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
 
 /*//////////////////////////////////////////*/
 

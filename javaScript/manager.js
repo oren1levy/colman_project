@@ -5,9 +5,12 @@ document.getElementById('closeMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '0';
 });
 /*///////////////////////////////////////////////////////////////////*/
+$(document).ready(function() {
 
-$('nav ul li a').click(function(e) {
-    e.preventDefault();
-    $('section').removeClass('active');
-    $($(this).attr('href')).addClass('active');
+    $('nav ul li a').click(function(e) {
+        e.preventDefault();
+        $('section').removeClass('active');
+        $($(this).attr('href')).addClass('active');
+    });
+    
 });
