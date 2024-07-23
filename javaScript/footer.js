@@ -15,25 +15,25 @@ document.querySelector('#collink1').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/home.html';
 });
 document.querySelector('#collink2').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsInfo1.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/exchanges.html';
 });
 document.querySelector('#collink3').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsInfo2.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/privacyPolicy.html';
 });
 document.querySelector('#collink4').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsInfo3.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/accessibillity.html';
 });
 document.querySelector('#collink5').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsInfo4.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/contact.html';
 });
 document.querySelector('#collink6').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsInfo5.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/terms.html';
 });
 document.querySelector('#collink7').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsHelp1.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/warranty.html';
 });
 document.querySelector('#collink8').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsHelp2.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/jewerly.html';
 });
 
 

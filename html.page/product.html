@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/product.css">   
+    <link rel="stylesheet" href="../css/footer.css">  
+    <link rel="stylesheet" href="../css/basket.css">        
 
-
-    
-    <link rel="stylesheet" href="../css/product.css">    
 </head>
 <body>
     <header>
         <div class="top">  
             <div class="right-icons"> 
-                 <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-                          </svg>
-                 </button> 
+              <div class="cart-icon">
+                <span class="cart-count" id="cartCount">0</span>
+                <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                        </svg>
+                </button> 
+               </div>
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                           </svg> 
@@ -28,7 +31,7 @@
                           </svg> 
                  </button>
             </div>
-                 <img id="logo" src="../imges/לוגו.png" alt="Logo">
+                 <img id="logo" src="../imges/thelogo.png" alt="Logo">
             <div class="social-icons">
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                           <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
@@ -49,50 +52,78 @@
                         <a href="#">Earring </a>
                         <span class="close-menu" id="closeMenu">&times;</span>
               </div>
+              <div class="Cart" id="cart">
+                <div class="cart-header">
+                  <span class="close-cart" id="closeCart">&times;</span>
+                  <h3 id="cart-head-text">עגלת קניות</h3> 
+                </div>
+                <hr>
+                <div class="cart-items"></div>
+                <p id="emptyCart-text"></p>
+                <hr>
+                <div class="review-section">
+                  <span id="reviews-section-header">
+                    <h3>הערות &nbsp;</h3>
+                    <span class="toggle-button">+</span>
+                  </span>
+                  <div class="hidden-content">
+                      <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
+                      <button id="hidden-content-btn">שמור</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="cart-footer">
+                  <span class="cart-footer-saah">
+                    <span id="cart-total">0.00₪</span>
+                    <span id="sah-hakol">:סך הכל</span>
+                  </span>
+                  <button class="payment-btn">לתשלום
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                      </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="overlay" id="overlay"></div>
             </header>
 
 </head>
 
-    <div class="product-page">
-        <div class="product-images">
+    <div class="page">
+        <div class="product">
+          <div class="product-images">
             <div class="main-image">
-                <img id="mainImage" src="../imges/Hollis1.png" alt="Product Image">
+              <img id="mainImage" src="../imges/Hollis1.png" alt="Product Image" data-productImg>
             </div>
             <div class="thumbnail-images">
-                <img class="thumbnail" src="../imges/Hollis1.png" alt="Thumbnail 1">
-                <img class="thumbnail" src="../imges/hollis2.png" alt="Thumbnail 2">
-                <img class="thumbnail" src="../imges/hollis3.png" alt="Thumbnail 3">
+              <img class="thumbnail" src="../imges/Hollis1.png" alt="Thumbnail 1">
+              <img class="thumbnail" src="../imges/hollis2.png" alt="Thumbnail 2">
+              <img class="thumbnail" src="../imges/hollis3.png" alt="Thumbnail 3">
             </div>
-        </div>
-        <div class="product-details">
-            <h1>שרשרת Hollis זהב</h1>
-            <p class="price">₪100.00</p>
+          </div>
+          <div class="product-details">
+            <h1 class="productName" data-productName>שרשרת Hollis זהב</h1>
+            <p class="product-price" data-productPrice>₪100.00</p>
             <div class="product-description-container">
                 <div class="description-header">
-                    <span class="description-title">תיאור מוצר</span>
-                    <button class="toggle-description-btn">+</button>
+                  <button class="toggle-description-btn">+</button>
+                    <span class="product-description-title">תיאור מוצר</span>
                 </div>
                 <div class="product-description-content">
                     <p>שרשרת מנעול עדינה ונוטפת סטייל, שמשדרגת כל לוק. השרשרת מעוצבת בעבודת יד ישראלית, מצופה זהב 14K או כסף טהור ומשובצת אבני זירקון יוקרתיות.
-<br>
+                    <br>
                         השרשרת מהווה חלק מקולקציית Ensemble - קולקציה חדשה ומלאת סטייל של תכשיטים בעיצוב ישראלי נועז וייחודי, ששואבת את השראתה מצורות וממבנים אורגניים בטבע, שמשתלבים אלה באלה ויוצרים חיבורים מרגשים.
                         התכשיטים בקולקציה מעניקים לך מגוון רחב של אפשרויות ליצירת טוטאל לוק מושלם מבוקר ועד ערב.</p>
                         <br>
                     <p>מתכת: פליז מצופה זהב 14K</p>
-                    <br>
-                    NI5715G1
                 </div>
             </div>
-            <div class="product-options">
-                <label for="size">גודל:</label>
-                <select id="size">
-                    <option value="small">קטן</option>
-                    <option value="medium">בינוני</option>
-                    <option value="large">גדול</option>
-                </select>
-            </div>
+            <span>
+                 <p>מק"ט:</p>
+                 <p class="product-id" data-productId>NI5715G1</p>
+            </span>
             <div class="add-to-cart">
-                <button id="addToCartBtn">הוסף לסל</button>
+                <button class="addToCartBtn">הוסף לסל</button>
             </div>
             <br>
             <div class="product-warranty">
@@ -130,17 +161,53 @@
                       </svg>
                     <span>חלוקה נוחה לתשלומים</span>
                 </div>
-        </div>
-        <div class="customer-service-banner">
-            <p>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
+            </div>
+            <div class="customer-service-banner">
+                <p>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
-              </svg>
+                </svg>
                 מתלבטת? צריכה עזרה?  </p>
-            <p>שירות הלקוחות שלנו ישמח לעזור לך! מוזמנת ליצור איתנו קשר בוואצאפ 
+                <p>שירות הלקוחות שלנו ישמח לעזור לך! מוזמנת ליצור איתנו קשר בוואצאפ 
             
-                <a href="https://wa.me/972508991125"_blank">לחיצה כאן</a></p>
+                <a href="https://wa.me/972508991125"_blank>לחיצה כאן</a></p>
+            </div>
+          </div>
         </div>
+
+
+    <div class="Footer">
+        <footer class="pageFooter">
+          <p id="copyrights">&copy; 2024 YOLO</p>
+          <div id="col1">
+            <h2>My YOLO</h2> 
+            <a class="collink" id="collink1">About Us</a>
+          </div>
+          <div id="col2">
+            <h2>מידע</h2>
+            <a class="collink" id="collink2">מדיניות החלפות</a>
+            <a class="collink" id="collink3">הצהרת פרטיות</a>
+            <a class="collink" id="collink4">הצהרת נגישות</a>
+            <a class="collink" id="collink5">צור קשר</a>
+            <a class="collink" id="collink6">תקנון</a>
+          </div>
+          <div id="col3">
+            <h2>עזרה</h2>
+            <a class="collink" id="collink7">אחריות</a>
+            <a class="collink" id="collink8">על התכשיטים</a>
+          </div>
+          <form id="col4">
+            <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
+            <input type="text" id="col4-name" placeholder="שם מלא"> 
+            <input type="email" id="col4-Email" name="email" required placeholder="אימייל">
+            <p id="col4-p">הצטרפותך נרשמה במערכת</p>
+            <button id="col4-btn" type="submit">להצטרפות</button>
+            <div id="message"></div>
+        </form>
+        </footer>
+         </div>
     </div>
     <script src="../javaScript/product.js"></script>
+    <script src="../javaScript/footer.js"></script>
+    <script src="../javaScript/basket.js"></script>
 </body>
 </html>

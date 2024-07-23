@@ -45,6 +45,8 @@ document.getElementById('closeCart').addEventListener('click', function() {
     document.getElementById('overlay').style.display = 'none'
 });
 
+let counter = 0; 
+
 function updateCartDisplay(counter) {
 
 if (counter === 0){
@@ -64,7 +66,6 @@ else if (counter > 0){
 
 
 
-let counter = 0; 
 updateCartDisplay(counter);
 
 document.querySelector('.toggle-button').addEventListener('click', () => {
@@ -90,6 +91,8 @@ document.querySelector('#hidden-content-btn').addEventListener('click', () => {
     displayText.textContent = text;
     
     textarea.parentNode.replaceChild(displayText, textarea);
+    sessionStorage.setItem('review', text);
+
 })
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -142,7 +145,7 @@ function addToCart(productName, productPrice, productId, productImg) {
 }
 
 
-document.querySelectorAll('.addtocart-btn').forEach(button => {
+document.querySelectorAll('.addToCartBtn').forEach(button => {
     button.addEventListener('click', function() {
         const product = this.closest('.product');
         const productName = product.querySelector('[data-productName]').textContent;
@@ -227,5 +230,35 @@ function saveCart() {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
+function saveReviews() {
+    const cartReview = [];
+    document.querySelectorAll('.cart-item')
+}
+
+document.querySelector('.payment-btn').addEventListener('click', () => {
+    const cartTotal = document.getElementById('cart-total').textContent;
+    sessionStorage.setItem('cartTotal', cartTotal);
+});
 
 window.addEventListener('load', loadCart);
+
+//////////////////////////////////////////////////////////////////////////
+/////cart to payment/////
+
+function getCartProducts() {
+    return JSON.parse(localStorage.getItem('cartProducts')) || [];
+}
+
+// Function to save cart products to local storage
+function saveCartProducts(cartProducts) {
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+}
+
+document.querySelector('.payment-btn').addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5501/html.page/payment.html';
+});
+
+
+
+
+

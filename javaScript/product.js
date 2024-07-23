@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.querySelector('.toggle-description-btn');
     const descriptionContent = document.querySelector('.product-description-content');
@@ -22,4 +21,12 @@ document.querySelectorAll('.thumbnail').forEach(thumbnail => {
         mainImage.src = this.src;
     });
 });
+
+
+
+
+
+
+
+
 
