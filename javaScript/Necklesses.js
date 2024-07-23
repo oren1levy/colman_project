@@ -302,7 +302,22 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
 //     fetchProducts();
 // });
 
+function getAllProducts() {
+    const requestOptions = {
+        method: "POST", 
+        redirect: "follow"
+    };
+    
+    fetch("http://localhost:3000/api/products/getAllProducts", requestOptions) 
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            alert(result[0].description +  "the length of products" + result.length)
+        })
+        .catch((error) => console.error('Error:', error));
+}
 
+getAllProducts();
 
 
 

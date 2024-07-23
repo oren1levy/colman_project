@@ -133,8 +133,8 @@ body {
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
-    background-color: rgba(207, 202, 202, 0.8);
-    color: #5a5a59;
+    background-color: rgba(10, 10, 10, 0.8);
+    color: #a9a9a7;
     border: 1px solid #5a5a59;
     padding: 30px;
     opacity: 0;
@@ -153,7 +153,7 @@ body {
 }
 .home-aboutUs p {
     font-size: medium;
-    color: rgb(119, 116, 116);
+    color: a9a9a7(119, 116, 116);
 }
 .home-aboutUs.visible {
     opacity: 1;

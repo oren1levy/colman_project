@@ -35,3 +35,15 @@ document.querySelector('#collink7').addEventListener('click', () => {
 document.querySelector('#collink8').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/footerOptionsHelp2.html';
 });
+
+
+document.getElementById('col4').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const emailInput = document.getElementById('col4-Email');
+    const NameInput = document.getElementById('col4-name');
+    document.getElementById('col4-p').style.display = 'block';
+    emailInput.value = '';
+    NameInput.value = '';
+
+});

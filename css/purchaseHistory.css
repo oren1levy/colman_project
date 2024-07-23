@@ -1,0 +1,12 @@
+.purchaseHistory {
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+}
+.purchaseHistory-right-section {
+    border: 1px solid black;
+    width: 30%;
+}
+.purchaseHistory-left-section {
+    width: 70%;
+}

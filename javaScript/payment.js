@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadCartTotal() {
     const cartTotal = sessionStorage.getItem('cartTotal');
     if (cartTotal) {
-        document.getElementById('summary-total-cart-value').textContent =cartTotal ;
+        document.getElementById('summary-total-cart-value').textContent = cartTotal;
     }
      
 }
@@ -362,5 +362,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCartTotal();
 });
   
-
 loadpayment();

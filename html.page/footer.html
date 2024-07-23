@@ -8,36 +8,37 @@
 </head>
 <body>
      <div class="page">
-   <div class="Footer">
-    <footer class="pageFooter">
-      <p id="copyrights">&copy; 2024 YOLO</p>
-      <div id="col1">
-        <h2>My YOLO</h2> 
-        <a class="collink">About Us</a>
-      </div>
-      <div id="col2">
-        <h2>מידע</h2>
-        <a class="collink">מדיניות החלפות</a>
-        <a class="collink">הצהרת פרטיות</a>
-        <a class="collink">הצהרת נגישות</a>
-        <a class="collink">צור קשר</a>
-        <a class="collink">תקנון</a>
-      </div>
-      <div id="col3">
-        <h2>עזרה</h2>
-        <a class="collink">אחריות</a>
-        <a class="collink">על התכשיטים</a>
-      </div>
-      <div id="col4">
-        <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
-        <p>הצטרפו לניוזלטר שלנו וקבלו עדכונים על מבצעים והטבות</p>
-        <input type="text" id="col4-name" placeholder="שם מלא"> 
-        <input type="text" id="col4-Email" placeholder="אימייל">
-        <p id="col4-p">הצטרפותך נרשמה במערכת</p>
-        <button id="col4-btn">!ברוכים הבאים</button>
-      </div>
-    </footer>
-     </div>
+      <div class="Footer">
+        <footer class="pageFooter">
+          <p id="copyrights">&copy; 2024 YOLO</p>
+          <div id="col1">
+            <h2>My YOLO</h2> 
+            <a class="collink" id="collink1">About Us</a>
+          </div>
+          <div id="col2">
+            <h2>מידע</h2>
+            <a class="collink" id="collink2">מדיניות החלפות</a>
+            <a class="collink" id="collink3">הצהרת פרטיות</a>
+            <a class="collink" id="collink4">הצהרת נגישות</a>
+            <a class="collink" id="collink5">צור קשר</a>
+            <a class="collink" id="collink6">תקנון</a>
+          </div>
+          <div id="col3">
+            <h2>עזרה</h2>
+            <a class="collink" id="collink7">אחריות</a>
+            <a class="collink" id="collink8">על התכשיטים</a>
+          </div>
+          <form id="col4">
+            <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
+            <input type="text" id="col4-name" placeholder="שם מלא"> 
+            <input type="email" id="col4-Email" name="email" required placeholder="אימייל">
+            <p id="col4-p">הצטרפותך נרשמה במערכת</p>
+            <button id="col4-btn" type="submit">להצטרפות</button>
+            <div id="message"></div>
+        </form>
+        </footer>
+         </div>
     </div>
+    <script src="../javaScript/footerOptions.js"></script>
 </body>
 </html>
