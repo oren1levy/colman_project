@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
-    
     if (productId) {
         fetch('http://localhost:3000/api/products/getProducts', {
             method: 'POST',

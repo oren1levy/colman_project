@@ -17,7 +17,6 @@ function getAllProducts() {
                             <button class="addtocart-btn">הוספה מהירה לסל</button>
                         </div>
                         <figcaption class="productName" data-productName="productName">${product.name}</figcaption>
-                        <figcaption class="productDescription" data-productDescription="productDescription">${product.description}</figcaption>
                         <figcaption class="productprice" data-productPrice="productprice"><del id="deletedprice">${product.price}₪</del>&nbsp;${discount}₪</figcaption>
                         <div class="productColor">
                             ${Array.isArray(product.colors) ? product.colors.map(color => `<span style="background-color: ${color};" class="color-span"></span>`).join('') : ''}

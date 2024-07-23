@@ -21,7 +21,7 @@ document.querySelector('#collink3').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/privacyPolicy.html';
 });
 document.querySelector('#collink4').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/accessibillity.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/accessibility.html';
 });
 document.querySelector('#collink5').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/contact.html';
