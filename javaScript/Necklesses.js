@@ -64,7 +64,38 @@ else if (counter > 0){
     document.querySelector('.cart-count').style.display = 'block';
 }}
 
+ function createElemnent() {
+    // <figure class="product">
+    //                     <img class="productImg" data-productImg="productImg" src="../imges/yukaNeckless.jpg" alt="Image 1">
+    //                     <figcaption class="productName" data-productName="productName">Yuka שרשרת</figcaption>
+    //                     <figcaption class="productprice" data-productPrice="productprice"><del id="deletedprice">220₪</del>&nbsp;170₪</figcaption>
+    //                     <figcaption class="productId" data-productId="productId">111111 :מק"ט</figcaption>
+    //                     <div class="productColor">
+    //                         <span id="colorspanG"></span>
+    //                         <span id="colorspanS"></span>
+    //                         <span id="colorspanRG"></span>
+    //                     </div>
+    //                     <button class="addtocart-btn">הוסף לסל</button>
+    //                 </figure>
+}
 
+function getAllProducts() {
+    const requestOptions = {
+        method: "POST", 
+        redirect: "follow"
+    };
+    
+    fetch("http://localhost:3000/api/products/getAllProducts", requestOptions) // Added http://
+        .then((response) => response.json()) // Assuming the response is JSON
+        .then((result) => {
+            console.log(result)
+            alert(result[0].description +  "the length of products" + result.length)
+        })
+        .catch((error) => console.error('Error:', error));
+}
+
+
+getAllProducts();
 
 updateCartDisplay(counter);
 
