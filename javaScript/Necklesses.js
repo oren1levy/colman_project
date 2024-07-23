@@ -13,7 +13,7 @@ function getAllProducts() {
                 const productElement = `
                     <figure class="product">
                         <div class="image-container">
-                            <img class="productImg" data-productImg="productImg" src="${product.img}" alt="${product.name}">
+                            <img class="productImg" data-productId="${product._id}" src="${product.img}" alt="${product.name}">
                             <button class="addtocart-btn">הוספה מהירה לסל</button>
                         </div>
                         <figcaption class="productName" data-productName="productName">${product.name}</figcaption>
@@ -25,6 +25,14 @@ function getAllProducts() {
                     </figure>
                 `;
                 productGallery.insertAdjacentHTML('beforeend', productElement);
+            });
+
+            // Add event listener for product images
+            document.querySelectorAll('.productImg').forEach(img => {
+                img.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-productId');
+                    window.location.href = `product.html?id=${productId}`;
+                });
             });
         })
         .catch(error => console.error('Error:', error));
