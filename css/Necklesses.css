@@ -94,7 +94,7 @@ body {
 .page {
     margin-top: 90px;
 }
-#productName {
+#productName,#productDescription {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     margin-top: 20px;

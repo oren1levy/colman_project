@@ -39,8 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json()) 
             .then(result => {
                 console.log(result)
-                localStorage.setItem("userToken",result.email);
-                window.location.href = "home.html";
+                if (result.message == 'Invalid password'){
+                    alert("the email or the password incurrect");
+                }
+                else{
+                    localStorage.setItem("userToken",result._id); 
+                    window.location.href = "home.html";
+                }
             })
             .catch(error => console.error('Error:', error));
     });
