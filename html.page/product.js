@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButton.addEventListener('click', () => {
         if (descriptionContent.style.display === 'none' || descriptionContent.style.display === '') {
             descriptionContent.style.display = 'block';
-            toggleButton.textContent = '-'; // שינוי סימן למינוס
+            toggleButton.textContent = '-'; 
         } else {
             descriptionContent.style.display = 'none';
-            toggleButton.textContent = '+'; // שינוי סימן לפלוס
+            toggleButton.textContent = '+'; 
         }
     });
 });

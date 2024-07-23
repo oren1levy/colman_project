@@ -222,9 +222,9 @@ body {
 }
 
 .customer-service-banner svg {
-    width: 30px; /* גודל האייקון */
-    height: 30px; /* גובה האייקון */
-    vertical-align: middle; /* יישור האייקון עם הטקסט */
+    width: 30px; 
+    height: 30px;
+    vertical-align: middle; 
     margin-right: 10px;
     margin-left: 10px; 
 
