@@ -217,15 +217,13 @@ textarea {
 #cart-item-Img {
     width:130px;  
     border-radius: 10px;  
+    border: 1px solid rgb(125, 123, 123);
 }
 #cart-item-Name, #cart-item-Price, #cart-item-Id, #cart-item-Quantity {
     padding: 5px;
     font-size: large;
     font-family: sans-serif;
     letter-spacing:1px;
-}
-#cart-item-Img {
-    border: 1px solid rgb(125, 123, 123);
 }
 #cart-item-quantity-text {
     display: flex;

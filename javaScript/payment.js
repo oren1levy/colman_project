@@ -10,11 +10,12 @@ const option2 = document.getElementById('option2');
 
 option1.addEventListener('click', () => {
     selectOption(option1);
+    cartprice1 = document.getElementById('summary-total-cart-value').textContent;
+    let cartprice = parseFloat(cartprice1.replace(/[^\d.-]/g, ''));
     document.querySelector('.safePayment').style.display = 'flex';
     document.querySelector('.self-collecting').style.display = 'none';
-    document.getElementById('summary-delivery-value').textContent = '₪20'
-    document.getElementById('summary-sikum-value').textContent = totalPriceDelivery();
-    document.getElementById('summary-total-num').textContent = totalPriceToPay();
+    document.getElementById('summary-delivery-value').textContent = '₪20';
+    document.getElementById('summary-total-num').textContent = totalPriceDelivery();
 });
 
 option2.addEventListener('click', () => {
@@ -22,8 +23,7 @@ option2.addEventListener('click', () => {
     document.querySelector('.safePayment').style.display = 'none';
     document.querySelector('.self-collecting').style.display = 'flex';
     document.getElementById('summary-delivery-value').textContent = '₪0'
-    document.getElementById('summary-sikum-value').textContent = totalPriceDelivery();
-    document.getElementById('summary-total-num').textContent = totalPriceToPay();
+    document.getElementById('summary-total-num').textContent = totalPriceDelivery();
 });
 
 
@@ -236,15 +236,6 @@ creditCardcvv.addEventListener("input",function(event){
         box.style.borderBottom = '2px solid red'; 
     }
 })
-appartment.addEventListener("input",function(event){
-    const box = document.getElementById('apartment');
-    const CC = appartment.value;
-    if (validapartment(CC)) {
-        box.style.borderBottom = '2px solid green'; 
-    } else {
-        box.style.borderBottom = '2px solid red'; 
-    }
-})
 
 function validapartment(details) {
     const numberRegex = /^(?:[1-9]|[1-9][0-9]{1,2})$/;
@@ -311,7 +302,7 @@ function loadpayment() {
             <img id="cart-item-Img" src="${item.productImg}" alt="${item.productName}">
             <span class="cart-item-Details">
                 <span id="cart-item-Name">${item.productName}</span>
-                <span id="cart-item-quantity-text"><span id="cart-item-Quantity">${item.quantity}</span><span>:כמות</span></span>
+                <span id="cart-item-quantity-text"><span id="cart-item-Quantity">${item.quantity}</span><span id=cart-item-Quantity>:כמות</span></span>
                 <span id="cart-item-Price">₪${(item.productPrice).toFixed(2)}</span>
                 <span id="cart-item-Id">${item.productId}</span>
             </span>
@@ -340,24 +331,30 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSavedReview();
 });
 
+
 function loadCartTotal() {
     const cartTotal = sessionStorage.getItem('cartTotal');
     if (cartTotal) {
-        document.getElementById('summary-total-cart-value').textContent = cartTotal;
+        let cartTotalNumber = parseFloat(cartTotal.replace(/[₪\s,]/g, ''));
+        let discountedPrice = cartTotalNumber * (1 - 0.18);
+        let formattedDiscountedPrice = `₪${discountedPrice.toFixed(2)}`;
+        document.getElementById('summary-total-cart-value').textContent = formattedDiscountedPrice;
+        let cartTotalNumber2 = parseFloat(cartTotal.replace(/[₪\s,]/g, ''));
+        let discountedPrice2 = cartTotalNumber2 * (1 - 0.82);
+        let formattedDiscountedPrice2 = `₪${discountedPrice2.toFixed(2)}`;
+        document.getElementById('summary-tax-value').textContent = formattedDiscountedPrice2; 
+        document.getElementById('summary-sikum-value').textContent = cartTotal
     }
-     
+    const orderId = generateOrderId(15);
+    document.getElementById('order-id-number').textContent = orderId; 
 }
-    
+  
  
 function totalPriceDelivery() {
-    const cartTotal = parseFloat(document.getElementById('summary-total-cart-value').textContent.replace('₪', '')) || 0;
+    const cartTotal = sessionStorage.getItem('cartTotal');
+    let cartTotalNumber = parseFloat(cartTotal.replace(/[₪\s,]/g, ''));
     const deliveryCost = parseFloat(document.getElementById('summary-delivery-value').textContent.replace('₪', '')) || 0;
-    const total = cartTotal + deliveryCost;
-    return total.toFixed(2) + '₪';
-}
-
-function totalPriceToPay(){
-    const total = parseFloat(totalPriceDelivery()) * 1.18;
+    const total = cartTotalNumber + deliveryCost;
     return total.toFixed(2) + '₪';
 }
 
@@ -366,4 +363,278 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCartTotal();
 });
   
+function generateOrderId(length = 15) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#';
+    let result = '';
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
 loadpayment();
+
+document.getElementById('backtohome').addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5501/html.page/home.html';
+});
+
+/////////////////////////////////////////////////////////////////////
+//////////////////payment to DataBase/////////////////////
+
+/////////////////////////////////ניסיון 1
+
+// document.addEventListener('DOMContentLoaded', function() {
+
+// document.querySelector('.safePaymentForm').addEventListener('submit', function(event) {
+//     event.preventDefault();
+
+//     const myHeaders = new Headers();
+//     myHeaders.append("Content-Type", "application/json");
+
+//     const streetName = document.getElementById('address').value;
+//     const city = document.getElementById('city').value;
+//     const postal = document.getElementById('mikud').value;
+//     const phoneNumber = document.getElementById('Phonenumber').value;
+//     const price = totalPriceDelivery();
+//     function getUserData(userToken) {
+//         if (userToken) {
+//             fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+//                 method: 'GET',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 }
+//             })
+//             .then(response => response.json())
+//     }}
+//     function getProductIdsFromCart() {
+//         const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//         return cart.map(item => item.productId);
+//     }
+//     const productsId = getProductIdsFromCart();
+//     const userToken = localStorage.getItem('userToken');
+//     const userID = getUserData(userToken)
+ 
+
+
+//     const raw = JSON.stringify({
+//         _id: userID,
+//         streetname: streetName,
+//         city: city,
+//         phone: phoneNumber,
+//         postalcode: postal,
+//         productsId: productsId,
+//         totalPrice: price
+//     });
+
+//     const requestOptions = {
+//         method: "POST",
+//         headers: myHeaders,
+//         body: raw,
+//         redirect: "follow"
+//     };
+
+//     fetch("http://localhost:3000/api/orders/", requestOptions)
+//         .then(response => response.json()) 
+//         .then(result => {
+//             console.log(result)
+//             if (result.message == 'Invalid order'){
+//                 alert("something is incorrect");
+//             }
+//             else{
+//                 localStorage.setItem("userToken",result._id); 
+//                 window.location.href = "home.html";
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+// });
+// });
+
+///////////////////////////////////ניסיון 2
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.querySelector('.safePaymentForm').addEventListener('submit', async function(event) {
+//         event.preventDefault();
+
+//         const myHeaders = new Headers();
+//         myHeaders.append("Content-Type", "application/json");
+
+//         const streetName = document.getElementById('address').value;
+//         const city = document.getElementById('city').value;
+//         const postal = document.getElementById('mikud').value;
+//         const phoneNumber = document.getElementById('Phonenumber').value;
+//         const price = totalPriceDelivery();
+
+//         async function getUserData(userToken) {
+//             if (userToken) {
+//                 const response = await fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+//                     method: 'GET',
+//                     headers: {
+//                         'Content-Type': 'application/json'
+//                     }
+//                 });
+//                 return response.json();
+//             }
+//             return null;
+//         }
+
+//         function getProductIdsFromCart() {
+//             const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//             return cart.map(item => item.productId);
+//         }
+
+//         const productsId = getProductIdsFromCart();
+//         const userToken = localStorage.getItem('userToken');
+//         const userData = await getUserData(userToken);
+//         const userID = userData ? userData._id : null;
+
+//         const raw = JSON.stringify({
+//             _id: userID,
+//             streetname: streetName,
+//             city: city,
+//             phone: phoneNumber,
+//             postalcode: postal,
+//             productsId: productsId,
+//             totalPrice: price
+//         });
+
+//         const requestOptions = {
+//             method: "POST",
+//             headers: myHeaders,
+//             body: raw,
+//             redirect: "follow"
+//         };
+
+//         fetch("http://localhost:3000/api/orders/", requestOptions)
+//             .then(response => response.json()) 
+//             .then(result => {
+//                 console.log(result);
+//                 if (result.message == 'Invalid order'){
+//                     alert("something is incorrect");
+//                 } else {
+//                     localStorage.setItem("userToken", result._id); 
+//                     // window.location.href = "home.html";
+//                 }
+//             })
+//             .catch(error => console.error('Error:', error));
+//     });
+// });
+
+///////////////////////////////////////ניסיון 3
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.safePaymentForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const streetName = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const postal = document.getElementById('mikud').value;
+        const phoneNumber = document.getElementById('Phonenumber').value;
+        const price = parseFloat(totalPriceDelivery().replace(/[^\d.-]/g, '')); 
+        // const address = `${streetName}`;
+
+      
+        // function getUserData(userToken){
+        //     if (userToken) {
+        //         fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+        //             method: 'GET',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data._id) {
+        //                 return data._id;
+        //             } else {
+        //                 console.error('User Id not found');
+        //             }
+        //         })
+        //         .catch(error => console.error('Error fetching user data:', error));
+        //     } 
+        //     else {
+        //         console.error('User token not found');
+        //     }
+        // }
+        async function getUserData(userToken) {
+            if (userToken) {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+        
+                    // Check if the response is ok
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+        
+                    const data = await response.json();
+        
+                    // Check if _id exists in the response
+                    if (data._id) {
+                        return data._id;
+                    } else {
+                        console.error('User Id not found');
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('Error fetching user data:', error);
+                    return null;
+                }
+            } else {
+                console.error('User token not found');
+                return null;
+            }
+        }
+        
+
+        function getProductIdsFromCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            return cart.map(item => item.productId).join(','); 
+        }
+
+        const productsId = getProductIdsFromCart();
+        const userToken = localStorage.getItem('userToken');
+        const userData = await getUserData(userToken);
+
+        const raw = JSON.stringify({
+            address: streetName,
+            city: city,
+            phone: phoneNumber,
+            postalCode: postal,
+            productsId: productsId,
+            totalPrice: price,
+            userId: userData
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("http://localhost:3000/api/orders/", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                if (result.message === 'Invalid order') {
+                    alert("Something is incorrect");
+                } else {
+                    window.location.href = "home.html";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+});
+

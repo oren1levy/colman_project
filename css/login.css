@@ -2,7 +2,7 @@ body{
     background-image: url("../imges/background1.jpg");
    background-size: cover;
    background-position: center;
-   height: 100vh; 
+   height: 80vh; 
 }
 
 .wrapperL {
@@ -12,9 +12,9 @@ body{
    border-radius: 30px;
    overflow: hidden;
    max-width: 1000px;
-   height: 650px;
+   height: 500px;
    margin: 0 auto;
-   margin-top: 50px;
+   margin-top: 40px;
 }
 
 .left_card_picL,
@@ -31,7 +31,7 @@ body{
 }
 
 #logo{
-   margin-top: 150px;
+   margin-top: 22%;
    width: 500px;
 }
 

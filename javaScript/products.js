@@ -26,11 +26,20 @@ function getAllProducts() {
                 productGallery.insertAdjacentHTML('beforeend', productElement);
             });
 
-            // Add event listener for product images
             document.querySelectorAll('.productImg').forEach(img => {
                 img.addEventListener('click', function() {
                     const productId = this.getAttribute('data-productId');
                     window.location.href = `product.html?id=${productId}`;
+                });
+            });
+            document.querySelectorAll('.addtocart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product');
+                    const productName = product.querySelector('[data-productName]').textContent;
+                    const productPrice = parseFloat(product.querySelector('[data-productPrice]').textContent.split('₪')[1]);
+                    const productId = product.querySelector('.productImg').getAttribute('data-productId');
+                    const productImg = product.querySelector('.productImg').getAttribute('src');
+                    addToCart(productName, productPrice, productId, productImg);
                 });
             });
         })
@@ -38,3 +47,5 @@ function getAllProducts() {
 }
 
 getAllProducts();
+
+
