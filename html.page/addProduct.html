@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/addProduct.css">
+</head>
+<body>
+    <header>
+        <div class="top">
+            <img id="logo" src="../imges/thelogo.png" alt="Logo">
+        </div>
+    </header>
+    <div class="page">
+        <div class="product-details">
+            <form id="addProductForm" enctype="multipart/form-data">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required>
+                
+                <label for="supplierId">Supplier ID:</label>
+                <input type="text" id="supplierId" name="supplierId" required>
+                
+                <label for="productPrice">Product Price:</label>
+                <input type="text" id="productPrice" name="productPrice" required>
+                
+                <label for="productDescription">Product Description:</label>
+                <textarea id="productDescription" name="productDescription" required></textarea>
+
+                <label for="productCategory">Category:</label>
+                <input type="text" id="productCategory" name="productCategory" required>
+                
+                <label for="productColor">Color:</label>
+                <input type="text" id="productColor" name="productColor" required>
+
+                <label for="productImage">Upload Image:</label>
+                <input type="file" id="productImage" name="productImage" accept="imges/*" required>
+                
+                <button type="button" id="addProductBtn">Add Product</button>
+            </form>
+        </div>
+    </div>
+    <script src="../javaScript/addProduct.js"></script>
+</body>
+</html>

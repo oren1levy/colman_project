@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/editProduct.css">         
+</head>
+<body>
+  <header>
+      <div class="top">  
+          <img id="logo" src="../imges/thelogo.png" alt="Logo">
+      </div>
+  </header>
+  <div class="page">
+      <div class="product">
+        <div class="product-images">
+          <div class="main-image">
+            <img id="mainImage" src="../imges/Hollis1.png" alt="Product Image">
+          </div>
+          <div class="thumbnail-images">
+            <img class="thumbnail" src="../imges/Hollis1.png" alt="Thumbnail 1">
+            <img class="thumbnail" src="../imges/hollis2.png" alt="Thumbnail 2">
+            <img class="thumbnail" src="../imges/hollis3.png" alt="Thumbnail 3">
+          </div>
+        </div>
+        <div class="product-details">
+          <form id="editProductForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" class="productName">
+            
+            <label for="productPrice">Product Price:</label>
+            <input type="text" id="productPrice" name="productPrice" class="product-price">
+            
+            <label for="productDescription">Product Description:</label>
+            <textarea id="productDescription" name="productDescription" class="product-description-content"></textarea>
+
+            <label for="productColor">Color:</label>
+            <input type="text" id="productColor" name="productColor" class="product-color">
+            
+            <label for="productcategory">Category:</label>
+            <input type="text" id="productCategory" name="productCategory" class="product-category">
+            
+            <button type="button" id="updateProductBtn">Update Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../javaScript/editProduct.js"></script>
+</body>
+</html>

@@ -98,26 +98,30 @@ lastName.addEventListener("input", function(event) {
 //////////////////////////////////////////////////////////
 const email = document.getElementById('contactEmail');
 
-function validateEmail(email) {
-    const emailRegex1 = /^[^\s@]+@gmail\.com$/;
-    const emailRegex2 = /^[^\s@]+@yahoo\.com$/;
-    const emailRegex3 = /^[^\s@]+@colman\.ac.com$/;
+const userToken = localStorage.getItem('userToken');
 
-    if (!emailRegex1.test(email) && !emailRegex2.test(email) && !emailRegex3.test(email)) {
-        return false; 
+function getUserData(userToken){
+    if (userToken) {
+        fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            email.innerText = data.email;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    } 
+    else {
+        console.error('User token not found');
     }
-    return true; 
 }
 
-email.addEventListener("input",function(event){
-    const box = document.getElementById('contactEmail');
-    const em = email.value;
-    if (validateEmail(em)) {
-        box.style.borderBottom = '2px solid green'; 
-    } else {
-        box.style.borderBottom = '2px solid red'; 
-    }
-})
+getUserData(userToken);
+
+
 /////////////////////////////////////////////////////////////
 
 $( function() {
