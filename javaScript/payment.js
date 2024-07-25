@@ -32,7 +32,28 @@ function selectOption(selectedOption) {
     option2.classList.remove('selected');
     selectedOption.classList.add('selected');
 }
+//////////////////////////////////////////////////////////////////////
+const email = document.getElementById('contactEmail');
 
+function validateEmail(email) {
+    const emailRegex1 = /^[^\s@]+@gmail\.com$/;
+    const emailRegex2 = /^[^\s@]+@yahoo\.com$/;
+    if (!emailRegex1.test(email) && !emailRegex2.test(email)) {
+        return false; 
+    }
+    return true; 
+}
+
+email.addEventListener("input", function(event) {
+    const box = document.getElementById('contactEmail');
+    const email = box.value;
+    if(validateEmail(email)) {
+        box.style.borderBottom = '2px solid green'; 
+    }
+    else {
+        box.style.borderBottom = '2px solid red'; 
+    }
+})
 //////////////////////////////////////////////////////////////////////
 const phoneNumber = document.getElementById('Phonenumber');
 
@@ -95,31 +116,6 @@ lastName.addEventListener("input", function(event) {
 
 })
 
-//////////////////////////////////////////////////////////
-const email = document.getElementById('contactEmail');
-
-const userToken = localStorage.getItem('userToken');
-
-function getUserData(userToken){
-    if (userToken) {
-        fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            email.innerText = data.email;
-        })
-        .catch(error => console.error('Error fetching user data:', error));
-    } 
-    else {
-        console.error('User token not found');
-    }
-}
-
-getUserData(userToken);
 
 
 /////////////////////////////////////////////////////////////
@@ -389,6 +385,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.safePaymentForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
+        const boxes = document.getElementsByClassName('box');
+        let allFieldsValid = true;
+        for (const box of boxes) {
+            if (box.style.borderBottom !== '2px solid green') {
+                allFieldsValid = false;
+                break;
+            }
+        }
+       
+        if (!allFieldsValid) {
+            alert('You did not fill in all the fields correctly');
+        } else {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -431,10 +439,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-
         function getProductIdsFromCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            return cart.map(item => item.productId).join(','); 
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const productIds = cart.map(item => `"${item.productId}"`);
+            return productIds.join(', ');
         }
 
         const productsId = getProductIdsFromCart();
@@ -471,6 +479,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error:', error);
             });
+            clearCart();
+        }
     });
 });
+
+function clearCart() {
+    localStorage.removeItem('cartItems');
+    updateCartDisplay();
+    console.log("Cart has been cleared");
+}
 
