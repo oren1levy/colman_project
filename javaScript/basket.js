@@ -34,6 +34,7 @@ function loadCart() {
 }
 
 
+
 document.getElementById('openCart').addEventListener('click', function() {
     document.getElementById('cart').style.width = '380px';
     document.getElementById('cart').style.opacity = '100%';
@@ -145,6 +146,7 @@ function addToCart(productName, productPrice, productId, productImg) {
 }
 
 
+
 document.querySelectorAll('.addToCartBtn').forEach(button => {
     button.addEventListener('click', function() {
         const product = this.closest('.product');
@@ -155,6 +157,8 @@ document.querySelectorAll('.addToCartBtn').forEach(button => {
         addToCart(productName, productPrice, productId, productImg);
     });
 });
+
+
 
 
 

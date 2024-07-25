@@ -17,11 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(product => {
+            const discount = product.price - 50;
             console.log(product);
             document.getElementById('mainImage').src = product.img;
             document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = `₪${product.price}`;
+            document.getElementById('productPrice').textContent = `₪${discount}`;
             document.getElementById('productDescription').textContent = product.description;
+            document.getElementById('productId').textContent = product._id;
 
             const thumbnailImages = document.getElementById('thumbnailImages');
             if (Array.isArray(product.images)) {
@@ -50,20 +52,20 @@ document.querySelectorAll('.thumbnail').forEach(thumbnail => {
 });
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const toggleButton = document.querySelector('.toggle-description-btn');
-//     const descriptionContent = document.querySelector('.product-description-content');
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('.toggle-description-btn');
+    const descriptionContent = document.querySelector('.product-description-content');
 
-//     toggleButton.addEventListener('click', () => {
-//         if (descriptionContent.style.display === 'none' || descriptionContent.style.display === '') {
-//             descriptionContent.style.display = 'block';
-//             toggleButton.textContent = '-'; 
-//         } else {
-//             descriptionContent.style.display = 'none';
-//             toggleButton.textContent = '+'; 
-//         }
-//     });
-
+    toggleButton.addEventListener('click', () => {
+        if (descriptionContent.style.display === 'none' || descriptionContent.style.display === '') {
+            descriptionContent.style.display = 'block';
+            toggleButton.textContent = '-'; 
+        } else {
+            descriptionContent.style.display = 'none';
+            toggleButton.textContent = '+'; 
+        }
+    });
+})
 
 
 

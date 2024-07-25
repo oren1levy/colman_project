@@ -136,7 +136,7 @@ body {
     justify-content: center;
     align-items: end;
     position: relative;
-    display: none;
+    /* display: none; */
 }
 .payment-Name {
     display: flex;
@@ -170,11 +170,6 @@ body {
 }
 
 #address {
-    padding: 10px;
-    width: 82.5%;
-    direction: rtl;
-}
-#apartment {
     padding: 10px;
     width: 82.5%;
     direction: rtl;
@@ -249,7 +244,7 @@ body {
 .finishPay {
     margin-left: 15%;
     height: 60px;
-    width: 600px;
+    width: 80%;
     padding: 10px;
     margin-bottom: 40px;
     border-radius: 10px;
@@ -275,7 +270,30 @@ input {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 60px;
+}
+.cart-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+.cart-item-Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+#cart-item-Img {
+    width:130px;  
+    border-radius: 10px;  
+    border: 1px solid rgb(125, 123, 123);
+}
+#cart-item-Name, #cart-item-Price, #cart-item-Id, #cart-item-Quantity {
+    padding: 5px;
+    font-size: large;
+    font-family: sans-serif;
+    letter-spacing:1px;
 }
 .payment-reviews {
     width: 100%;
@@ -330,7 +348,7 @@ h3 {
     width: 80%;
     margin-top: 20px;
 }
-#summary-delivery,#summary-sikum,#summary-total-cart,#summary-total {
+#summary-delivery,#summary-sikum,#summary-total-cart,#summary-total,#summary-tax, #order-id {
     width: 100%;
     display: flex;
     justify-content: space-between;

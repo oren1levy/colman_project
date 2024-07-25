@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             togglePasswordIcon.classList.add("fa-eye-slash");
         }
     }
+    document.getElementById('toggle-pass').addEventListener('click', togglePasswordVisibility);
 
     document.getElementById('login_form').addEventListener('submit', function(event) {
         event.preventDefault();

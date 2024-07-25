@@ -90,12 +90,12 @@ body {
 .product-images {
     display: flex;
     flex-direction: column;
-    /* flex: 1; */
     padding: 20px;
 }
 
 #mainImage{
-    width: 90%;
+    width: 500px;
+    height: 500px;
     border: 1px solid #ccc;
 }
 
@@ -146,6 +146,7 @@ body {
     color: #fff;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 
@@ -182,7 +183,7 @@ body {
 }
 
 .product-description-content {
-    display: block;  
+    display: none;  
     margin-top: 10px;
 }
 

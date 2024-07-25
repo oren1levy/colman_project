@@ -10,7 +10,7 @@
     <header>
         <div class="top">  
             <div class="right-icons"> 
-                 <button>
+                 <button id="backtohome">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                       </svg>
@@ -64,27 +64,36 @@
                     <input type="text" id="kupon" placeholder="Gift Card או קוד קופון">
                 </span>
                 <div class="summary">
+                    <span id="order-id">
+                        <p id="order-id-number"></p>
+                        <p>:מספר הזמנה</p>
+                    </span>
                     <span id="summary-total-cart">
                         <p id="summary-total-cart-value"></p>
                         <p>:לפני מע"מ</p>
+                    </span>
+                    <span id="summary-tax">
+                        <p id="summary-tax-value"></p>
+                        <p>:18% -מע"מ</p>
+                    </span>
+                    <span id="summary-sikum">
+                        <p id="summary-sikum-value"></p>
+                        <p>:מחיר אחרי מע"מ</p>
                     </span>
                     <span id="summary-delivery">
                         <p id="summary-delivery-value"></p>
                         <p>:משלוח</p>
                     </span>
-                    <span id="summary-sikum">
-                        <p id="summary-sikum-value"></p>
-                        <p>:לסיכום</p>
-                    </span>
                     <span id="summary-total">
                         <p id="summary-total-num"></p>
-                        <h2>:סה"כ אחרי מע"מ</h2>
+                        <h2>:סה"כ לתשלום</h2>
                     </span>
                 </div>
             </span>
         </section>
         <section class="payment-right-section">
           <div class="inner-payment-right-section">
+            <form class="safePaymentForm">
             <span class="contact">
                 <h2>פרטי איש קשר</h2>
                 <input type="text" id="contactEmail" placeholder="Email">
@@ -104,7 +113,6 @@
                     </svg>&nbsp;&nbsp;&nbsp;
                 </div>
             </span>
-            <form class="safePaymentForm">
                 <span class="safePayment">
                     <div class="payment-Name">
                         <input type="text" id="last-name" placeholder="שם משפחה">
@@ -112,9 +120,6 @@
                     </div>
                     <div class="payment-Street-name">
                         <input type="text" id="address" placeholder="שם הרחוב">
-                    </div>
-                    <div class="payment-Street-number">
-                        <input type="text" id="apartment" placeholder="מספר רחוב">
                     </div>
                     <div class="payment-Mikud-City">
                         <input type="text" id="mikud" placeholder="מיקוד (אופציונלי)">
@@ -124,12 +129,10 @@
                         <input type="text" id="Phonenumber" placeholder="טלפון">
                     </div>
                 </span>
-            </form>
             <span class="self-collecting">
                 <p>חינם</p>
                 <p>כתובת לאיסוף: זלמן שז"ר 17 ראשון לציון</p>
             </span>
-            <form class="credit-cardForm">
                 <span class="credit-card">
                     <div class="Credit-Card-Number">
                         <input type="text" id="CCnumber" placeholder="Credit Card Number">
@@ -142,8 +145,8 @@
                         <input type="text" id="CCid" placeholder="ID">
                     </div>
                 </span>
-            </form>
-            <button class="finishPay">לתשלום</button>
+            <button class="finishPay" type="submit">לתשלום</button>
+        </form>
           </div>
         </section>
     </div>
@@ -151,7 +154,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="../javaScript/payment.js"></script>
-    <script src="../javaScript/Necklesses.js"></script>
 
 </body>
 </html>
