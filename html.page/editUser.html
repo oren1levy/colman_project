@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>היסטוריית רכישות</title>
+    <title>עריכת משתמש</title>
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="stylesheet" type="text/css" href="../css/basket.css">
-    <link rel="stylesheet" type="text/css" href="../css/purchaseHistory.css">
+    <link rel="stylesheet" type="text/css" href="../css/editUser.css">
 
 </head>
 <body>
@@ -44,7 +44,7 @@
                           <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                           </svg>
                  </button>
-              <div id="sideMenu" class="side-menu">
+                 <div id="sideMenu" class="side-menu">
                   <p id="welcome-message"></p>
                   <a id="home-link" href="../html.page/home.html">בית</a>
                   <a id="login-link" href="../html.page/login.html">כניסה</a>
@@ -91,11 +91,32 @@
     </header>
 
     <div class="page">
-          <h2 id="history-headline">היסטוריית רכישות:</h2>
-         <div class="purchaseHistory">
-                
-        </div>
-    </div>
+      <div class="edit-user">
+          <h2 id="editUser-headline">עריכת פרטי משתמש</h2>
+          <form id="editUserForm">
+              <label for="firstName">שם פרטי:</label>
+              <input type="text" id="firstName" name="firstName" required>
+  
+              <label for="lastName">שם משפחה:</label>
+              <input type="text" id="lastName" name="lastName" required>
+  
+              <label for="birthday">תאריך לידה:</label>
+              <input type="date" id="birthday" name="birthday" required readonly>
+  
+              <label for="email">אימייל:</label>
+              <input type="email" id="email" name="email" required readonly>
+  
+              <label for="phone">טלפון:</label>
+              <input type="tel" id="phone" name="phone" required>
+  
+              <label for="password">סיסמה:</label>
+              <input type="password" id="password" name="password">
+  
+              <button type="submit">עדכן פרטים</button>
+          </form>
+          <div id="updateStatus"></div>
+      </div>
+  </div>
         
         <div class="Footer">
           <footer class="pageFooter">
@@ -129,13 +150,12 @@
            </div>
     </div>
 
+
     <script src="../javaScript/sideMenu.js"></script>
-    <script src="../javaScript/purchaseHistory.js"></script>
+    <script src="../javaScript/editUser.js"></script>
     <script src="../javaScript/basket.js"></script>
-    <!-- <script src="../javaScript/products.js"></script> -->
-    <script src="../javaScript/footer.js"></script>   
-     
-
-
+    <!-- <script src="../javaScript/product.js"></script>
+    <script src="../javaScript/products.js"></script> -->
+    <script src="../javaScript/footer.js"></script>
 </body>
 </html>

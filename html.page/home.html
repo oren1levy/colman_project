@@ -26,8 +26,6 @@
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                          </svg> 
-                          <p id="customer-name"></p>
                  </button>
             </div>
                  <img id="logo" src="../imges/thelogo.png" alt="Logo">
@@ -45,11 +43,12 @@
                           </svg>
                  </button>
               <div id="sideMenu" class="side-menu">
-                        <a href="../html.page/home.html">בית</a>
-                        <a href="../html.page/login.html">כניסה</a>
-                        <a href="../html.page/register.html">הרשמה</a>
-                        <a href="../html.page/products.html">מוצרים</a>
-                        <a href="#">About</a>
+                        <p id="welcome-message"></p>
+                        <a id="home-link" href="../html.page/home.html">בית</a>
+                        <a id="login-link" href="../html.page/login.html">כניסה</a>
+                        <a id="register-link" href="../html.page/register.html">הרשמה</a>
+                        <a id="products-link" href="../html.page/products.html">מוצרים</a>
+                        <a id="about-link" href="#">About</a>
                         <span class="close-menu" id="closeMenu">&times;</span>
               </div>
               <div class="Cart" id="cart">
@@ -154,9 +153,11 @@
           </footer>
            </div>
     </div>
+    <script src="../javaScript/sideMenu.js"></script>
     <script src="../javaScript/home.js" ></script>
     <script src="../javaScript/basket.js" ></script>
     <script src="../javaScript/footer.js" ></script>
+    <script src="../javaScript/editUser.js" ></script> 
 </body> 
     
 </html>
