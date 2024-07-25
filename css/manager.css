@@ -1,13 +1,19 @@
+/* General Styles */
 body {
     margin: 0;
+    font-family: Arial, sans-serif;
 }
+
+/* Header and Navigation */
 .top {
     position: fixed;
     top: 0;
     background-color: white; 
     z-index: 1000; 
     width: 100%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 #logo {
     margin-top: 1%;
     width: 12%; 
@@ -15,17 +21,20 @@ body {
     margin-left: 45%;
     background: none;
 }
-.right-icons {
+
+.right-icons, .social-icons {
     position: fixed;
     top: 5%; 
-    left: 2%; 
-    
 }
+
+.right-icons {
+    left: 2%; 
+}
+
 .social-icons {
-    position: fixed;
-    top: 5%;
     right: 2%; 
 }
+
 .right-icons button, .social-icons button {
     background-color: transparent;
     border: none;
@@ -34,6 +43,7 @@ body {
     outline: none;
     margin-right: 10px;
 }
+
 .side-menu {
     height: 50%;
     width: 0;
@@ -45,7 +55,9 @@ body {
     transition: 0.5s;
     padding-top: 60px;
     z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 }
+
 .side-menu a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -54,9 +66,11 @@ body {
     display: block;
     transition: 0.3s;
 }
+
 .side-menu a:hover {
     color: #f1f1f1;
 }
+
 .close-menu {
     position: absolute;
     top: 0;
@@ -65,45 +79,172 @@ body {
     margin-left: 50px;
     cursor: pointer;
 }
+
 .close-menu:hover {
     color: #f1f1f1;
 }
-/*///////////////////////////////////////////*/
+
+/* Page Layout */
 .page {
     margin-top: 90px;
     position: relative;
+    padding: 20px;
 }
+
 .top-page {
-    background: rgb(253, 235, 216);    ;
+    background: rgb(253, 235, 216);    
     color: black;
     padding: 1em;
     text-align: center;
-    font-family: sans-serif;
 }
+
 nav ul li {
     display: inline;
     margin: 0 1em;
 }
+
 nav ul li a {
     color: black;
     text-decoration: none;
 }
+
 nav ul li a:hover {
     text-decoration: underline;
 }
+
 section {
     display: none;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-section h2 {
-    font-family: sans-serif;
-    letter-spacing: 1px;
-}
+
 section.active {
     display: block;
 }
+
+section h2 {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
 .main-manager-page {
-    margin-left: 40px;
-    margin-right: 40px;
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Product Section */
+#allProducts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.product {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #e6e6e6;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: rgb(253, 235, 216);
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.product p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.product button {
+    margin-right: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #555;
+}
+
+#createProduct {
+    margin-bottom: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#createProduct:hover {
+    background-color: #555;
+}
+
+/* Orders Section */
+#allOrders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.order {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #e6e6e6;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: rgb(253, 235, 216);
+}
+
+.order h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.order p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Financial Balance Section */
+#balanceEr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 800px;
+    margin: 20px 0;
+}
+
+#salesChart {
+    width: 100%;
+    max-width: 800px; 
+    height: 100%;
+    max-height: 600px; 
 }
