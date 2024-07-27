@@ -11,11 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }).addTo(map);
 
     const locations = [
-        { lat: 32.0853, lng: 34.7818, title: "ארלוזורוב 20, תל אביב" },
-        { lat: 32.0735, lng: 34.7811, title: "דיזינגוף 80, תל אביב" },
-        { lat: 32.0847, lng: 34.7689, title: "הירקון 70, תל אביב" },
-        { lat: 32.0877, lng: 34.7706, title: "משה שרת 5, תל אביב" },
-        { lat: 32.0916, lng: 34.7748, title: "נהלל 10, תל אביב" }
+        { lat: 31.9716, lng: 34.7721,title: "זלמן שזר 17 ראשון לציון"}
     ];
 
     locations.forEach(location => {
