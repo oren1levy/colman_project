@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Necklesses</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/products.css">
-    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <title>צור קשר</title>
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <link rel="stylesheet" type="text/css" href="../css/footerOptions.css">
 </head>
-
 <body>
     <header>
         <div class="top">  
@@ -31,7 +29,7 @@
                           </svg> 
                  </button>
             </div>
-                 <img id="logo" src="../imges/thelogo.png" alt="Logo">
+                 <img id="logo" src="../imges/לוגו.png" alt="Logo">
             <div class="social-icons">
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                           <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
@@ -45,86 +43,63 @@
                           <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                           </svg>
                  </button>
-                 <div id="sideMenu" class="side-menu">
-                  <p id="welcome-message"></p>
-                  <a id="home-link" href="../html.page/home.html">בית</a>
-                  <a id="login-link" href="../html.page/login.html">כניסה</a>
-                  <a id="register-link" href="../html.page/register.html">הרשמה</a>
-                  <a id="products-link" href="../html.page/products.html">מוצרים</a>
-                  <a id="about-link" href="../html.page/about.html">About</a>
-                  <span class="close-menu" id="closeMenu">&times;</span>
-        </div>
-          <div class="Cart" id="cart">
-            <div class="cart-header">
-              <span class="close-cart" id="closeCart">&times;</span>
-              <h3 id="cart-head-text">עגלת קניות</h3> 
-            </div>
-            <hr>
-            <div class="cart-items"></div>
-            <p id="emptyCart-text"></p>
-            <hr>
-            <div class="review-section">
-              <span id="reviews-section-header">
-                <h3>הערות &nbsp;</h3>
-                <span class="toggle-button">+</span>
-              </span>
-              <div class="hidden-content">
-                  <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
-                  <button id="hidden-content-btn">שמור</button>
+              <div id="sideMenu" class="side-menu">
+                        <a href="#">LOG IN</a>
+                        <a href="#">Necklesses</a>
+                        <a href="#">Rings </a>
+                        <a href="#">Earring </a>
+                        <span class="close-menu" id="closeMenu">&times;</span>
               </div>
+              <div class="Cart" id="cart">
+                <div class="cart-header">
+                  <span class="close-cart" id="closeCart">&times;</span>
+                  <h3 id="cart-head-text">עגלת קניות</h3> 
+                </div>
+                <hr>
+                <div class="cart-items"></div>
+                <p id="emptyCart-text"></p>
+                <hr>
+                <div class="review-section">
+                  <span id="reviews-section-header">
+                    <h3>הערות &nbsp;</h3>
+                    <span class="toggle-button">+</span>
+                  </span>
+                  <div class="hidden-content">
+                      <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
+                      <button id="hidden-content-btn">שמור</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="cart-footer">
+                  <span class="cart-footer-saah">
+                    <span id="cart-total"></span>
+                    <span id="sah-hakol">:סך הכל</span>
+                  </span>
+                  <button class="payment-btn">לתשלום
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                      </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="overlay" id="overlay"></div>
             </div>
-            <hr>
-            <div class="cart-footer">
-              <span class="cart-footer-saah">
-                <span id="cart-total">0.00₪</span>
-                <span id="sah-hakol">:סך הכל</span>
-              </span>
-              <button class="payment-btn">לתשלום
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
-                  </svg>
-              </button>
-            </div>
-          </div>
-          <div class="overlay" id="overlay"></div>     
         </div>
     </header>
     <div class="page">
-        <div id="productName">
-            <h1> מוצרים</h1>
-        </div>
-        <div class="prod-and-filter">
-            <div class="Products">
-                <div class="gallery" id="productGallery">
-                </div>
+        <div class="middlepage">
+            <div class="middlepage-paragraphs">
+                <h1 class="middlepage-paragraph-h">צור קשר</h1>
+                <p class="middlepage-paragraph">אנחנו כאן בשבילך!</p>
+                <p class="middlepage-paragraph">
+                    את מוזמנת לפנות אלינו בכל שאלה או בקשה בנוגע להזמנות, משלוחים, מוצרים, תפעול החשבון ועוד.
+                    אנא, מלאי את הטופס המצורף ומישהו מאיתנו יחזור אליך בהקדם האפשרי.
+                </p>
+                <p class="middlepage-paragraph">צוות שירות הלקוחות זמין בימים ראשון-חמישי | בין השעות 08:30-17:00.</p>
+                <p class="middlepage-paragraph">
+                    ניתן לפנות אלינו בוואצאפ: 0543243323
+                    או במייל: cs@YOLOltd.com</p>
             </div>
-            <div class="filter-container">
-              <div class="filter-group">
-                <label for="searchInput">חפש מוצר</label>
-                <input id="search-product" type="text" id="searchInput" placeholder="הכנס שם מוצר">
-                  <label>סוג תכשיט</label>
-                  <label><input type="checkbox" name="jewelryType" value="שרשרת"> שרשרת</label>
-                  <label><input type="checkbox" name="jewelryType" value="צמיד"> צמיד</label>
-                  <label><input type="checkbox" name="jewelryType" value="עגיל"> עגיל</label>
-              </div>
-              <div class="filter-group">
-                  <label>צבע</label>
-                  <label><input type="checkbox" name="color" value="זהב"> זהב</label>
-                  <label><input type="checkbox" name="color" value="כסף"> כסף</label>
-                  <label><input type="checkbox" name="color" value="רוז גולד"> רוז גולד</label>
-              </div>
-              <div class="filter-group">
-                  <label>מחיר</label>
-                  <input type="range" id="priceRange" name="priceRange" min="0" max="1000" value="1000">
-                  <div class="range-values">
-                      <span>0₪</span>
-                      <span id="priceRangeValue">1000₪</span>
-                  </div>
-              </div>
-              <button id="applyFiltersBtn">החל סינון</button>
-              <button id="resetFiltersBtn">אפס סינון</button>
-          </div>
-          
         </div>
 
         <div class="Footer">
@@ -147,20 +122,21 @@
               <a class="collink" id="collink7">אחריות</a>
               <a class="collink" id="collink8">על התכשיטים</a>
             </div>
-            <form id="col4">
+            <div id="col4">
               <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
+              <p>הצטרפו לניוזלטר שלנו וקבלו עדכונים על מבצעים והטבות</p>
               <input type="text" id="col4-name" placeholder="שם מלא"> 
-              <input type="email" id="col4-Email" name="email" required placeholder="אימייל">
+              <input type="text" id="col4-Email" placeholder="אימייל">
               <p id="col4-p">הצטרפותך נרשמה במערכת</p>
-              <button id="col4-btn" type="submit">להצטרפות</button>
-              <div id="message"></div>
-          </form>
+              <button id="col4-btn">!ברוכים הבאים</button>
+            </div>
           </footer>
            </div>
     </div>
-    <script src="../javaScript/sideMenu.js"></script>
-    <script src="../javaScript/products.js"></script>
+
     <script src="../javaScript/basket.js"></script>
-    <script src="../javaScript/footer.js"></script>
+    <script src="../javaScript/Necklesses.js"></script>
+    <script src="../javaScript/footerOptions.js"></script>
+
 </body>
 </html>

@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById('logo').addEventListener('click', function() {
+        window.location.href = '../html.page/home.html';
+    });
+    
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 

@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif; 
+
 }
 .top {
     position: fixed;
@@ -14,6 +16,7 @@ body {
     height: auto;
     margin-left: 45%;
     background: none;
+    cursor: pointer;
 }
 .right-icons {
     position: fixed;

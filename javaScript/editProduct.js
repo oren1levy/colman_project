@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
-    
     fetch(`http://localhost:3000/api/products/getProducts`, {
         method: 'POST',
         headers: {
@@ -45,4 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error updating product:', error));
     });
+
+    
 });
+

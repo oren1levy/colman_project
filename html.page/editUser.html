@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Necklesses</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/products.css">
-    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <title>עריכת משתמש</title>
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <link rel="stylesheet" type="text/css" href="../css/editUser.css">
 
+</head>
 <body>
     <header>
         <div class="top">  
@@ -53,80 +52,72 @@
                   <a id="products-link" href="../html.page/products.html">מוצרים</a>
                   <a id="about-link" href="../html.page/about.html">About</a>
                   <span class="close-menu" id="closeMenu">&times;</span>
-        </div>
-          <div class="Cart" id="cart">
-            <div class="cart-header">
-              <span class="close-cart" id="closeCart">&times;</span>
-              <h3 id="cart-head-text">עגלת קניות</h3> 
-            </div>
-            <hr>
-            <div class="cart-items"></div>
-            <p id="emptyCart-text"></p>
-            <hr>
-            <div class="review-section">
-              <span id="reviews-section-header">
-                <h3>הערות &nbsp;</h3>
-                <span class="toggle-button">+</span>
-              </span>
-              <div class="hidden-content">
-                  <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
-                  <button id="hidden-content-btn">שמור</button>
               </div>
+              <div class="Cart" id="cart">
+                <div class="cart-header">
+                  <span class="close-cart" id="closeCart">&times;</span>
+                  <h3 id="cart-head-text">עגלת קניות</h3> 
+                </div>
+                <hr>
+                <div class="cart-items"></div>
+                <p id="emptyCart-text"></p>
+                <hr>
+                <div class="review-section">
+                  <span id="reviews-section-header">
+                    <h3>הערות &nbsp;</h3>
+                    <span class="toggle-button">+</span>
+                  </span>
+                  <div class="hidden-content">
+                      <textarea id="reviewInput" maxlength="600" placeholder="כתוב את ההערה כאן..."></textarea>
+                      <button id="hidden-content-btn">שמור</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="cart-footer">
+                  <span class="cart-footer-saah">
+                    <span id="cart-total"></span>
+                    <span id="sah-hakol">:סך הכל</span>
+                  </span>
+                  <button class="payment-btn">לתשלום
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                      </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="overlay" id="overlay"></div>
             </div>
-            <hr>
-            <div class="cart-footer">
-              <span class="cart-footer-saah">
-                <span id="cart-total">0.00₪</span>
-                <span id="sah-hakol">:סך הכל</span>
-              </span>
-              <button class="payment-btn">לתשלום
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
-                  </svg>
-              </button>
-            </div>
-          </div>
-          <div class="overlay" id="overlay"></div>     
         </div>
     </header>
-    <div class="page">
-        <div id="productName">
-            <h1> מוצרים</h1>
-        </div>
-        <div class="prod-and-filter">
-            <div class="Products">
-                <div class="gallery" id="productGallery">
-                </div>
-            </div>
-            <div class="filter-container">
-              <div class="filter-group">
-                <label for="searchInput">חפש מוצר</label>
-                <input id="search-product" type="text" id="searchInput" placeholder="הכנס שם מוצר">
-                  <label>סוג תכשיט</label>
-                  <label><input type="checkbox" name="jewelryType" value="שרשרת"> שרשרת</label>
-                  <label><input type="checkbox" name="jewelryType" value="צמיד"> צמיד</label>
-                  <label><input type="checkbox" name="jewelryType" value="עגיל"> עגיל</label>
-              </div>
-              <div class="filter-group">
-                  <label>צבע</label>
-                  <label><input type="checkbox" name="color" value="זהב"> זהב</label>
-                  <label><input type="checkbox" name="color" value="כסף"> כסף</label>
-                  <label><input type="checkbox" name="color" value="רוז גולד"> רוז גולד</label>
-              </div>
-              <div class="filter-group">
-                  <label>מחיר</label>
-                  <input type="range" id="priceRange" name="priceRange" min="0" max="1000" value="1000">
-                  <div class="range-values">
-                      <span>0₪</span>
-                      <span id="priceRangeValue">1000₪</span>
-                  </div>
-              </div>
-              <button id="applyFiltersBtn">החל סינון</button>
-              <button id="resetFiltersBtn">אפס סינון</button>
-          </div>
-          
-        </div>
 
+    <div class="page">
+      <div class="edit-user">
+          <h2 id="editUser-headline">עריכת פרטי משתמש</h2>
+          <form id="editUserForm">
+              <label for="firstName">שם פרטי:</label>
+              <input type="text" id="firstName" name="firstName" required>
+  
+              <label for="lastName">שם משפחה:</label>
+              <input type="text" id="lastName" name="lastName" required>
+  
+              <label for="birthday">תאריך לידה (לא ניתן לעריכה):</label>
+              <input type="date" id="birthday" name="birthday" required readonly>
+  
+              <label for="email">אימייל (לא ניתן לעריכה):</label>
+              <input type="email" id="email" name="email" required readonly>
+  
+              <label for="phone">טלפון:</label>
+              <input type="tel" id="phone" name="phone" required>
+  
+              <label for="password">סיסמה:</label>
+              <input type="password" id="password" name="password">
+  
+              <button id="btn_submit" type="submit">עדכן פרטים</button>
+          </form>
+          <div id="updateStatus"></div>
+      </div>
+  </div>
+        
         <div class="Footer">
           <footer class="pageFooter">
             <p id="copyrights">&copy; 2024 YOLO</p>
@@ -159,8 +150,9 @@
            </div>
     </div>
     <script src="../javaScript/sideMenu.js"></script>
-    <script src="../javaScript/products.js"></script>
+    <script src="../javaScript/editUser.js"></script>
     <script src="../javaScript/basket.js"></script>
     <script src="../javaScript/footer.js"></script>
 </body>
 </html>
+
