@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('birthday').value = formattedDate;
                 document.getElementById('email').value = data.email;
                 document.getElementById('phone').value = data.phone;
+                document.getElementById('password').value = data.password;
             })
             .catch(error => console.error('Error fetching user data:', error));
         } 
