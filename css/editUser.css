@@ -1,4 +1,12 @@
 
+body{
+    font-family: 'Open Sans', sans-serif; 
+}
+
+#logo{
+    cursor:pointer;
+}
+
 .edit-user {
     display: flex;
     flex-direction: column;
@@ -8,7 +16,7 @@
     max-width: 500px;
     border: 1px solid black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    direction: rtl; /* כיוון הטקסט מימין לשמאל */
+    direction: rtl; 
 }
 
 #editUser-headline {
@@ -25,7 +33,7 @@
 #editUserForm label {
     margin-bottom: 5px;
     font-weight: bold;
-    text-align: right; /* יישור התוויות לימין */
+    text-align: right; 
 }
 
 #editUserForm input {
@@ -34,7 +42,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    text-align: right; /* יישור הטקסט בתוך התיבות לימין */
+    text-align: right;
 }
 
 #editUserForm button {
@@ -51,6 +59,21 @@
 #editUserForm button:hover {
     background-color: #45a049;
 }
+
+.side-menu {
+    height: 50%;
+    width: 0;
+    position: fixed;
+    top: 15;
+    right: 0;
+    background-color: #f2f1f1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+
 
 
 

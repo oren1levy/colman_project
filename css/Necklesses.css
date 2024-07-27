@@ -19,7 +19,6 @@ body {
     height: auto;
     margin-left: 45%;
     background: none;
-    cursor: pointer;
 }
 .right-icons {
     display: flex;
@@ -135,6 +134,46 @@ body {
     width: 100%;
 }
 
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-container h3 {
+    font-family: 'Arial Black', sans-serif; 
+    font-size: 24px; 
+    color: #333; 
+}
+
+.filter-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-option label {
+    order: 1;
+    margin-left: 10px;
+}
+
+.filter-toggle-container {
+    margin-bottom: 10px;
+}
+
+.filter-toggle-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+    order: 2;
+    width: 15px; 
+    height: 15px; 
+    border-radius: 1px; 
+    border: 1px solid #0b0b0b;
+}
+
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -226,81 +265,6 @@ figcaption {
 }
 
 /*////////////////////////////////////////////*/
+
   
-/* this is design of the filter */
-
-.filter-container {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.filter-group {
-    margin-bottom: 15px;
-}
-
-.filter-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: right;
-}
-
-.filter-group input[type="checkbox"] {
-    margin-left: 10px;
-}
-
-.filter-group input[type="range"],
-.filter-group input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.filter-group .range-values {
-    display: flex;
-    justify-content: space-between;
-}
-
-.filter-group .range-values span {
-    font-size: 14px;
-}
-
-#search-product {
-    text-align: right;
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    padding: 8px;
-}
-
-#applyFiltersBtn, #resetFiltersBtn {
-    display: inline-block;
-    margin: 10px 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
-    background-color: #e1ecf7;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#applyFiltersBtn:hover, #resetFiltersBtn:hover {
-    background-color: #e1ecf7;
-}
-
-#resetFiltersBtn {
-    background-color: #e1ecf7;
-}
-
-#resetFiltersBtn:hover {
-    background-color: #e1ecf7;
-}
-
-/* this is the end of the filter design*/
+ 

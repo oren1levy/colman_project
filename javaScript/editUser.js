@@ -1,113 +1,85 @@
+document.addEventListener('DOMContentLoaded', function() {
 
-// const apiUrl = 'http://localhost:3000'; 
-// const userToken = localStorage.getItem('userToken'); 
+    document.getElementById('logo').addEventListener('click', function() {
+        window.location.href = '../html.page/home.html';
+    });
+    
+    const userToken = localStorage.getItem('userToken'); 
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     // שליחת בקשה לשרת לקבלת פרטי המשתמש
-//     fetch(`${apiUrl}/api/users/searchUser`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${userToken}`
-//         }
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-//         return response.json();
-//     })
-//     .then(userData => {
-//         console.log('User Data:', userData); // הוספת לוג לבדיקה
-
-//         // מילוי השדות עם הנתונים מהשרת
-//         if (document.getElementById('firstName')) {
-//             document.getElementById('firstName').value = userData.firstName || '';
-//         }
-//         if (document.getElementById('lastName')) {
-//             document.getElementById('lastName').value = userData.lastName || '';
-//         }
-//         if (document.getElementById('birthday')) {
-//             document.getElementById('birthday').value = userData.birthday || '';
-//         }
-//         if (document.getElementById('email')) {
-//             document.getElementById('email').value = userData.email || '';
-//         }
-//         if (document.getElementById('phone')) {
-//             document.getElementById('phone').value = userData.phone || '';
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error fetching user data:', error);
-//         if (document.getElementById('updateStatus')) {
-//             document.getElementById('updateStatus').innerText = `שגיאה: ${error.message}`;
-//         }
-//     });
-
-//     // מאזין לאירוע submit של הטופס
-//     document.getElementById('editUserForm').addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         const updatedFields = {
-//             firstName: document.getElementById('firstName') ? document.getElementById('firstName').value : '',
-//             lastName: document.getElementById('lastName') ? document.getElementById('lastName').value : '',
-//             birthday: document.getElementById('birthday') ? document.getElementById('birthday').value : '',
-//             email: document.getElementById('email') ? document.getElementById('email').value : '',
-//             phone: document.getElementById('phone') ? document.getElementById('phone').value : '',
-//             password: document.getElementById('password') ? document.getElementById('password').value : ''
-//         };
-
-//         fetch(`${apiUrl}/api/users/update`, {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${userToken}`
-//             },
-//             body: JSON.stringify(updatedFields)
-//         })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! status: ${response.status}`);
-//             }
-//             return response.json();
-//         })
-//         .then(updatedUser => {
-//             if (document.getElementById('updateStatus')) {
-//                 document.getElementById('updateStatus').innerText = 'פרטי המשתמש עודכנו בהצלחה!';
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error updating user data:', error);
-//             if (document.getElementById('updateStatus')) {
-//                 document.getElementById('updateStatus').innerText = `שגיאה: ${error.message}`;
-//             }
-//         });
-//     });
-// });
-
-const userToken = localStorage.getItem('userToken'); 
-
-function getUserData(userToken){
-    if (userToken) {
-        fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('firstName').value = data.firstName ;
-            document.getElementById('lastName').value = data.lastName ;
-            document.getElementById('birthday').value = data.birthday ;
-            document.getElementById('email').value = data.email;
-            document.getElementById('phone').value = data.phone;
-        })
-        .catch(error => console.error('Error fetching user data:', error));
-    } 
-    else {
-        console.error('User token not found');
+    function getUserData(userToken){
+        if (userToken) {
+            fetch(`http://localhost:3000/api/users/searchUser/${userToken}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('firstName').value = data.firstName ;
+                document.getElementById('lastName').value = data.lastName ;
+                const date = new Date(data.birthday);
+                const formattedDate = date.toISOString().split('T')[0];
+                document.getElementById('birthday').value = formattedDate;
+                document.getElementById('email').value = data.email;
+                document.getElementById('phone').value = data.phone;
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+        } 
+        else {
+            console.error('User token not found');
+        }
     }
-}
 
-getUserData(userToken);
+    getUserData(userToken);
+
+    const btn_submit = document.getElementById('btn_submit');
+
+    btn_submit.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const firstNameValue = document.getElementById('firstName').value;
+        const lastNameValue = document.getElementById('lastName').value;
+        const birthDateValue = document.getElementById('birthday').value;
+        const emailValue = document.getElementById('email').value;
+        const phoneValue = document.getElementById('phone').value;
+        const passwordValue = document.getElementById('password').value;
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "firstName": firstNameValue,
+            "lastName": lastNameValue,
+            "birthday": birthDateValue,
+            "email": emailValue,
+            "phone": phoneValue,
+            "password": passwordValue
+        });
+
+        const requestOptions = {
+            method: "PUT",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch(`http://localhost:3000/api/users/updateUser/${userToken}`, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(result => {
+                console.log(result);
+                alert('User details updated successfully');
+            })
+            .catch(error => {
+                console.error('Error updating user data:', error);
+                alert('Error updating user data');
+            });
+    });
+});
+
+

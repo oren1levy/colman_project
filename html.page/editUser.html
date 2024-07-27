@@ -50,7 +50,7 @@
                   <a id="login-link" href="../html.page/login.html">כניסה</a>
                   <a id="register-link" href="../html.page/register.html">הרשמה</a>
                   <a id="products-link" href="../html.page/products.html">מוצרים</a>
-                  <a id="about-link" href="#">About</a>
+                  <a id="about-link" href="../html.page/about.html">About</a>
                   <span class="close-menu" id="closeMenu">&times;</span>
               </div>
               <div class="Cart" id="cart">
@@ -100,10 +100,10 @@
               <label for="lastName">שם משפחה:</label>
               <input type="text" id="lastName" name="lastName" required>
   
-              <label for="birthday">תאריך לידה:</label>
+              <label for="birthday">תאריך לידה (לא ניתן לעריכה):</label>
               <input type="date" id="birthday" name="birthday" required readonly>
   
-              <label for="email">אימייל:</label>
+              <label for="email">אימייל (לא ניתן לעריכה):</label>
               <input type="email" id="email" name="email" required readonly>
   
               <label for="phone">טלפון:</label>
@@ -112,7 +112,7 @@
               <label for="password">סיסמה:</label>
               <input type="password" id="password" name="password">
   
-              <button type="submit">עדכן פרטים</button>
+              <button id="btn_submit" type="submit">עדכן פרטים</button>
           </form>
           <div id="updateStatus"></div>
       </div>
@@ -149,13 +149,10 @@
           </footer>
            </div>
     </div>
-
-
     <script src="../javaScript/sideMenu.js"></script>
     <script src="../javaScript/editUser.js"></script>
     <script src="../javaScript/basket.js"></script>
-    <!-- <script src="../javaScript/product.js"></script>
-    <script src="../javaScript/products.js"></script> -->
     <script src="../javaScript/footer.js"></script>
 </body>
 </html>
+

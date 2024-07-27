@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/home.css">
-    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <title>אחריות</title>
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
-    <title>Home page</title>
-</head> 
+    <link rel="stylesheet" type="text/css" href="../css/basket.css">
+    <link rel="stylesheet" type="text/css" href="../css/footerOptions.css">
+</head>
 <body>
     <header>
         <div class="top">  
             <div class="right-icons"> 
-              <div class="cart-icon">
-                <span class="cart-count" id="cartCount">0</span>
-                <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-                        </svg>
-                </button> 
-               </div>
+                 <div class="cart-icon">
+                  <span class="cart-count" id="cartCount">0</span>
+                  <button class="social-icons-btn" id="openCart"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                          </svg>
+                  </button> 
+                 </div>
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                           </svg> 
@@ -26,9 +26,10 @@
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                          </svg> 
                  </button>
             </div>
-                 <img id="logo" src="../imges/thelogo.png" alt="Logo">
+                 <img id="logo" src="../imges/לוגו.png" alt="Logo">
             <div class="social-icons">
                  <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                           <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
@@ -43,12 +44,10 @@
                           </svg>
                  </button>
               <div id="sideMenu" class="side-menu">
-                        <p id="welcome-message"></p>
-                        <a id="home-link" href="../html.page/home.html">בית</a>
-                        <a id="login-link" href="../html.page/login.html">כניסה</a>
-                        <a id="register-link" href="../html.page/register.html">הרשמה</a>
-                        <a id="products-link" href="../html.page/products.html">מוצרים</a>
-                        <a id="about-link" href="../html.page/about.html">About</a>
+                        <a href="#">LOG IN</a>
+                        <a href="#">Necklesses</a>
+                        <a href="#">Rings </a>
+                        <a href="#">Earring </a>
                         <span class="close-menu" id="closeMenu">&times;</span>
               </div>
               <div class="Cart" id="cart">
@@ -73,7 +72,7 @@
                 <hr>
                 <div class="cart-footer">
                   <span class="cart-footer-saah">
-                    <span id="cart-total">0.00₪</span>
+                    <span id="cart-total"></span>
                     <span id="sah-hakol">:סך הכל</span>
                   </span>
                   <button class="payment-btn">לתשלום
@@ -87,40 +86,69 @@
             </div>
         </div>
     </header>
- 
     <div class="page">
-        <!-- <div class="home-aboutUs">
-            <h1>About Us</h1>
-            <p>בחברת YOLO אנחנו מתמחים ביצירת תכשיטים ייחודיים, איכותיים ומעוצבים בקפידה. עם ניסיון של מעל ל-20 שנה בתחום, אנו שואפים לספק לכל לקוח חוויית קנייה בלתי נשכחת. כל תכשיט שלנו מיוצר מחומרי גלם איכותיים ומעוצב עם תשומת לב לפרטים הקטנים, תוך שמירה על טרנדים עכשוויים ואיכות בלתי מתפשרת. אנו מחויבים לספק לכם תכשיטים שיהפכו כל רגע בחייכם לייחודי ובלתי נשכח.</p>
-        </div> -->
-        <div class="gallery">
-            <div class="top-image">
-                <img src="../imges/backgroundhomeepage.png" alt="Top Image">
+        <div class="middlepage">
+            <div class="middlepage-paragraphs">
+                <h1 class="middlepage-paragraph-h">האחריות שלנו</h1>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">האם יש אחריות על התכשיטים שלנו?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">בוודאי, אנחנו ביולו יודעים עד כמה התכשיטים שלנו איכותיים ועמידים ולפיכך אנו שמחים להעניק אחריות מקיפה על כל תכשיט ותכשיט (מלבד מוצרי SALE).</p>
+                </span>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">לכמה זמן תקפה האחריות של יולו?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">האחריות תקפה למשך שנה מיום הרכישה.</p>
+                </span>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">מה כולל האחריות?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">האחריות מכסה כל פגם שמקורו בתקלה בייצור או בהרכבה, אך אינה כוללת פגמים שמקורם בשימוש שאינו תואם להוראות השימוש. סייגים לאחריות כוללים מקרים בהם התכשיט נפגע כתוצאה מתאונה, נפילה, שפשוף, שבר ו/או ניסיונות תיקון עצמאיים.</p>
+                </span>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">מה הן הוראות השימוש בתכשיטים?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">
+                        <ul class="middlepage-hiddenInfo-text">
+                            <li>השתדלו שלא לענוד את התכשיטים במהלך שינה, רחצה, או פעילות ספורטיבית.</li>
+                            <li>חשוב להרחיק את התכשיטים ממגע עם מים, תכשירים קוסמטיים וחומרים כימיים למיניהם.</li>
+                            <li>שימרו את התכשיטים בשקית או בקופסה אטומה - כך תעניקו להם "חיים" ארוכים יותר.</li>
+                            <li>חשוב להגן על התכשיטים מפני נפילה, כיפוף או מכות חזקות.</li>
+                            <li>הימנעו מניסיונות תיקון עצמאיים - בכל הנוגע לתיקונים, יש לפנותלשירות הלקוחותשלנו לקבלת מענה מקצועי.</li>
+                        </ul>
+                    </p>
+                </span>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">איך מממשים את האחריות?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">על מנת לממש את האחריות, יש להציג הוכחת קנייה (חשבונית/קבלה), שמראה כי עדיין לא עברה שנה מיום הרכישה. במידה ויש בידכם הוכחת קנייה, תוכלו לפנות לשירות הלקוחות שלנו והם ישמחו לסייע ולהדריך אתכם לגבי המשך התהליך.</p>
+                </span>
+                <hr class="hr1">
+                <span class="middlepage-span">
+                    <h2 class="middlepage-paragraph">האם אוכל לקבל עזרה גם אם עברה שנה?</h2>
+                    <button class="middlepage-btn">+</button>
+                </span>
+                <span class="middlepage-hiddenInfo">
+                    <p class="middlepage-hiddenInfo-text">אנחנו מקווים שכן! התכשיטים שלנו מאד איכותיים ועמידים, כך שבמקרים רבים נוכל לעזור לכם גם אם כבר עברה שנה, כמו למשל במקרים של שיבוץ שנפל, או מחרוזת שנקרעה. לצערנו, לא בכל המקרים נוכל לסייע, אבל בהחלט נעשה כל שביכולתנו על מנת שתוכלו להמשיך ליהנות מהדנון שלכם!</p>
+                </span>
+                <hr class="hr1">
             </div>
-            <div class="firstlineImg">
-               <img src="../imges/nackless.png" alt="Image 1">
-               <img src="../imges/ring2.JPG" alt="Image 2">
-               <img src="../imges/rings.JPG" alt="Image 3">
-            </div>
-            <nav class="Imgnav">
-               <div class="../imges/video-container">
-                   <video autoplay loop muted>
-                       <source src="../imges/gif.mp4" type="video/mp4">
-                   </video>
-               </div>
-               <div class="boxfourImgs">
-                  <div class="secondlineImg">
-                      <img src="../imges/nackless3.JPG" alt="Image 5">
-                      <img src="../imges/all.JPG" alt="Image 6"> 
-                  </div>
-                  <div class="thirdlineImg">
-                    <img src="../imges/liad.add1.avif" alt="Image 6"> 
-                    <img src="../imges/liad.add3.avif" alt="Image 6"> 
-                  </div>
-               </div>
-            </nav>
         </div>
-
 
         <div class="Footer">
           <footer class="pageFooter">
@@ -142,22 +170,20 @@
               <a class="collink" id="collink7">אחריות</a>
               <a class="collink" id="collink8">על התכשיטים</a>
             </div>
-            <form id="col4">
+            <div id="col4">
               <h2 id="col4-h">הצטרפו לניוזלטר שלנו</h2>
+              <p>הצטרפו לניוזלטר שלנו וקבלו עדכונים על מבצעים והטבות</p>
               <input type="text" id="col4-name" placeholder="שם מלא"> 
-              <input type="email" id="col4-Email" name="email" required placeholder="אימייל">
+              <input type="text" id="col4-Email" placeholder="אימייל">
               <p id="col4-p">הצטרפותך נרשמה במערכת</p>
-              <button id="col4-btn" type="submit">להצטרפות</button>
-              <div id="message"></div>
-          </form>
+              <button id="col4-btn">!ברוכים הבאים</button>
+            </div>
           </footer>
            </div>
     </div>
-    <script src="../javaScript/sideMenu.js"></script>
-    <script src="../javaScript/home.js" ></script>
-    <script src="../javaScript/basket.js" ></script>
-    <script src="../javaScript/footer.js" ></script>
-    <script src="../javaScript/editUser.js" ></script> 
-</body> 
-    
+
+    <script src="../javaScript/basket.js"></script>
+    <script src="../javaScript/Necklesses.js"></script>
+    <script src="../javaScript/footerOptions.js"></script>
+</body>
 </html>
