@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(product => {
         console.log(product)
-        document.getElementById('mainImage').src = product.img;
+        document.getElementById('mainImage').src = `http://localhost:3000/${product.img}`;
         document.getElementById('productName').value = product.name;
         document.getElementById('productPrice').value = product.price;
         document.getElementById('productDescription').value = product.description;

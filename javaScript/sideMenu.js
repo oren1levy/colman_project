@@ -29,7 +29,7 @@
                 document.getElementById('login-link').style.display = 'none';
                 document.getElementById('register-link').style.display = 'none';
 
-                // Add or update the edit user link
+
                 if (!document.getElementById('edit-user-link')) {
                     const editUserLink = document.createElement('a');
                     editUserLink.href = '../html.page/editUser.html';
