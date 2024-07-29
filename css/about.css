@@ -113,6 +113,9 @@ body {
 #about-text p {
     font-size: 1.2rem;
     line-height: 1.6;
+    direction: rtl;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #about-text #contact-email {
@@ -164,4 +167,13 @@ body {
 
 #store-locations li {
     margin: 5px 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#text-and-video {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0;
 }
