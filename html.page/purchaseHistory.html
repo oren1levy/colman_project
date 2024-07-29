@@ -91,9 +91,37 @@
     </header>
 
     <div class="page">
-          <h2 id="history-headline">היסטוריית רכישות:</h2>
-         <div class="purchaseHistory">
-                
+        <div class="purchaseHistory">
+            <div class="purchaseHistory-left-section">
+              <div class="inner-left-section">
+                <h2>היסטוריית רכישות:</h2>
+                <div class="orders-section"></div>
+              </div>
+            </div>
+            <div class="purchaseHistory-right-section">
+                <div class="filter-container">
+                  <div class="filter-group">
+                    <label for="searchInput">חפש מוצר</label>
+                    <input id="search-product" type="text" id="searchInput" placeholder="הכנס שם מוצר">
+                      <label>תאריך קנייה</label>
+                      <input id="search-product" type="text" id="searchInput" placeholder="הכנס תאריך קנייה">
+                  </div>
+                  <div class="filter-group">
+                      <label>מספר קבלה</label>
+                      <input id="search-product" type="text" id="searchInput" placeholder="הכנס מספר קבלה">
+                  </div>
+                  <div class="filter-group">
+                      <label>סכום הקנייה</label>
+                      <input type="range" id="priceRange" name="priceRange" min="0" max="1000" value="1000">
+                      <div class="range-values">
+                          <span>0₪</span>
+                          <span id="priceRangeValue">1000₪</span>
+                      </div>
+                  </div>
+                  <button id="applyFiltersBtn">החל סינון</button>
+                  <button id="resetFiltersBtn">אפס סינון</button>
+              </div>
+            </div>
         </div>
     </div>
         

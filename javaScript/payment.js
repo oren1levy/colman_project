@@ -16,14 +16,22 @@ option1.addEventListener('click', () => {
     document.querySelector('.self-collecting').style.display = 'none';
     document.getElementById('summary-delivery-value').textContent = '₪20';
     document.getElementById('summary-total-num').textContent = totalPriceDelivery();
+    document.getElementById('city').value = '';
+    document.getElementById('address').value = '';
+    document.getElementById('mikud').value = '';
+    document.getElementById('Phonenumber').value = '';
+    document.getElementsByClassName('box')[3].style.borderBottom = '1px solid black';
 });
 
 option2.addEventListener('click', () => {
     selectOption(option2);
-    document.querySelector('.safePayment').style.display = 'none';
     document.querySelector('.self-collecting').style.display = 'flex';
     document.getElementById('summary-delivery-value').textContent = '₪0'
     document.getElementById('summary-total-num').textContent = totalPriceDelivery();
+    document.getElementById('city').value = 'איסוף עצמי';
+    document.getElementById('address').value = 'איסוף עצמי';
+    document.getElementById('mikud').value = 'איסוף עצמי';
+    document.getElementsByClassName('box')[3].style.borderBottom = '2px solid green';
 });
 
 
@@ -290,6 +298,7 @@ function loadpayment() {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartItemsContainer = document.querySelector('.cart-to-payment-items');
     cartItemsContainer.innerHTML = ''; 
+    
 
     cartItems.forEach(item => {
         const cartItem = document.createElement('div');
@@ -313,19 +322,9 @@ function loadSavedReview() {
         const hiddenContent = document.querySelector('.hidden-content');
         const textarea = document.getElementById("reviewInput");
         document.getElementById('payment-reviews-text').textContent = savedReview;
-
-        hiddenContent.insertBefore(displayText, textarea);
-        textarea.style.display = 'none'; 
     }
 }
 
-function clearReviewOnPayment() {
-    sessionStorage.removeItem('review');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadSavedReview();
-});
 
 
 function loadCartTotal() {
@@ -371,6 +370,7 @@ function generateOrderId(length = 15) {
     return result;
 }
 
+loadSavedReview();
 loadpayment();
 
 document.getElementById('backtohome').addEventListener('click', () => {
@@ -404,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const city = document.getElementById('city').value;
         const postal = document.getElementById('mikud').value;
         const phoneNumber = document.getElementById('Phonenumber').value;
+        const bill = document.getElementById('order-id-number').innerText;
         const price = parseFloat(totalPriceDelivery().replace(/[^\d.-]/g, '')); 
 
   
@@ -456,7 +457,8 @@ document.addEventListener('DOMContentLoaded', function() {
             postalCode: postal,
             productsId: productsId,
             totalPrice: price,
-            userId: userData
+            userId: userData,
+            billNumber: bill
         });
 
         const requestOptions = {
@@ -486,7 +488,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function clearCart() {
     localStorage.removeItem('cartItems');
+    sessionStorage.removeItem('review');
     updateCartDisplay();
+    document.getElementById('payment-reviews-text').textContent = ''; 
     console.log("Cart has been cleared");
 }
+
 
