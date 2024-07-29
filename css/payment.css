@@ -83,6 +83,9 @@ body {
     align-items: end;
     position: relative;
 }
+.ui-helper-hidden-accessible {
+    display: none;
+}
 .inner-payment-right-section {
     margin-right: 40px;
     width: 95%;

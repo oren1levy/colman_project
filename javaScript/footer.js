@@ -12,7 +12,7 @@ document.querySelectorAll('.middlepage-btn').forEach(button => {
 });
 
 document.querySelector('#collink1').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/home.html';
+    window.location.href = 'http://127.0.0.1:5501/html.page/about.html';
 });
 document.querySelector('#collink2').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/footerpage/exchanges.html';

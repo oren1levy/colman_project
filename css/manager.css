@@ -92,7 +92,7 @@ body {
 }
 
 .top-page {
-    background: rgb(253, 235, 216);    
+    background: gainsboro;    
     color: black;
     padding: 1em;
     text-align: center;
@@ -119,6 +119,7 @@ section {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 section.active {
@@ -129,6 +130,7 @@ section h2 {
     font-family: sans-serif;
     letter-spacing: 1px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .main-manager-page {
@@ -153,7 +155,7 @@ section h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     box-sizing: border-box;
-    background-color: rgb(253, 235, 216);
+    background-color: white;
     transition: transform 0.2s;
 }
 
@@ -188,7 +190,8 @@ section h2 {
 }
 
 #createProduct {
-    margin-bottom: 20px;
+    display: block;
+    margin: 0 auto 20px auto; /* Centering the button */
     background-color: #333;
     color: white;
     border: none;
@@ -199,6 +202,12 @@ section h2 {
 
 #createProduct:hover {
     background-color: #555;
+}
+
+#productImage{
+    width: 100%;
+    height: auto;
+    max-width: 150px; /* Ensuring images fit well */
 }
 
 /* Orders Section */
@@ -217,7 +226,7 @@ section h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     box-sizing: border-box;
-    background-color: rgb(253, 235, 216);
+    background-color: white;
 }
 
 .order h3 {
