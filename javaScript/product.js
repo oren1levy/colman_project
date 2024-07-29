@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(product => {
             const discount = product.price - 50;
             console.log(product);
-            document.getElementById('mainImage').src = product.img;
+            document.getElementById('mainImage').src = `http://localhost:3000/${product.img}`;
             document.getElementById('productName').textContent = product.name;
             document.getElementById('productPrice').textContent = `₪${discount}`;
             document.getElementById('productDescription').textContent = product.description;

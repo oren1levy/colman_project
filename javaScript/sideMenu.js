@@ -29,6 +29,7 @@
                 document.getElementById('login-link').style.display = 'none';
                 document.getElementById('register-link').style.display = 'none';
 
+                // Add or update the edit user link
                 if (!document.getElementById('edit-user-link')) {
                     const editUserLink = document.createElement('a');
                     editUserLink.href = '../html.page/editUser.html';
@@ -57,6 +58,14 @@
                         localStorage.removeItem('userToken'); 
                         window.location.href = '../html.page/home.html';  
                     });
+                }
+
+                if (data._id === '66a7a19a9617672217960fba' && !document.getElementById('admin-link')) {
+                    const adminLink = document.createElement('a');
+                    adminLink.href = '../html.page/manager.html'; 
+                    adminLink.textContent = 'דף מנהל';
+                    adminLink.id = 'admin-link';
+                    document.getElementById('sideMenu').appendChild(adminLink);
                 }
                 
             } else {

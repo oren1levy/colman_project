@@ -1,10 +1,15 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById('logo').addEventListener('click', function() {
+        window.location.href = '../html.page/home.html';
+    });
+    
 document.getElementById('openMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '250px';
 });
 document.getElementById('closeMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '0';
 });
-///////////////////////////////////////////////////////////////////////////
 
 function loadCart() {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -263,6 +268,6 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
 });
 
 
-
-
-
+}
+///////////////////////////////////////////////////////////////////////////
+)
