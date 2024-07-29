@@ -151,6 +151,10 @@ body {
     margin-bottom: 20px;
 }
 
+#prices-info-container {
+    text-align: center;
+}
+
 #map {
     width: 50%;
     height: 400px;

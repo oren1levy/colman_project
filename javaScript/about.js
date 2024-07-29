@@ -19,4 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
         .catch(error => console.error('Error fetching locations:', error));
+
+    fetch('http://localhost:3000/api/metals/prices')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("silver-price-span").innerHTML = data['Silver']
+            document.getElementById("gold-price-span").innerHTML = data['Gold']
+        })
+        .catch(error => console.error('Error fetching locations:', error));
 });
