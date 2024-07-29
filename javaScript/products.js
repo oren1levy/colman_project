@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productElement = `
                 <figure class="product">
                     <div class="image-container">
-                        <img class="productImg" data-productId="${product._id}" src="${product.img}" alt="${product.name}">
+                        <img class="productImg" data-productId="${product._id}" src="http://localhost:3000/${product.img}" alt="${product.name}">
                         <button class="addtocart-btn">הוספה מהירה לסל</button>
                     </div>
                     <figcaption class="productName" data-productName="productName">${product.name}</figcaption>
@@ -105,5 +104,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     getAllProducts();
 });
-
-
