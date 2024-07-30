@@ -1,10 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-
     const userId = localStorage.getItem('userToken'); 
 
     if (!userId) {
         console.error('User ID not found in localStorage');
-        return;
     }
 
     document.getElementById('logo').addEventListener('click', function() {
@@ -60,26 +57,6 @@ document.getElementById('closeCart').addEventListener('click', function() {
 
 let counter = 0; 
 
-function updateCartDisplay(counter) {
-
-if (counter === 0){
-    document.getElementById('emptyCart-text').style.display = 'block';
-    document.getElementById('emptyCart-text').innerHTML = "<hr><hr>העגלה ריקה";
-    document.querySelector('.cart-footer').style.display = 'none';
-    document.querySelector('.review-section').style.display = 'none';
-    document.querySelector('.cart-count').style.display = 'none';
-}
-else if (counter > 0){
-    document.getElementById('emptyCart-text').style.display = 'none';
-    document.querySelector('.cart-footer').style.display = 'block';
-    document.querySelector('.cart-footer').style.display = 'flex';
-    document.querySelector('.review-section').style.display = 'block';
-    document.querySelector('.cart-count').style.display = 'block';
-}}
-
-
-
-updateCartDisplay(counter);
 
 document.querySelector('.toggle-button').addEventListener('click', () => {
     const hiddencontent = document.querySelector('.hidden-content');
@@ -108,66 +85,30 @@ document.querySelector('#hidden-content-btn').addEventListener('click', () => {
 
 })
 ///////////////////////////////////////////////////////////////////////////////
+function updateCartDisplay(counter) {
+
+    if (counter === 0){
+        document.getElementById('emptyCart-text').style.display = 'block';
+        document.getElementById('emptyCart-text').innerHTML = "<hr><hr>העגלה ריקה";
+        document.querySelector('.cart-footer').style.display = 'none';
+        document.querySelector('.review-section').style.display = 'none';
+        document.querySelector('.cart-count').style.display = 'none';
+    }
+    else if (counter > 0){
+        document.getElementById('emptyCart-text').style.display = 'none';
+        document.querySelector('.cart-footer').style.display = 'block';
+        document.querySelector('.cart-footer').style.display = 'flex';
+        document.querySelector('.review-section').style.display = 'block';
+        document.querySelector('.cart-count').style.display = 'block';
+    }}
+    
+    
+    
+    updateCartDisplay(counter);
 
 function updateCartIcon() {
     document.getElementById('cartCount').textContent = counter;
 }
-
-function addToCart(productName, productPrice, productId, productImg) {
-    const cartItemsContainer = document.querySelector('.cart-items');
-    let existingCartItem = null;
-
-    document.querySelectorAll('.cart-item').forEach(cartItem => {
-        const itemId = cartItem.querySelector('#cart-item-Id').textContent;
-        if (itemId === productId) {
-            existingCartItem = cartItem;
-        }
-    });
-
-    
-    if (existingCartItem) {
-        let quantityElement = existingCartItem.querySelector('#cart-item-Quantity');
-        let newQuantity = parseInt(quantityElement.textContent) + 1;
-        quantityElement.textContent = newQuantity;
-        
-        let priceElement = existingCartItem.querySelector('#cart-item-Price');
-        let totalPrice = productPrice * newQuantity;
-        priceElement.textContent = `₪${totalPrice.toFixed(2)}`;
-    } else {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <img id="cart-item-Img" src="${productImg}" alt="${productName}">
-            <span class="cart-item-Details">
-                <span id="cart-item-Name">${productName}</span>
-                <span id="cart-item-quantity-text"><span id="cart-item-Quantity">1</span><span>:כמות</span></span>
-                <span id="cart-item-Price">₪${productPrice}</span>
-                <span id="cart-item-Id">${productId}</span>
-                <button class="delete-cart-product">הסר</button>
-            </span>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-
-    }
-        counter++;
-        updateCartDisplay(counter)
-        updateCartTotal();
-        updateCartIcon();
-        saveCart();
-    
-}
-document.querySelectorAll('.addToCartBtn').forEach(button => {
-    button.addEventListener('click', function() {
-        const product = this.closest('.product');
-        const productName = product.querySelector('[data-productName]').textContent;
-        const productPrice = parseFloat(product.querySelector('[data-productPrice]').textContent.split('₪')[1]);
-        const productId = product.querySelector('[data-productId]').textContent;
-        const productImg = product.querySelector('[data-productImg]').getAttribute('src');
-        addToCart(productName, productPrice, productId, productImg);
-    });
-});
-
-
 
 function removeFromCart(productId, productPrice) {
     const cartItemsContainer = document.querySelector('.cart-items');
@@ -253,4 +194,57 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/payment.html';
 });
 
-})
+
+function addToCart(productName, productPrice, productId, productImg) {
+    const cartItemsContainer = document.querySelector('.cart-items');
+    let existingCartItem = null;
+
+    document.querySelectorAll('.cart-item').forEach(cartItem => {
+        const itemId = cartItem.querySelector('#cart-item-Id').textContent;
+        if (itemId === productId) {
+            existingCartItem = cartItem;
+        }
+    });
+
+    
+    if (existingCartItem) {
+        let quantityElement = existingCartItem.querySelector('#cart-item-Quantity');
+        let newQuantity = parseInt(quantityElement.textContent) + 1;
+        quantityElement.textContent = newQuantity;
+        
+        let priceElement = existingCartItem.querySelector('#cart-item-Price');
+        let totalPrice = productPrice * newQuantity;
+        priceElement.textContent = `₪${totalPrice.toFixed(2)}`;
+    } else {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <img id="cart-item-Img" src="${productImg}" alt="${productName}">
+            <span class="cart-item-Details">
+                <span id="cart-item-Name">${productName}</span>
+                <span id="cart-item-quantity-text"><span id="cart-item-Quantity">1</span><span>:כמות</span></span>
+                <span id="cart-item-Price">₪${productPrice}</span>
+                <span id="cart-item-Id">${productId}</span>
+                <button class="delete-cart-product">הסר</button>
+            </span>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+
+    }
+        counter++;
+        updateCartDisplay(counter)
+        updateCartTotal();
+        updateCartIcon();
+        saveCart();
+    
+}
+document.querySelectorAll('.addToCartBtn').forEach(button => {
+    button.addEventListener('click', function() {
+        const product = this.closest('.product');
+        const productName = product.querySelector('[data-productName]').textContent;
+        const productPrice = parseFloat(product.querySelector('[data-productPrice]').textContent.split('₪')[1]);
+        const productId = product.querySelector('[data-productId]').textContent;
+        const productImg = product.querySelector('[data-productImg]').getAttribute('src');
+        addToCart(productName, productPrice, productId, productImg);
+    });
+});
