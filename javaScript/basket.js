@@ -254,3 +254,4 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
 });
 
 })
+
