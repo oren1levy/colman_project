@@ -70,34 +70,99 @@ function editProduct(productId) {
 document.addEventListener('DOMContentLoaded', getAllProducts);
 
 /* Orders Section */
-function getOrders() {
+
+async function getOrders() {
     const requestOptions = {
         method: 'POST',
         redirect: 'follow'
     };
 
-    fetch('http://localhost:3000/api/orders/getAllOrders', requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            const allOrders = document.getElementById('allOrders');
-            allOrders.innerHTML = '';  
-            let count = 1;
-            result.forEach(order => {
-                const orderElement = `
-                    <div class="order">
-                        <h3 class="orderNumber">${count}</h3>
-                        <p class="orderUserId">User id: ${order.userId}</p>
-                        <p class="orderTotalPrice">Total price: ${order.totalPrice} INS</p>
-                        <p class="orderCity">City: ${order.city}</p>
-                        <p class="orderAddress">Address: ${order.address}</p>
-                        <p class="orderPhone">Connection number: ${order.phone}</p>
+    try {
+        const response = await fetch('http://localhost:3000/api/orders/getAllOrders', requestOptions);
+        const result = await response.json();
+
+        const allOrders = document.getElementById('allOrders');
+        allOrders.innerHTML = '';  
+        let count = 1;
+
+        for (const order of result) {
+            const orderElement = document.createElement('div');
+            orderElement.className = 'order-card';
+            
+            const orderDate = order.createdAt ? order.createdAt.slice(0, 10) : '';
+
+            orderElement.innerHTML = `
+                <div class="order-header">
+                    <h3 class="order-number">Order #${count}</h3>
+                    <p><span class="order-label">Date:</span> ${orderDate}</p>
+                    <p><span class="order-label">User ID:</span> ${order.userId}</p>
+                    <p><span class="order-label">Total Price:</span> ${order.totalPrice} INS</p>
+                    <p><span class="order-label">City:</span> ${order.city}</p>
+                    <p><span class="order-label">Address:</span> ${order.address}</p>
+                    <p><span class="order-label">Phone:</span> ${order.phone}</p>
+                    <button class="toggle-products">View Products</button>
+                </div>
+                <div class="products-container" style="display: none;"></div>
+            `;
+
+            // Fetch product details
+            const productsIdArray = order.productsId[0].split(',').map(id => id.trim().replace(/"/g, ''));
+            const productDetails = await getProductDetails(productsIdArray);
+            
+            const productsContainer = orderElement.querySelector('.products-container');
+            productDetails.forEach(product => {
+                const productInfo = document.createElement('div');
+                productInfo.className = 'product-info';
+                productInfo.innerHTML = `
+                    <div class="product-item">
+                        <img class="product-img" src="http://localhost:3000/${product.img}" alt="Product Image">
+                        <div class="product-details">
+                            <p><span class="product-label">Name:</span> ${product.name}</p>
+                            <p><span class="product-label">Price:</span> ${product.price} INS</p>
+                        </div>
                     </div>
                 `;
-                allOrders.insertAdjacentHTML('beforeend', orderElement);
-                count++;
+                productsContainer.appendChild(productInfo);
             });
-        })
-        .catch(error => console.error('Error:', error));
+
+            const toggleButton = orderElement.querySelector('.toggle-products');
+            toggleButton.addEventListener('click', () => {
+                productsContainer.style.display = productsContainer.style.display === 'none' ? 'block' : 'none';
+            });
+
+            allOrders.appendChild(orderElement);
+            count++;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function getProductDetails(productIds) {
+    const productDetails = [];
+
+    for (const id of productIds) {
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: id })
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/products/getProducts', requestOptions);
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            const result = await response.json();
+            productDetails.push(result);
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+        }
+    }
+
+    return productDetails;
 }
 
 document.addEventListener('DOMContentLoaded', getOrders);
@@ -168,4 +233,58 @@ document.addEventListener('DOMContentLoaded', async () => {
     const salesData = await fetchSalesData();
     renderSalesChart(salesData);
 });
+
+/* Users Section */
+
+async function fetchUserStats() {
+    try {
+        const response = await fetch('http://localhost:3000/api/users/stats');
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching user stats:', error);
+    }
+}
+
+function renderUserStatsChart(stats) {
+    const ctx = document.getElementById('userStatsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Users', 'Active Users (Last Month)', 'Total Orders'],
+            datasets: [{
+                label: '# of Users/Orders',
+                data: [stats.totalUsers, stats.activeUsers, stats.totalOrders],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const stats = await fetchUserStats();
+    if (stats) {
+        renderUserStatsChart(stats);
+    }
+});
+
 

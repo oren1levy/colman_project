@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('addProductForm').addEventListener('submit', handleFormSubmit);
 
-
     document.getElementById('productImage').addEventListener('change', function(event) {
         const fileInput = event.target;
         const imageContainer = document.getElementById('uploadedProductImage');

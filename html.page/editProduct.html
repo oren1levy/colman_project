@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/editProduct.css">         
+    <link rel="stylesheet" href="../css/addProduct.css"> 
 </head>
 <body>
   <header>
@@ -14,36 +14,39 @@
       </div>
   </header>
   <div class="page">
-      <div class="product">
-        <div class="product-images">
-          <div class="main-image">
-            <img id="mainImage" src="../imges/Hollis1.png" alt="Product Image">
-          </div>
-          <div class="thumbnail-images">
-            <img class="thumbnail" src="../imges/Hollis1.png" alt="Thumbnail 1">
-            <img class="thumbnail" src="../imges/hollis2.png" alt="Thumbnail 2">
-            <img class="thumbnail" src="../imges/hollis3.png" alt="Thumbnail 3">
-          </div>
-        </div>
+      <div class="form-and-image">
         <div class="product-details">
           <form id="editProductForm">
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName" class="productName">
-            
-            <label for="productPrice">Product Price:</label>
-            <input type="text" id="productPrice" name="productPrice" class="product-price">
-            
-            <label for="productDescription">Product Description:</label>
-            <textarea id="productDescription" name="productDescription" class="product-description-content"></textarea>
+            <label for="productName">שם המוצר:</label>
+            <input type="text" id="productName" name="productName" required>
 
-            <label for="productColor">Color:</label>
-            <input type="text" id="productColor" name="productColor" class="product-color">
-            
-            <label for="productcategory">Category:</label>
-            <input type="text" id="productCategory" name="productCategory" class="product-category">
-            
-            <button type="button" id="updateProductBtn">Update Product</button>
+            <label for="productPrice">מחיר המוצר:</label>
+            <input type="number" id="productPrice" name="productPrice" step="1" min="0" required>
+
+            <label for="productDescription">תיאור המוצר:</label>
+            <textarea id="productDescription" name="productDescription" required></textarea>
+
+            <label for="productCategory">קטגוריית מוצר:</label>
+            <select id="productCategory" name="productCategory" required>
+                <option value="" disabled selected>תבחר קטגוריית מוצר</option>
+                <option value="שרשרת">שרשרת</option>
+                <option value="עגיל">עגיל</option>
+                <option value="טבעת">טבעת</option>
+            </select>
+
+            <label for="productColor">צבע:</label>
+            <select id="productColor" name="productColor" required>
+                <option value="" disabled selected>תבחר צבע מוצר:</option>
+                <option value="זהב">זהב</option>
+                <option value="כסף">כסף</option>
+                <option value="מעורב">מעורב</option>
+            </select>
+
+            <button type="submit" id="updateProductBtn">עדכן מוצר</button>
           </form>
+        </div>
+        <div class="product-image" id="productImageContainer">
+            <img id="mainImage" src="../imges/Hollis1.png" alt="Product Image">
         </div>
       </div>
     </div>
