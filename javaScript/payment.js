@@ -322,7 +322,7 @@ function validCreditCarddate(datePlate) {
 ///cart to payment///
 
 function loadpayment() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItems = JSON.parse(localStorage.getItem(`cart_${userToken}`)) || [];
     const cartItemsContainer = document.querySelector('.cart-to-payment-items');
     cartItemsContainer.innerHTML = ''; 
     
@@ -458,15 +458,15 @@ loadpayment();
                 return null;
             }
         }
-        
+        const userToken = localStorage.getItem('userToken');
+
         function getProductIdsFromCart() {
-            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cart = JSON.parse(localStorage.getItem(`cart_${userToken}`)) || [];
             const productIds = cart.map(item => `"${item.productId}"`);
             return productIds.join(', ');
         }
 
         const productsId = getProductIdsFromCart();
-        const userToken = localStorage.getItem('userToken');
         const userData = await getUserData(userToken);
 
         const raw = JSON.stringify({
@@ -505,8 +505,11 @@ loadpayment();
     });
 });
 
+const userToken = localStorage.getItem('userToken');
+
 function clearCart() {
     localStorage.removeItem('cartItems');
+    localStorage.removeItem(`cart_${userToken}`);
     sessionStorage.removeItem('review');
     updateCartDisplay();
     document.getElementById('payment-reviews-text').textContent = ''; 

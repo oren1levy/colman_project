@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    const userId = localStorage.getItem('userToken'); 
+
+    if (!userId) {
+        console.error('User ID not found in localStorage');
+        return;
+    }
+
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
     });
@@ -12,7 +19,7 @@ document.getElementById('closeMenu').addEventListener('click', function() {
 });
 
 function loadCart() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItems = JSON.parse(localStorage.getItem(`cart_${userId}`)) || [];
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.innerHTML = ''; 
 
@@ -231,12 +238,7 @@ function saveCart() {
         const productImg = cartItem.querySelector('#cart-item-Img').src;
         cartItems.push({ productId, productName, productPrice, quantity,productImg });
     });
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-}
-
-function saveReviews() {
-    const cartReview = [];
-    document.querySelectorAll('.cart-item')
+    localStorage.setItem(`cart_${userId}`, JSON.stringify(cartItems));
 }
 
 document.querySelector('.payment-btn').addEventListener('click', () => {
