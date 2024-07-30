@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function reverseDateComponents(dateString) {
+        const components = dateString.split('-');
+        const reversedComponents = components.reverse();
+        return reversedComponents.join('-');
+    }
+
     async function getProductDetails(productIds) {
         const productDetails = [];
 
@@ -67,6 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
         orders.forEach(async (order) => {
             const singleOrder = document.createElement('div');
             const orderDate = order.createdAt ? order.createdAt.slice(0, 10) : '';
+
+            const reversedDate = reverseDateComponents(orderDate);
             const orderTime = order.createdAt ? order.createdAt.slice(11, 19) : '';
 
             const productsIdString = order.productsId[0]; 
@@ -80,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="order">
                   <span class="purchasehistory-details">
                     <h3 class="customer-orderNumber">הזמנה מספר ${count}</h3>
-                    <p class="customer-orderUserId">תאריך קנייה: ${orderDate}</p>
+                    <p class="customer-orderUserId">תאריך קנייה: ${reversedDate}</p>
                     <p class="customer-orderUserId">שעת קנייה: ${orderTime}</p>
                     <p class="customer-orderUserId">מספר לקוח: ${order.userId}</p>
                     <p class="customer-orderTotalPrice">סכום הקנייה: ${order.totalPrice}₪</p>
@@ -96,11 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
             productDetails.forEach(product => {
                 const productInfo = document.createElement('div');
                 productInfo.className = 'product-info';
+                const productPrice = product.price - 50;
                 productInfo.innerHTML = `
                     <img id="productImg" src=http://localhost:3000/${product.img} alt="productImg">
                     <p>שם המוצר: ${product.name}</p>
                     <p>קטגוריית המוצר: ${product.category}</p>
-                    <p>מחיר המוצר: ${product.price}₪</p>
+                    <p>מחיר המוצר: ${productPrice}₪</p>
                 `;
                 productsSpan.appendChild(productInfo);
             });
@@ -111,17 +120,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function applyFilters() {
-        const billFilter = document.getElementById('bill-price').value;
+        const billFilter = document.getElementById('bill').value;
         const dateFilter = document.getElementById('purchaseDate').value;
+        const reversedDate = reverseDateComponents(dateFilter);
         const priceFilter = document.getElementById('priceRange').value;
+        let searchproduct = document.getElementById('search-product').value;
+
+        if (searchproduct) {
+            searchproduct = `"${searchproduct}"`;
+        }
 
         const filteredResults = purchases.filter(purchase => {
             return (!billFilter || purchase.billNumber.includes(billFilter)) &&
-                   (!dateFilter || purchase.createdAt.slice(0, 10) === dateFilter) &&
-                   (!priceFilter || purchase.totalPrice <= parseFloat(priceFilter));
+                   (!reversedDate || purchase.createdAt.slice(0, 10) === reversedDate) &&
+                   (!priceFilter || purchase.totalPrice <= parseFloat(priceFilter)) &&
+                   (!searchproduct || purchase.productsId.includes(searchproduct));
+
                    
         });
-
+     
         displayOrders(filteredResults);
     }
 
@@ -130,8 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('resetFiltersBtn').addEventListener('click', function() {
         document.getElementById('priceRange').value = 10000;
         document.getElementById('priceRangeValue').textContent = '10000₪';
-        document.getElementById('bill-price').value = '';
+        document.getElementById('bill').value = '';
         document.getElementById('purchaseDate').value = '';
+        document.getElementById('search-product').value = '';
         getCustomerOrders();
     });
 

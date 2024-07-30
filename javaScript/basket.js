@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    const userId = localStorage.getItem('userToken'); 
+
+    if (!userId) {
+        console.error('User ID not found in localStorage');
+        return;
+    }
+
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
     });
@@ -12,7 +19,7 @@ document.getElementById('closeMenu').addEventListener('click', function() {
 });
 
 function loadCart() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItems = JSON.parse(localStorage.getItem(`cart_${userId}`)) || [];
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.innerHTML = ''; 
 
@@ -149,9 +156,6 @@ function addToCart(productName, productPrice, productId, productImg) {
         saveCart();
     
 }
-
-
-
 document.querySelectorAll('.addToCartBtn').forEach(button => {
     button.addEventListener('click', function() {
         const product = this.closest('.product');
@@ -162,8 +166,6 @@ document.querySelectorAll('.addToCartBtn').forEach(button => {
         addToCart(productName, productPrice, productId, productImg);
     });
 });
-
-
 
 
 
@@ -214,7 +216,7 @@ document.querySelector('.cart-items').addEventListener('click', function(event) 
 
 
 function updateCartTotal() {
-    const cartItemsContainer = document.querySelector('.cart-items');
+    document.querySelector('.cart-items');
     let total = 0;
 
     document.querySelectorAll('.cart-item').forEach(cartItem => {
@@ -236,12 +238,7 @@ function saveCart() {
         const productImg = cartItem.querySelector('#cart-item-Img').src;
         cartItems.push({ productId, productName, productPrice, quantity,productImg });
     });
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-}
-
-function saveReviews() {
-    const cartReview = [];
-    document.querySelectorAll('.cart-item')
+    localStorage.setItem(`cart_${userId}`, JSON.stringify(cartItems));
 }
 
 document.querySelector('.payment-btn').addEventListener('click', () => {
@@ -251,23 +248,9 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
 
 window.addEventListener('load', loadCart);
 
-//////////////////////////////////////////////////////////////////////////
-/////cart to payment/////
-
-function getCartProducts() {
-    return JSON.parse(localStorage.getItem('cartProducts')) || [];
-}
-
-// Function to save cart products to local storage
-function saveCartProducts(cartProducts) {
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-}
 
 document.querySelector('.payment-btn').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/payment.html';
 });
 
-
-}
-///////////////////////////////////////////////////////////////////////////
-)
+})
