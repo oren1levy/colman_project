@@ -48,21 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        
         document.querySelectorAll('.addToCartBtn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(){
                 const product = this.closest('.product');
                 const productName = product.querySelector('[data-productName]').textContent;
                 const productPrice = parseFloat(product.querySelector('[data-productPrice]').textContent.split('₪')[1]);
                 const productId = product.querySelector('.productImg').getAttribute('data-productId');
                 const productImg = product.querySelector('.productImg').getAttribute('src');
 
-                addToCart(productName, productPrice, productId, productImg);
+                addToCart(productName,productPrice,productId,productImg);
             });
         });
     }
-    
-
+ 
     function applyFilters() {
         const selectedTypes = Array.from(document.querySelectorAll('input[name="jewelryType"]:checked')).map(cb => cb.value);
         const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(cb => cb.value);

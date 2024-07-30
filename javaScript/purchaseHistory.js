@@ -76,6 +76,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const reversedDate = reverseDateComponents(orderDate);
             const orderTime = order.createdAt ? order.createdAt.slice(11, 19) : '';
+      
+            function addTimes(time1, time2) {
+
+             function timeToSeconds(time) {
+                const [hours, minutes, seconds] = time.split(':').map(Number);
+                return (hours * 3600) + (minutes * 60) + seconds;
+            } 
+             function secondsToTime(seconds) {
+                const hours = Math.floor(seconds / 3600) % 24;
+                seconds %= 3600;
+                const minutes = Math.floor(seconds / 60);
+                seconds %= 60;
+                return [hours, minutes, seconds].map(v => v.toString().padStart(2, '0')).join(':');
+            }
+    
+             const totalSeconds1 = timeToSeconds(time1);
+             const totalSeconds2 = timeToSeconds(time2);    
+             const totalSeconds = totalSeconds1 + totalSeconds2;
+             return secondsToTime(totalSeconds);
+            }
+            
+            const time1 = orderTime;
+            const time2 = '03:00:00';
+            const result = addTimes(time1, time2);
 
             const productsIdString = order.productsId[0]; 
             const productsIdArray = productsIdString.split(',').map(id => id.trim().replace(/"/g, ''));
@@ -89,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span class="purchasehistory-details">
                     <h3 class="customer-orderNumber">הזמנה מספר ${count}</h3>
                     <p class="customer-orderUserId">תאריך קנייה: ${reversedDate}</p>
-                    <p class="customer-orderUserId">שעת קנייה: ${orderTime}</p>
+                    <p class="customer-orderUserId">שעת קנייה: ${result}</p>
                     <p class="customer-orderUserId">מספר לקוח: ${order.userId}</p>
                     <p class="customer-orderTotalPrice">סכום הקנייה: ${order.totalPrice}₪</p>
                     <p class="customer-orderTotalPrice">טלפון: ${order.phone}</p>
@@ -131,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const filteredResults = purchases.filter(purchase => {
-            return (!billFilter || purchase.billNumber.includes(billFilter)) &&
+             return (!billFilter || purchase.billNumber.includes(billFilter)) &&
                    (!reversedDate || purchase.createdAt.slice(0, 10) === reversedDate) &&
                    (!priceFilter || purchase.totalPrice <= parseFloat(priceFilter)) &&
                    (!searchproduct || purchase.productsId.includes(searchproduct));
