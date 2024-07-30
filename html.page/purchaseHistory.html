@@ -20,15 +20,6 @@
                           </svg>
                   </button> 
                  </div>
-                 <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                          </svg> 
-                 </button>
-                 <button class="social-icons-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                          </svg> 
-                 </button>
             </div>
                  <img id="logo" src="../imges/thelogo.png" alt="Logo">
             <div class="social-icons">
@@ -101,25 +92,27 @@
             <div class="purchaseHistory-right-section">
                 <div class="filter-container">
                   <div class="filter-group">
-                    <label for="searchInput">חפש מוצר</label>
+                    <label for="searchInput">חיפוש מוצר לפי מק"ט</label>
                     <input id="search-product" type="text" id="searchInput" placeholder="הכנס שם מוצר">
                       <label>תאריך קנייה</label>
-                      <input id="search-product" type="text" id="searchInput" placeholder="הכנס תאריך קנייה">
+                      <input id="purchaseDate" type="text" name="date" placeholder="DD-MM-YYYY">
                   </div>
                   <div class="filter-group">
                       <label>מספר קבלה</label>
-                      <input id="search-product" type="text" id="searchInput" placeholder="הכנס מספר קבלה">
+                      <input id="bill" type="text" name="billnum" placeholder="הכנס מספר קבלה">
                   </div>
                   <div class="filter-group">
                       <label>סכום הקנייה</label>
-                      <input type="range" id="priceRange" name="priceRange" min="0" max="1000" value="1000">
+                      <input type="range" id="priceRange" name="priceRange" min="0" max="10000" value="10000">
                       <div class="range-values">
                           <span>0₪</span>
-                          <span id="priceRangeValue">1000₪</span>
+                          <span id="priceRangeValue">10,000₪</span>
                       </div>
                   </div>
-                  <button id="applyFiltersBtn">החל סינון</button>
-                  <button id="resetFiltersBtn">אפס סינון</button>
+                  <div class="filter-btn">
+                      <button id="applyFiltersBtn">החל סינון</button>
+                      <button id="resetFiltersBtn">אפס סינון</button>
+                  </div>
               </div>
             </div>
         </div>

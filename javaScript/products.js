@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
     });
+});
 
     function getAllProducts() {
         const requestOptions = {
@@ -19,14 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayProducts(products) {
         const productGallery = document.getElementById('productGallery');
-        productGallery.innerHTML = ''; // Clear existing products
+        productGallery.innerHTML = ''; 
         products.forEach(product => {
             const discount = product.price - 50;
             const productElement = `
                 <figure class="product">
                     <div class="image-container">
                         <img class="productImg" data-productId="${product._id}" src="http://localhost:3000/${product.img}" alt="${product.name}">
-                        <button class="addtocart-btn">הוספה מהירה לסל</button>
+                        <button class="addToCartBtn">הוספה מהירה לסל</button>
                     </div>
                     <figcaption class="productName" data-productName="productName">${product.name}</figcaption>
                     <figcaption class="productprice" data-productPrice="productprice"><del id="deletedprice">${product.price}₪</del>&nbsp;${discount}₪</figcaption>
@@ -44,17 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = `product.html?id=${productId}`;
             });
         });
-        document.querySelectorAll('.addtocart-btn').forEach(button => {
+        
+        
+        document.querySelectorAll('.addToCartBtn').forEach(button => {
             button.addEventListener('click', function() {
                 const product = this.closest('.product');
                 const productName = product.querySelector('[data-productName]').textContent;
                 const productPrice = parseFloat(product.querySelector('[data-productPrice]').textContent.split('₪')[1]);
                 const productId = product.querySelector('.productImg').getAttribute('data-productId');
                 const productImg = product.querySelector('.productImg').getAttribute('src');
+
                 addToCart(productName, productPrice, productId, productImg);
             });
         });
     }
+    
 
     function applyFilters() {
         const selectedTypes = Array.from(document.querySelectorAll('input[name="jewelryType"]:checked')).map(cb => cb.value);
@@ -103,4 +108,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     getAllProducts();
-});

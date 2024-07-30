@@ -92,6 +92,8 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    height: 88%;
+    
 }
 
 .filter-group {
@@ -109,8 +111,14 @@ body {
     margin-left: 10px;
 }
 
-.filter-group input[type="range"],
+
 .filter-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    direction: rtl;
+}
+.filter-group input[type="range"] {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -124,7 +132,9 @@ body {
 .filter-group .range-values span {
     font-size: 14px;
 }
-
+.filter-btn {
+    display: flex;
+}
 #search-product {
     text-align: right;
     margin-bottom: 20px;
@@ -160,6 +170,8 @@ body {
 #resetFiltersBtn:hover {
     background-color: #e1ecf7;
 }
+/*//////////////////////////////////////////////*/
+
 .purchaseHistory-left-section {
     width: 80%;
     background-color: rgb(231, 233, 238);
@@ -176,6 +188,10 @@ body {
     flex-direction: column;
     flex-grow: 1;
     max-height: 480px;
+}
+.inner-left-section h2{
+    font-family: sans-serif;
+    letter-spacing: 1px;
 }
 .orders-section {
     border: 1px solid black;
@@ -206,7 +222,7 @@ body {
     overflow-y: auto; /* Enable vertical scrolling */
 
 }
-.productImg {
+#productImg {
     width: 100px;
     border: 1px solid black;
     border-radius: 10px;

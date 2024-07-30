@@ -149,9 +149,6 @@ function addToCart(productName, productPrice, productId, productImg) {
         saveCart();
     
 }
-
-
-
 document.querySelectorAll('.addToCartBtn').forEach(button => {
     button.addEventListener('click', function() {
         const product = this.closest('.product');
@@ -162,8 +159,6 @@ document.querySelectorAll('.addToCartBtn').forEach(button => {
         addToCart(productName, productPrice, productId, productImg);
     });
 });
-
-
 
 
 
@@ -214,7 +209,7 @@ document.querySelector('.cart-items').addEventListener('click', function(event) 
 
 
 function updateCartTotal() {
-    const cartItemsContainer = document.querySelector('.cart-items');
+    document.querySelector('.cart-items');
     let total = 0;
 
     document.querySelectorAll('.cart-item').forEach(cartItem => {
@@ -251,23 +246,9 @@ document.querySelector('.payment-btn').addEventListener('click', () => {
 
 window.addEventListener('load', loadCart);
 
-//////////////////////////////////////////////////////////////////////////
-/////cart to payment/////
-
-function getCartProducts() {
-    return JSON.parse(localStorage.getItem('cartProducts')) || [];
-}
-
-// Function to save cart products to local storage
-function saveCartProducts(cartProducts) {
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-}
 
 document.querySelector('.payment-btn').addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5501/html.page/payment.html';
 });
 
-
-}
-///////////////////////////////////////////////////////////////////////////
-)
+})

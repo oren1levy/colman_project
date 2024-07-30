@@ -170,7 +170,7 @@ figcaption {
     transform: scale(1.05); 
 }
 
-.addtocart-btn {
+.addToCartBtn {
     display: none;
     position: absolute;
     bottom: 10px;
@@ -185,7 +185,7 @@ figcaption {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.image-container:hover .addtocart-btn {
+.image-container:hover .addToCartBtn {
     display: block;
 }
 

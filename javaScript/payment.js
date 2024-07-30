@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
-    });
-    
+ });
+ 
 document.getElementById('openMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '250px';
 });
@@ -42,9 +42,15 @@ option2.addEventListener('click', () => {
     document.querySelector('.self-collecting').style.display = 'flex';
     document.getElementById('summary-delivery-value').textContent = '₪0'
     document.getElementById('summary-total-num').textContent = totalPriceDelivery();
-    document.getElementById('city').value = 'איסוף עצמי';
-    document.getElementById('address').value = 'איסוף עצמי';
-    document.getElementById('mikud').value = 'איסוף עצמי';
+    const city = document.getElementById('city');
+    city.readOnly = true;
+    city.value = 'איסוף עצמי';
+    const addrress = document.getElementById('address');
+    addrress.readOnly = true;
+    addrress.value = 'איסוף עצמי';
+    const mikud = document.getElementById('mikud');
+    mikud.readOnly = true;
+    mikud.value = 'איסוף עצמי';
     document.getElementsByClassName('box')[3].style.borderBottom = '2px solid green';
 });
 
@@ -200,38 +206,50 @@ cityInput.addEventListener("input", function(event) {
 
 
 /////////////////////////////////////////////////////////////
-const creditCardnumber = document.getElementById('CCnumber');
+function formatCreditCardNumber(value) {
+    return value.replace(/\s+/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+}
 
-creditCardnumber.addEventListener("input",function(event){
-    const box = document.getElementById('CCnumber');
-    const CC = creditCardnumber.value;
-    if (validCreditCardnumber(CC)) {
-        box.style.borderBottom = '2px solid green'; 
-    } else {
-        box.style.borderBottom = '2px solid red'; 
-    }
-})
+    const creditCardNumber = document.getElementById('CCnumber');
 
-function validCreditCardnumber(details) {
+    creditCardNumber.addEventListener("input", function(event) {
+        let value = creditCardNumber.value.replace(/\D/g, ''); 
+        creditCardNumber.value = formatCreditCardNumber(value);
+
+        if (value.length > 16) {
+            value = value.slice(0, 16);
+        }
+
+        const CC = creditCardNumber.value.replace(/\s+/g, '');
+        if (validCreditCardNumber(CC)) {
+            creditCardNumber.style.borderBottom = '2px solid green';
+        } else {
+            creditCardNumber.style.borderBottom = '2px solid red';
+        }
+    });
+
+function validCreditCardNumber(details) {
     const creditCardRegex = /^\d{4} \d{4} \d{4} \d{4}$/;
-    if (!creditCardRegex.test(details)) {
-        return false;
-    }
-    return true;
+    const regex = /^\d{16}$/;
+
+    return regex.test(details) || creditCardRegex.test(details);
 }
 
 //////////////////////////////////////////////////////////
 const creditCardid = document.getElementById('CCid');
+creditCardid.addEventListener("input", function(event) {
+    let value = creditCardid.value.replace(/\D/g, '');
 
-creditCardid.addEventListener("input",function(event){
+    creditCardid.value = value; 
+
     const box = document.getElementById('CCid');
     const CC = creditCardid.value;
     if (validCreditCardid(CC)) {
-        box.style.borderBottom = '2px solid green'; 
+        box.style.borderBottom = '2px solid green';
     } else {
-        box.style.borderBottom = '2px solid red'; 
+        box.style.borderBottom = '2px solid red';
     }
-})
+});
 
 function validCreditCardid(details) {
     const nineDigitsRegex = /^\d{9}$/;
@@ -243,25 +261,20 @@ function validCreditCardid(details) {
 
 /////////////////////////////////////////////////////
 const creditCardcvv = document.getElementById('CCcvv');
-const appartment = document.getElementById('apartment');
+creditCardcvv.addEventListener("input", function(event) {
+    let value = creditCardcvv.value.replace(/\D/g, '');
 
-creditCardcvv.addEventListener("input",function(event){
+    creditCardcvv.value = value; 
+
     const box = document.getElementById('CCcvv');
     const CC = creditCardcvv.value;
     if (validCreditCardcvv(CC)) {
-        box.style.borderBottom = '2px solid green'; 
+        box.style.borderBottom = '2px solid green';
     } else {
-        box.style.borderBottom = '2px solid red'; 
+        box.style.borderBottom = '2px solid red';
     }
-})
+});
 
-function validapartment(details) {
-    const numberRegex = /^(?:[1-9]|[1-9][0-9]{1,2})$/;
-    if (!numberRegex.test(details)) {
-        return false;
-    }
-    return true;
-}
 
 function validCreditCardcvv(details) {
     const threeDigitsRegex = /^\d{3}$/;
@@ -367,10 +380,7 @@ function totalPriceDelivery() {
     return total.toFixed(2) + '₪';
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadCartTotal();
-});
+loadCartTotal();
   
 function generateOrderId(length = 15) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#';
@@ -387,15 +397,10 @@ function generateOrderId(length = 15) {
 loadSavedReview();
 loadpayment();
 
-document.getElementById('backtohome').addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5501/html.page/home.html';
-});
-
 /////////////////////////////////////////////////////////////////////
 //////////////////payment to DataBase/////////////////////
 
 
-document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.safePaymentForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -508,4 +513,5 @@ function clearCart() {
     console.log("Cart has been cleared");
 }
 
-})
+
+
