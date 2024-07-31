@@ -60,6 +60,10 @@ body {
 .side-menu a:hover {
     color: #f1f1f1;
 }
+#welcome-message {
+    margin-left: 25%;
+    color: #818181;
+}
 .close-menu {
     position: absolute;
     top: 0;

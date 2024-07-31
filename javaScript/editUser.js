@@ -3,35 +3,56 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logo').addEventListener('click', function() {
         window.location.href = '../html.page/home.html';
     });
-    
-    const images = [
-        '../imges/earinngs/AnnabellaEarrings.png',
-        '../imges/earinngs/BellaEarrings.png',
-        '../imges/Neckless/Violaneckless.png',
-        '../imges/rings/ElisaRings.png',
-        '../imges/earinngs/FrancescaEarring.png',
-        '../imges/ananaNeckless.jpg',
-        '../imges/Neckless/camilaNeckless.jpg',
-        '../imges/Neckless/MilenaNeckless.jpg',
-        '../imges/Neckless/oteliaNeckless.jpg',
-        '../imges/rings/EmiliaRing.png',
-        '../imges/rings/LucianaRing.png',
-        '../imges/rings/RosaRings.png',
-        '../imges/rings/ElisaRings.png',
+     
+    let images = [];
 
-    ];
+    function getAllProducts() {
+        const requestOptions = {
+            method: "POST",
+            redirect: "follow"
+        };
     
+        fetch("http://localhost:3000/api/products/getAllProducts", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                images = result.map(product => `http://localhost:3000/${product.img}`);
+                initializeImageSwitcher();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+        getAllProducts();
+    
+    let switchInterval;
     let currentIndex = 0;
     const imageContainer = document.querySelector('.thumbnail-container');
     
     function switchImage() {
-        imageContainer.style.backgroundImage = `url(${images[currentIndex]})`;
-        currentIndex = (currentIndex + 1) % images.length;
+        if (imageContainer && images.length > 0) {
+            console.log('Switching to image:', images[currentIndex]); 
+            imageContainer.style.backgroundImage = `url(${images[currentIndex]})`;
+            currentIndex = (currentIndex + 1) % images.length;
+        } else {
+            console.log('Image container or images array is not available.');
+        }
     }
     
-    setInterval(switchImage, 1500);
     
-    switchImage();
+    function initializeImageSwitcher() {
+        if (document.hidden) {
+            clearInterval(switchInterval);
+        } else {
+            switchInterval = setInterval(switchImage, 1500);
+            switchImage();
+        }
+    }
+    
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(switchInterval);
+        } else {
+            initializeImageSwitcher();
+        }
+    });
 
     const userToken = localStorage.getItem('userToken'); 
 
@@ -206,5 +227,3 @@ document.addEventListener('DOMContentLoaded', function() {
    }});
 
 });
-
-

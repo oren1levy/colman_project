@@ -10,7 +10,5 @@ document.getElementById('logo').addEventListener('click',function(){
 });
 
 
-getUserData(userToken);
-
 
 

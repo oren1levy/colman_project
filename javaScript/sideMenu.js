@@ -25,7 +25,7 @@
 
                 const data = await response.json();
 
-                document.getElementById('welcome-message').innerText = `!,ברוך הבא לאתר ${data.firstName} היי`;
+                document.getElementById('welcome-message').innerText = `!${data.firstName} ברוכ/ה הבא/ה`;
                 document.getElementById('login-link').style.display = 'none';
                 document.getElementById('register-link').style.display = 'none';
 
