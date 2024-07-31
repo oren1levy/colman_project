@@ -4,7 +4,119 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../html.page/home.html';
     });
     
+    const images = [
+        '../imges/earinngs/AnnabellaEarrings.png',
+        '../imges/earinngs/BellaEarrings.png',
+        '../imges/Neckless/Violaneckless.png',
+        '../imges/rings/ElisaRings.png',
+        '../imges/earinngs/FrancescaEarring.png',
+        '../imges/ananaNeckless.jpg',
+        '../imges/Neckless/camilaNeckless.jpg',
+        '../imges/Neckless/MilenaNeckless.jpg',
+        '../imges/Neckless/oteliaNeckless.jpg',
+        '../imges/rings/EmiliaRing.png',
+        '../imges/rings/LucianaRing.png',
+        '../imges/rings/RosaRings.png',
+        '../imges/rings/ElisaRings.png',
+
+    ];
+    
+    let currentIndex = 0;
+    const imageContainer = document.querySelector('.thumbnail-container');
+    
+    function switchImage() {
+        imageContainer.style.backgroundImage = `url(${images[currentIndex]})`;
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+    
+    setInterval(switchImage, 1500);
+    
+    switchImage();
+
     const userToken = localStorage.getItem('userToken'); 
+
+    const passwordInput = document.getElementById("password");
+    const togglePasswordIcon = document.querySelector(".bi-eye");
+
+    function togglePasswordVisibility() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            togglePasswordIcon.classList.remove("fa-eye-slash");
+            togglePasswordIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            togglePasswordIcon.classList.remove("fa-eye");
+            togglePasswordIcon.classList.add("fa-eye-slash");
+        }
+    }
+    document.getElementById('toggle-pass').addEventListener('click', togglePasswordVisibility);
+
+
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+
+    firstName.addEventListener("input",function(event){
+        const box = document.getElementsByClassName('box')[0];
+        const fN = firstName.value;
+        if (validateName(fN)) {
+            box.style.borderBottom = '1px solid green'; 
+        } else {
+            box.style.borderBottom = '1px solid red'; 
+        }
+    })
+    lastName.addEventListener("input",function(event){
+        const box = document.getElementsByClassName('box')[1];
+        const lN = lastName.value;
+        if (validateName(lN)) {
+            box.style.borderBottom = '1px solid green'; 
+        } else {
+            box.style.borderBottom = '1px solid red'; 
+        }
+    })
+
+    function validateName(name) {
+        const nameregex = /^[a-zA-Z\u0590-\u05FF]+$/;
+        if(!nameregex.test(name)) {
+            return false;
+        }
+        return true;
+    }
+
+    const phonenumber = document.getElementById('phone')
+
+    phonenumber.addEventListener("input",function(event){
+        const box = document.getElementsByClassName('box')[2];
+        const pN = phonenumber.value;
+        if (validatePhoneNumber(pN)) {
+            box.style.borderBottom = '1px solid green'; 
+        } else {
+            box.style.borderBottom = '1px solid red'; 
+        }
+    })
+    function validatePhoneNumber(phonenumber) {
+        const phonenumberregex = /^\d{10}$/;
+        if(!phonenumberregex.test(phonenumber)) {
+            return false;
+        }
+        return true;
+    }
+
+    const password = document.getElementById('password')
+
+    password.addEventListener("input",function(event){
+        const box = document.getElementsByClassName('box')[3];
+        const pass = password.value;
+        if (validatePassword(pass)) {
+            box.style.borderBottom = '1px solid green'; 
+        } else {
+            box.style.borderBottom = '1px solid red'; 
+        }
+    })
+    function validatePassword(password) {
+        const regex = /^[a-zA-Z0-9]{9,15}$/;
+        ;
+        return regex.test(password);
+    }
 
     function getUserData(userToken){
         if (userToken) {
@@ -16,14 +128,10 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('firstName').value = data.firstName ;
-                document.getElementById('lastName').value = data.lastName ;
                 const date = new Date(data.birthday);
                 const formattedDate = date.toISOString().split('T')[0];
                 document.getElementById('birthday').value = formattedDate;
                 document.getElementById('email').value = data.email;
-                document.getElementById('phone').value = data.phone;
-                document.getElementById('password').value = data.password;
             })
             .catch(error => console.error('Error fetching user data:', error));
         } 
@@ -38,6 +146,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     btn_submit.addEventListener("click", function(event) {
         event.preventDefault();
+
+    const boxes = document.getElementsByClassName('box');
+    let allFieldsValid = true;
+    for (const box of boxes) {
+        if (box.style.borderBottom !== '1px solid green') {
+            allFieldsValid = false;
+            break;
+        }
+    }
+
+    if (!allFieldsValid) {
+        alert('You did not fill in all the fields correctly');
+    } else {
 
         const firstNameValue = document.getElementById('firstName').value;
         const lastNameValue = document.getElementById('lastName').value;
@@ -75,12 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(result => {
                 console.log(result);
                 alert('User details updated successfully');
+                window.location.href = "home.html";
             })
             .catch(error => {
                 console.error('Error updating user data:', error);
                 alert('Error updating user data');
             });
-    });
+        
+   }});
+
 });
 
 

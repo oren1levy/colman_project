@@ -276,7 +276,9 @@ figcaption {
     border-radius: 8px;
     padding: 8px;
 }
-
+.filter-Btns {
+    display: flex;
+}
 #applyFiltersBtn, #resetFiltersBtn {
     display: inline-block;
     margin: 10px 5px;

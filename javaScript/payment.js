@@ -283,19 +283,24 @@ function validCreditCardcvv(details) {
     }
     return true;
 }
-////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 const creditCarddate = document.getElementById('CCdate');
 
-creditCarddate.addEventListener("input",function(event){
+creditCarddate.addEventListener("input", function(event) {
     const box = document.getElementById('CCdate');
-    const CC = creditCarddate.value;
+    let CC = creditCarddate.value;
+
+    if (CC.length === 2 && !CC.includes('/')) {
+        CC += '/';
+        creditCarddate.value = CC;
+    }
+
     if (validCreditCarddate(CC)) {
         box.style.borderBottom = '2px solid green'; 
     } else {
         box.style.borderBottom = '2px solid red'; 
     }
-})
-
+});
 
 function validCreditCarddate(datePlate) {
     const dateregex = /^(0[1-9]|1[0-2])\/(2[4-9]|[3-9][0-9])$/;
@@ -310,13 +315,8 @@ function validCreditCarddate(datePlate) {
     const now = new Date();
     const inputDate = new Date(year, month - 1);
 
-    if (inputDate >= now) {
-        return true;
-    }
-    return false;
+    return inputDate >= now;
 }
-
-
 
 /////////////////////////////////////////////////////////////
 ///cart to payment///

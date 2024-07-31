@@ -51,7 +51,9 @@ $(function() {
 function validateEmail(email) {
     const emailRegex1 = /^[^\s@]+@gmail\.com$/;
     const emailRegex2 = /^[^\s@]+@yahoo\.com$/;
-    if (!emailRegex1.test(email) && !emailRegex2.test(email)) {
+    const emailRegex3 = /^[^\s@]+@walla\.com$/;
+    const emailRegex4 = /^[^\s@]+@colman\.ac.il$/;
+    if (!emailRegex1.test(email) && !emailRegex2.test(email) && !emailRegex3.test(email) && !emailRegex4.test(email)) {
         return false; 
     }
     return true; 

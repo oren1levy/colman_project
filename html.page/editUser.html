@@ -78,18 +78,15 @@
         </div>
     </header>
 
-
-
     <div class="page">
-
       <div class="edit-user">
           <h2 id="editUser-headline">עריכת פרטי משתמש</h2>
           <form id="editUserForm">
-              <label for="firstName">שם פרטי:</label>
-              <input type="text" id="firstName" name="firstName" required>
+              <label for="firstName">נא להכניס שם:</label>
+              <input class="box" type="text" id="firstName" name="firstName" required>
   
-              <label for="lastName">שם משפחה:</label>
-              <input type="text" id="lastName" name="lastName" required>
+              <label for="lastName">נא להכניס שם משפחה:</label>
+              <input class="box" type="text" id="lastName" name="lastName" required>
   
               <label for="birthday">תאריך לידה (לא ניתן לעריכה):</label>
               <input type="date" id="birthday" name="birthday" required readonly>
@@ -97,19 +94,22 @@
               <label for="email">אימייל (לא ניתן לעריכה):</label>
               <input type="email" id="email" name="email" required readonly>
   
-              <label for="phone">טלפון:</label>
-              <input type="tel" id="phone" name="phone" required>
-  
-              <label for="password">סיסמה:</label>
-              <input type="password" id="password" name="password">
-  
-              <button id="btn_submit" type="submit">עדכן פרטים</button>
+              <label for="phone">נא להכניס מספר טלפון:</label>
+              <input class="box" type="tel" id="phone" name="phone" required>
+              <span class="edit-password">
+                    <label for="password">נא להכניס סיסמא חדשה:</label>
+                    <span class="password-eye">
+                          <input class="box" type="password" id="password" name="password">
+                          <svg id="toggle-pass" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi-eye" viewBox="0 0 16 16" >
+                              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                              <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                          </svg>
+                    </span>
+              </span>
+              <button id="btn_submit" type="submit">לעדכון הפרטים</button>
           </form>
-          <div id="updateStatus"></div>
       </div>
-      <div class="thumbnail-container">
-        <img class="thumbnail" src="../imges/all.JPG" alt="Thumbnail 1">
-    </div>
+      <div class="thumbnail-container"></div>
   </div>
         
         <div class="Footer">

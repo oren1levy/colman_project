@@ -140,7 +140,6 @@ body {
     justify-content: center;
     align-items: end;
     position: relative;
-    /* display: none; */
 }
 .payment-Name {
     display: flex;

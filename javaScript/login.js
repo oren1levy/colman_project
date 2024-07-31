@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(result => {
                 console.log(result)
                 if (result.message == 'Invalid password'){
-                    alert("the email or the password incurrect");
+                    alert("the email or the password is incorrect");
                 }
                 else{
                     localStorage.setItem("userToken",result._id); 
