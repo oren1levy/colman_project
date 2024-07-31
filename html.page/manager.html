@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manager Page</title>
+    <title>דף ניהול</title>
     <link rel="stylesheet" type="text/css" href="../css/manager.css">
 </head>
 <body>
@@ -52,9 +52,12 @@
         <div class="main-manager-page">
             <section class="products">
                 <h2>ניהול מוצרים</h2>
-                <button id="createProduct">יצירת מוצר</button>
-                <div id="allProducts">
+                <div class="search-container">
+                    <input type="text" id="searchProduct" placeholder="חפש מוצר...">
                 </div>
+                <div id="noProductsMessage" style="display: none;">לא נמצאו מוצרים תואמים</div>
+                <button id="createProduct">יצירת מוצר</button>
+                <div id="allProducts"></div>
             </section>
             <section class="orders">
                 <h2>ניהול הזמנות</h2>
@@ -68,7 +71,16 @@
                 </div>
             </section>
             <section class="suppliers">
-                <h2>ניהול ספקים</h2>
+                <button id="createSupplierButton">יצירת ספק</button>
+                <form id="createSupplierForm" style="display: none;">
+                    <div class="error-message" id="errorMessage"></div>
+                    <input type="text" id="supplierName" placeholder="שם ספק" required>
+                    <input type="email" id="supplierEmail" placeholder="אימייל ספק" required>
+                    <input type="text" id="supplierPhone" placeholder="טלפון ספק" required pattern="\d{3}-\d{3}-\d{4}" title="הפורמט הנכון הוא 123-456-7890">
+                    <input type="number" id="supplierBalance" placeholder="מאזן ספק" required>
+                    <button type="submit">הוסף ספק</button>
+                </form>
+                <div id="allSuppliers"></div>
             </section>
             <section class="balance">
                 <h2>מאזן כספים</h2> 
