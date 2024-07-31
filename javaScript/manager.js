@@ -69,6 +69,29 @@ function editProduct(productId) {
 
 document.addEventListener('DOMContentLoaded', getAllProducts);
 
+document.getElementById('searchProduct').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const allProducts = document.getElementsByClassName('product');
+    let noResults = true;
+
+    Array.from(allProducts).forEach(product => {
+        const productName = product.querySelector('.productName').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+            product.style.display = 'block';
+            noResults = false;
+        } else {
+            product.style.display = 'none';
+        }
+    });
+
+    if (noResults) {
+        document.getElementById('noProductsMessage').style.display = 'block';
+    } else {
+        document.getElementById('noProductsMessage').style.display = 'none';
+    }
+});
+
+
 /* Orders Section */
 
 async function getOrders() {
@@ -105,7 +128,6 @@ async function getOrders() {
                 <div class="products-container" style="display: none;"></div>
             `;
 
-            // Fetch product details
             const productsIdArray = order.productsId[0].split(',').map(id => id.trim().replace(/"/g, ''));
             const productDetails = await getProductDetails(productsIdArray);
             
@@ -169,7 +191,7 @@ document.addEventListener('DOMContentLoaded', getOrders);
 
 /* Financial Balance Section */
 
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const monthNames = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
 
 const fetchSalesData = async () => {
     try {
@@ -196,7 +218,7 @@ const renderSalesChart = (salesData) => {
         data: {
             labels: salesData.map(data => data.month),
             datasets: [{
-                label: 'Total Sales',
+                label: 'כלל המכירות לפי חודשים',
                 data: salesData.map(data => data.totalSales),
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -253,10 +275,10 @@ function renderUserStatsChart(stats) {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Total Users', 'Active Users (Last Month)', 'Total Orders'],
+            labels: ['כלל המשתמשים', 'כלל ההזמנות'],
             datasets: [{
-                label: '# of Users/Orders',
-                data: [stats.totalUsers, stats.activeUsers, stats.totalOrders],
+                label: 'משתמשים אל מול הזמנות',
+                data: [stats.totalUsers, stats.totalOrders],
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -286,5 +308,113 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderUserStatsChart(stats);
     }
 });
+
+
+/* Supplier Section */
+
+document.addEventListener('DOMContentLoaded', () => {
+    getAllProducts();
+    getOrders();
+    fetchUserStats().then(stats => {
+        if (stats) {
+            renderUserStatsChart(stats);
+        }
+    });
+    getAllSuppliers(); 
+});
+
+
+function getAllSuppliers() {
+    fetch('http://localhost:3000/api/suppliers/getAllSuppliers', {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(result => {
+        const allSuppliers = document.getElementById('allSuppliers');
+        allSuppliers.innerHTML = '';
+        result.forEach(supplier => {
+            const supplierElement = `
+                <div class="supplier-card">
+                    <h3>${supplier.name}</h3>
+                    <p><strong>Email:</strong> ${supplier.email}</p>
+                    <p><strong>Phone:</strong> ${supplier.phone}</p>
+                    <p><strong>Balance:</strong> ${supplier.balance}</p>
+                    <button onclick="viewSupplierProducts('${supplier._id}')">צפה במוצרים</button>
+                    <button onclick="deleteSupplier('${supplier._id}')">מחיקת ספק</button>
+                </div>
+            `;
+            allSuppliers.insertAdjacentHTML('beforeend', supplierElement);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function viewSupplierProducts(supplierId) {
+    window.location.href = `supplierProducts.html?supplierId=${supplierId}`;
+}
+
+function deleteSupplier(supplierId) {
+    fetch(`http://localhost:3000/api/suppliers/deleteSupplier/${supplierId}`, {
+        method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Supplier deleted:', result);
+        getAllSuppliers(); 
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+document.getElementById('createSupplierButton').addEventListener('click', function() {
+    const form = document.getElementById('createSupplierForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+});
+
+document.getElementById('createSupplierForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.style.display = 'none';
+
+    const name = document.getElementById('supplierName').value.trim();
+    const email = document.getElementById('supplierEmail').value.trim();
+    const phone = document.getElementById('supplierPhone').value.trim();
+    const balance = document.getElementById('supplierBalance').value;
+
+    if (!name || !email || !phone || !balance) {
+        errorMessage.innerText = 'יש למלא את כל השדות';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+    if (!phonePattern.test(phone)) {
+        errorMessage.innerText = 'פורמט טלפון לא חוקי. השתמשו בפורמט 123-456-7890';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            phone: phone,
+            balance: balance
+        })
+    };
+
+    fetch('http://localhost:3000/api/suppliers/addSupplier', requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log('Supplier added:', result);
+            getAllSuppliers(); 
+        })
+        .catch(error => console.error('Error:', error));
+});
+
 
 
