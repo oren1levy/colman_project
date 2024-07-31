@@ -19,6 +19,10 @@ body{
     padding-top: 60px;
     z-index: 1000;
 }
+#welcome-message {
+    margin-left: 25%;
+    color: #818181;
+}
 
 
 .page {

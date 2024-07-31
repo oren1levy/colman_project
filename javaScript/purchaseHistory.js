@@ -148,24 +148,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const dateFilter = document.getElementById('purchaseDate').value;
         const reversedDate = reverseDateComponents(dateFilter);
         const priceFilter = document.getElementById('priceRange').value;
-        let searchproduct = document.getElementById('search-product').value;
-
-        if (searchproduct) {
-            searchproduct = `"${searchproduct}"`;
-        }
 
         const filteredResults = purchases.filter(purchase => {
-             return (!billFilter || purchase.billNumber.includes(billFilter)) &&
+            return (!billFilter || purchase.billNumber.includes(billFilter)) &&
                    (!reversedDate || purchase.createdAt.slice(0, 10) === reversedDate) &&
-                   (!priceFilter || purchase.totalPrice <= parseFloat(priceFilter)) &&
-                   (!searchproduct || purchase.productsId.includes(searchproduct));
-
+                   (!priceFilter || purchase.totalPrice <= parseFloat(priceFilter)) 
                    
         });
      
         displayOrders(filteredResults);
     }
-
+    
     document.getElementById('applyFiltersBtn').addEventListener('click', applyFilters);
 
     document.getElementById('resetFiltersBtn').addEventListener('click', function() {
@@ -173,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('priceRangeValue').textContent = '10000₪';
         document.getElementById('bill').value = '';
         document.getElementById('purchaseDate').value = '';
-        document.getElementById('search-product').value = '';
         getCustomerOrders();
     });
 
