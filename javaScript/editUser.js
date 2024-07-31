@@ -153,9 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const formattedDate = date.toISOString().split('T')[0];
                 document.getElementById('birthday').value = formattedDate;
                 document.getElementById('email').value = data.email;
-                document.getElementById('firstName').value = data.firstName;
-                document.getElementById('lastName').value = data.lastName;
-                document.getElementById('phone').value = data.phone;
             })
             .catch(error => console.error('Error fetching user data:', error));
         } 
