@@ -21,6 +21,9 @@ document.getElementById('closeMenu').addEventListener('click', function() {
 //////////////////////////////////////////////////////////////////////
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
+const city = document.getElementById('city');
+const addrress = document.getElementById('address');
+const mikud = document.getElementById('mikud');
 
 option1.addEventListener('click', () => {
     selectOption(option1);
@@ -30,11 +33,15 @@ option1.addEventListener('click', () => {
     document.querySelector('.self-collecting').style.display = 'none';
     document.getElementById('summary-delivery-value').textContent = '₪20';
     document.getElementById('summary-total-num').textContent = totalPriceDelivery();
-    document.getElementById('city').value = '';
-    document.getElementById('address').value = '';
-    document.getElementById('mikud').value = '';
+    city.readOnly = false;
+    city.value = '';
+    address.value = '';
+    address.readOnly = false;
+    mikud.value = '';
+    mikud.readOnly = false;
     document.getElementById('Phonenumber').value = '';
     document.getElementsByClassName('box')[3].style.borderBottom = '1px solid black';
+    document.getElementsByClassName('box')[4].style.borderBottom = '1px solid black';
 });
 
 option2.addEventListener('click', () => {
@@ -42,16 +49,14 @@ option2.addEventListener('click', () => {
     document.querySelector('.self-collecting').style.display = 'flex';
     document.getElementById('summary-delivery-value').textContent = '₪0'
     document.getElementById('summary-total-num').textContent = totalPriceDelivery();
-    const city = document.getElementById('city');
     city.readOnly = true;
     city.value = 'איסוף עצמי';
-    const addrress = document.getElementById('address');
     addrress.readOnly = true;
     addrress.value = 'איסוף עצמי';
-    const mikud = document.getElementById('mikud');
     mikud.readOnly = true;
     mikud.value = 'איסוף עצמי';
     document.getElementsByClassName('box')[3].style.borderBottom = '2px solid green';
+    document.getElementsByClassName('box')[4].style.borderBottom = '2px solid green';
 });
 
 
@@ -118,9 +123,7 @@ function validName(name) {
 
 Name.addEventListener("input", function(event) {
     const box1 = document.getElementById('first-name');
-    const box2 = document.getElementById('last-name');
     const firstname = Name.value;
-    const lastname = lastName.value;
 
     if(validName(firstname)) {
         box1.style.borderBottom = '2px solid green'; 
@@ -144,7 +147,24 @@ lastName.addEventListener("input", function(event) {
 
 })
 
+/////////////////////////////////////////////////////////////
+addrress.addEventListener("input", function(event) {
+    const box = document.getElementById('address');
+    const add = addrress.value;
 
+    if (validaddress(add)) {
+        box.style.borderBottom = '2px solid green'; 
+    } else {
+        box.style.borderBottom = '2px solid red'; 
+    }
+});
+function validaddress(address) {
+    const regex = /^[\u0590-\u05FF0-9\s]+$/;
+    if(!regex.test(address)) {
+        return false;
+    }
+    return true;
+}
 
 /////////////////////////////////////////////////////////////
 
@@ -189,11 +209,10 @@ $( function() {
   } );
 
 
-const cityInput = document.getElementById('city');
 
-cityInput.addEventListener("input", function(event) {
+city.addEventListener("input", function(event) {
     const box = document.getElementById('city');
-    const cityName = cityInput.value;
+    const cityName = city.value;
 
     if ((availableTags) => {
         return validCityNames.includes(cityName);
@@ -204,8 +223,7 @@ cityInput.addEventListener("input", function(event) {
     }
 });
 
-
-/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 function formatCreditCardNumber(value) {
     return value.replace(/\s+/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
 }
