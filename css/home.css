@@ -84,21 +84,21 @@ body {
 
 .gallery {
     /* display: grid; */
-    grid-template-columns: repeat(3, 1fr); /* 3 עמודות בגודל שווה */
-    grid-auto-rows: minmax(100px, auto); /* גובה אוטומטי */
-    gap: 10px; /* מרווח בין התמונות */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: minmax(100px, auto); 
+    gap: 10px; 
     margin-left: 8px;
     margin-right: 8px;
 
 }
 .gallery img {
-    width: 100%; /* תמונות ברוחב המסך */
-    height: 100%; /* גובה באופן שווה לרוחב */
-    max-height: 400px; /* קביעת גובה מרבי */
-    object-fit: cover; /* סדר תמונה למלא את התיבה */
+    width: 100%; 
+    height: 100%; 
+    max-height: 400px; 
+    object-fit: cover; 
 }
 .top-image {
-    grid-column: 1 / span 3; /* קביעת מיקום התמונה לגריד */
+    grid-column: 1 / span 3; 
 }
 
 .firstlineImg {
