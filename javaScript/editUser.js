@@ -226,4 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
    }});
 
+   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('twitterButton').onclick = function() {
+        window.location.href = 'https://x.com/yolo082024';
+    };
+});
+
 });

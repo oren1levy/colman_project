@@ -11,19 +11,10 @@ document.getElementById('closeMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.width = '0';
 });
 
-document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('twitterButton').onclick = function() {
         window.location.href = 'https://x.com/yolo082024';
     };
-});
 
-
-document.getElementById('openMenu').addEventListener('click', function() {
-    document.getElementById('sideMenu').style.width = '250px';
-});
-document.getElementById('closeMenu').addEventListener('click', function() {
-    document.getElementById('sideMenu').style.width = '0';
-});
 //////////////////////////////////////////////////////////////////////
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
@@ -71,7 +62,8 @@ function selectOption(selectedOption) {
     option2.classList.remove('selected');
     selectedOption.classList.add('selected');
 }
-//////////////////////////////////////////////////////////////////////
+
+/*////////////////////validation/////////////////*/
 const email = document.getElementById('contactEmail');
 
 function validateEmail(email) {
@@ -173,60 +165,33 @@ function validaddress(address) {
 }
 
 /////////////////////////////////////////////////////////////
-
-$( function() {
+$(function() {
     var availableTags = [
-      "אום אל פחם",
-      "אשדוד",
-      "אור-יהודה",
-      "אשקלון",
-      "בני ברק",
-      "בת-ים",
-      "גבעת-שמואל",
-      "גבעתיים",
-      "הוד השרון",
-      "הרצליה",
-      "חדרה",
-      "חולון",
-      "יבנה",
-      "יהוד-מונוסון",
-      "ירושלים",
-      "לוד",
-      "מודיעין",
-      "מכבים",
-      "רעות",
-      "נס-ציונה",
-      "פתח-תקווה",
-      "קריית אונו",
-      "קריית-גת",
-      "קריית-מלאכי",
-      "ראשון לציון",
-      "רחובות",
-      "רמלה",
-      "רמת גן", 
-      "רמת השרון", 
-      "רעננה", 
-      "שהם", 
-      "תל אביב-יפו"
+        "אום אל פחם", "אשדוד", "אור-יהודה", "אשקלון", "בני ברק", "בת-ים",
+        "גבעת-שמואל", "גבעתיים", "הוד השרון", "הרצליה", "חדרה", "חולון",
+        "יבנה", "יהוד-מונוסון", "ירושלים", "לוד", "מודיעין", "מכבים",
+        "רעות", "נס-ציונה", "פתח-תקווה", "קריית אונו", "קריית-גת",
+        "קריית-מלאכי", "ראשון לציון", "רחובות", "רמלה", "רמת גן",
+        "רמת השרון", "רעננה", "שהם", "תל אביב-יפו"
     ];
-    $( "#city" ).autocomplete({
-      source: availableTags
+    
+    $("#city").autocomplete({
+        source: availableTags,
+        select: function(event, ui) {
+            $(this).css('borderBottom', '2px solid green');
+        }
     });
-  } );
 
-
-
-city.addEventListener("input", function(event) {
-    const box = document.getElementById('city');
-    const cityName = city.value;
-
-    if ((availableTags) => {
-        return validCityNames.includes(cityName);
-    }) {
-        box.style.borderBottom = '2px solid green'; 
-    } else {
-        box.style.borderBottom = '2px solid red'; 
-    }
+    const cityInput = document.getElementById('city');
+    
+    cityInput.addEventListener("input", function(event) {
+        const cityName = cityInput.value;
+        if (availableTags.includes(cityName)) {
+            cityInput.style.borderBottom = '2px solid green';
+        } else {
+            cityInput.style.borderBottom = '2px solid red';
+        }
+    });
 });
 
 ////////////////////////////////////////////////////////////
@@ -342,8 +307,7 @@ function validCreditCarddate(datePlate) {
     return inputDate >= now;
 }
 
-/////////////////////////////////////////////////////////////
-///cart to payment///
+/////////////////////cart to payment/////////////////////////
 
 function loadpayment() {
     const cartItems = JSON.parse(localStorage.getItem(`cart_${userToken}`)) || [];
@@ -395,7 +359,6 @@ function loadCartTotal() {
     document.getElementById('order-id-number').textContent = orderId; 
 }
   
- 
 function totalPriceDelivery() {
     const cartTotal = sessionStorage.getItem('cartTotal');
     let cartTotalNumber = parseFloat(cartTotal.replace(/[₪\s,]/g, ''));
@@ -421,9 +384,7 @@ function generateOrderId(length = 15) {
 loadSavedReview();
 loadpayment();
 
-/////////////////////////////////////////////////////////////////////
-//////////////////payment to DataBase/////////////////////
-
+//////////////////////payment to DataBase///////////////////////////////
 
     document.querySelector('.safePaymentForm').addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -449,7 +410,6 @@ loadpayment();
         const phoneNumber = document.getElementById('Phonenumber').value;
         const bill = document.getElementById('order-id-number').innerText;
         const price = parseFloat(totalPriceDelivery().replace(/[^\d.-]/g, '')); 
-
   
         async function getUserData(userToken) {
             if (userToken) {
@@ -464,7 +424,6 @@ loadpayment();
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
-        
                     const data = await response.json();
         
                     if (data._id) {

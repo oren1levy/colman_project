@@ -15,9 +15,7 @@ document.getElementById('logo').addEventListener('click',function(){
     window.location.href = '../html.page/home.html';
 });
 
-function openTwitter() {
-    window.location.href = 'https://x.com/yolo082024';
-}
+
 
 
 
