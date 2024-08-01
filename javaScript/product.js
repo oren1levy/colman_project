@@ -6,7 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
-
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('twitterButton').onclick = function() {
+            window.location.href = 'https://x.com/yolo082024';
+        };
+    });
+    
     if (productId) {
         fetch('http://localhost:3000/api/products/getProducts', {
             method: 'POST',

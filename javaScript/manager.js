@@ -10,6 +10,13 @@ document.getElementById('logo').addEventListener('click', function() {
     window.location.href = '../html.page/home.html';
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('twitterButton').onclick = function() {
+        window.location.href = 'https://x.com/yolo082024';
+    };
+});
+
+
 $(document).ready(function() {
     $('nav ul li a').click(function(e) {
         e.preventDefault();

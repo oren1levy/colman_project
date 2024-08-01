@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('twitterButton').onclick = function() {
+            window.location.href = 'https://x.com/yolo082024';
+        };
+    });
+    
+
     function displayProducts(products) {
         const productGallery = document.getElementById('productGallery');
         productGallery.innerHTML = ''; 
