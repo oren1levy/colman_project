@@ -152,11 +152,14 @@ body {
 
 #map-container h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 20px;   
+     align-items: center;
 }
 
 #prices-info-container {
     text-align: center;
+    margin:0;
+    align-items: center;
 }
 
 #map {
@@ -184,4 +187,8 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     margin: 20px 0;
+}
+
+#graph-icon{
+    margin-left: 10px;
 }

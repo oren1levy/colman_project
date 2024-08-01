@@ -36,7 +36,7 @@ function loadCart() {
                 <span id="cart-item-Name">${item.productName}</span>
                 <span id="cart-item-quantity-text"><span id="cart-item-Quantity">${item.quantity}</span><span>:כמות</span></span>
                 <span id="cart-item-Price">₪${(item.productPrice).toFixed(2)}</span>
-                <span id="cart-item-Id">מק"ט: ${item.productId}</span>
+                <span id="cart-item-Id">${item.productId}</span>
                 <button class="delete-cart-product">הסר</button>
             </span>
         `;
